@@ -1,8 +1,11 @@
+import { Nav } from "@/components/nav";
+
 export default function Home() {
   return (
     <>
       <div className="ambient" />
       <div className="grain" />
+      <Nav />
       <main className="container" style={{ paddingTop: 120 }}>
         <p className="eyebrow">
           <span className="dot" />
