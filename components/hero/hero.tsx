@@ -1,7 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Icons } from "@/components/icons";
 import { Countdown } from "./countdown";
-import { BarcampLogo2026 } from "./barcamp-logo-2026";
 
 export function Hero() {
   return (
@@ -54,7 +54,12 @@ export function Hero() {
           <div className="emblem-card bg glass" />
           <div className="emblem-card fg">
             <div className="emblem-inner">
-              <BarcampLogo2026 />
+              <Image
+                src="/barcamp-logo-white.svg"
+                alt="Barcamp 2026"
+                fill
+                style={{ objectFit: "contain", padding: "10%" }}
+              />
             </div>
             <div
               style={{
