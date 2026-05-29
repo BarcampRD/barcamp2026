@@ -255,6 +255,34 @@
   border: none;
 }
 
+/* ── Price feature (About section) ────────── */
+
+@utility price-feature {
+  position: relative;
+  padding: 24px 24px 28px;
+  margin: -8px -8px 8px;
+  border-radius: var(--radius-md);
+  background:
+    radial-gradient(ellipse 100% 80% at 70% 0%, oklch(50% 0.22 25 / 0.35), transparent 60%),
+    linear-gradient(180deg, oklch(35% 0.2 25 / 0.25), oklch(20% 0.12 25 / 0.15));
+  border: 1px solid oklch(60% 0.22 25 / 0.35);
+  box-shadow: 0 0 60px oklch(55% 0.23 25 / 0.2),
+              inset 0 1px 0 oklch(70% 0.22 25 / 0.4);
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(90deg, transparent 49%, oklch(60% 0.22 25 / 0.08) 49%,
+      oklch(60% 0.22 25 / 0.08) 51%, transparent 51%);
+    background-size: 32px 100%;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+}
+
 /* ── Reveal animation ──────────────────────── */
 
 .reveal {
