@@ -3,6 +3,7 @@ import { Hero } from "@/components/hero/hero";
 import { Stats } from "@/components/stats";
 import { Pillars } from "@/components/pillars";
 import { About } from "@/components/about";
+import { Keynote } from "@/components/keynote";
 import { CursorGlow } from "@/components/ui/cursor-glow";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <Stats />
       <Pillars />
       <About />
+      <Keynote />
     </>
   );
 }
