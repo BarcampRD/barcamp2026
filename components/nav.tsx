@@ -14,7 +14,14 @@ const NAV_LINKS = [
 export function Nav() {
   return (
     <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-40px)] max-w-[1200px]">
-      <div className="glass flex items-center justify-between py-[10px] pl-[22px] pr-3 rounded-full">
+      <div
+        className="glass flex items-center justify-between py-[10px] pl-[22px] pr-3 rounded-full"
+        style={{
+          background: "rgba(15, 10, 10, 0.55)",
+          backdropFilter: "blur(32px) saturate(180%)",
+          WebkitBackdropFilter: "blur(32px) saturate(180%)",
+        }}
+      >
         <Link href="#top" className="inline-flex items-center no-underline">
           <Image
             src="/barcamp-logo-nav.svg"
