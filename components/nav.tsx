@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Icons } from "./icons";
 
@@ -14,16 +15,15 @@ export function Nav() {
   return (
     <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-40px)] max-w-[1200px]">
       <div className="glass flex items-center justify-between py-[10px] pl-[22px] pr-3 rounded-full">
-        <Link
-          href="#top"
-          className="inline-flex items-center gap-[10px] font-display font-extrabold text-[1.05rem] tracking-[-0.02em] text-ink-0 no-underline"
-        >
-          <span className="w-7 h-7 rounded-[8px] inline-flex items-center justify-center text-[0.7rem] font-black [background:linear-gradient(180deg,oklch(65%_0.23_25),oklch(45%_0.23_25))] [box-shadow:inset_0_1px_0_oklch(75%_0.2_25/0.6),0_0_20px_oklch(55%_0.23_25/0.5)]">
-            BC
-          </span>
-          <span>
-            Barcamp <span className="text-red-0">26</span>
-          </span>
+        <Link href="#top" className="inline-flex items-center no-underline">
+          <Image
+            src="/barcamp-logo-nav.svg"
+            alt="Barcamp 2026"
+            width={152}
+            height={32}
+            priority
+            unoptimized
+          />
         </Link>
 
         <div className="max-[900px]:hidden flex gap-1 items-center">

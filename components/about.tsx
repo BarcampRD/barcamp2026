@@ -86,7 +86,7 @@ export function About() {
                     style={{
                       fontSize: "clamp(3.5rem, 6vw, 4.8rem)",
                       fontVariantNumeric: "tabular-nums",
-                      textShadow: "0 4px 24px oklch(55% 0.23 25 / 0.4)",
+                      textShadow: "0 4px 24px var(--btn-shadow)",
                     }}
                   >
                     1,000

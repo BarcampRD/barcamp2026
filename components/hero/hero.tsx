@@ -25,7 +25,7 @@ export function Hero() {
 
           <div className="font-display font-extrabold leading-[0.82] tracking-[-0.045em] text-[clamp(5rem,13vw,11rem)] text-red-0 [font-variation-settings:'wdth'_100] -mt-[0.08em] relative inline-block w-fit">
             CAMP
-            <span className="absolute -left-[10%] -right-[10%] top-[8%] -bottom-[8%] bg-[radial-gradient(ellipse,oklch(55%_0.23_25/0.5),transparent_60%)] -z-10 blur-[40px] pointer-events-none" />
+            <span className="absolute -left-[10%] -right-[10%] top-[8%] -bottom-[8%] [background:radial-gradient(ellipse,var(--red-1-50),transparent_60%)] -z-10 blur-[40px] pointer-events-none" />
           </div>
 
           <div className="flex items-end gap-6 mt-[0.05em]">
@@ -44,7 +44,7 @@ export function Hero() {
 
           <div className="mt-10 flex flex-wrap gap-4 items-center">
             <div className="glass inline-flex items-center gap-[14px] py-[14px] pr-[22px] pl-[14px] rounded-full">
-              <span className="w-10 h-10 rounded-[12px] inline-flex items-center justify-center [background:linear-gradient(180deg,oklch(65%_0.23_25),oklch(50%_0.23_25))] [box-shadow:inset_0_1px_0_oklch(75%_0.2_25/0.6)]">
+              <span className="w-10 h-10 rounded-[12px] inline-flex items-center justify-center [background:linear-gradient(180deg,var(--btn-from),var(--btn-to))] [box-shadow:inset_0_1px_0_var(--btn-shine)]">
                 <Icons.Calendar />
               </span>
               <span className="flex flex-col gap-0.5">
@@ -75,11 +75,11 @@ export function Hero() {
 
           {/* Tarjeta principal */}
           <div className="absolute inset-0 rounded-[44px] overflow-hidden flex items-center justify-center
-            [background:radial-gradient(ellipse_80%_80%_at_50%_50%,oklch(28%_0.18_25/0.6),transparent_70%),rgba(20,12,12,0.4)]
+            [background:radial-gradient(ellipse_80%_80%_at_50%_50%,var(--emblem-bg),transparent_70%),rgba(20,12,12,0.4)]
             [backdrop-filter:blur(30px)_saturate(180%)]
             [-webkit-backdrop-filter:blur(30px)_saturate(180%)]
-            border border-[oklch(60%_0.22_25/0.35)]
-            [box-shadow:var(--glass-shadow),inset_0_1px_0_oklch(70%_0.22_25/0.4),0_0_80px_oklch(55%_0.23_25/0.3)]">
+            border border-[var(--emblem-border)]
+            [box-shadow:var(--glass-shadow),inset_0_1px_0_var(--emblem-inset),0_0_80px_var(--emblem-glow)]">
 
             <div className="relative w-full h-full flex items-center justify-center">
               <Image

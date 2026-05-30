@@ -43,7 +43,7 @@ export function Pillars() {
           {PILLARS.map((p, i) => (
             <Reveal key={p.title} delay={i * 100}>
               <article className="glass h-full flex flex-col gap-6 p-7 rounded-[var(--radius-lg)] hover:-translate-y-1 transition-transform duration-300">
-                <div className="w-11 h-11 rounded-[var(--radius-sm)] flex items-center justify-center bg-[oklch(55%_0.23_25/0.15)] border border-[oklch(60%_0.22_25/0.25)] text-red-0">
+                <div className="w-11 h-11 rounded-[var(--radius-sm)] flex items-center justify-center bg-[var(--icon-bg)] border border-[var(--icon-border)] text-red-0">
                   <p.icon width={22} height={22} />
                 </div>
 

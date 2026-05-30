@@ -1,0 +1,136 @@
+/*
+ * Design tokens — fuente única de verdad para Barcamp 2026
+ *
+ * Jerarquía:
+ *   @theme  → genera utilidades Tailwind + custom properties
+ *   :root   → aliases semánticos derivados de @theme (no generan utilidades)
+ *
+ * Para cambiar la paleta de rojos: editar SOLO los 4 valores en @theme.
+ * Los alias de :root se actualizan solos al referirse a var(--color-red-X).
+ */
+
+@theme {
+  /* ── Fondos ──────────────────────────────── */
+  --color-bg-0: #0a0707;
+  --color-bg-1: #110c0c;
+  --color-bg-2: #1a1212;
+
+  /* ── Tinta ───────────────────────────────── */
+  --color-ink-0: #f5f1ec;
+  --color-ink-1: #e5dfd8;
+  --color-ink-2: #a8a09a;
+  --color-ink-3: #6b6460;
+
+  /* ── Rojos de marca ──────────────────────── */
+  /* Paleta extraída del logo oficial Barcamp 2026            */
+  /* Mapeados: #ED2917 · #D61211 · #BA1513 · #B60604         */
+  --color-red-0: oklch(56% 0.26 27);   /* acento principal  */
+  --color-red-1: oklch(47% 0.26 25);   /* medio             */
+  --color-red-2: oklch(41% 0.25 25);   /* oscuro            */
+  --color-red-3: oklch(35% 0.24 24);   /* más oscuro        */
+
+  /* ── Bordes glass — accesibles como utilidades Tailwind ── */
+  --color-glass-border:        rgba(255, 240, 235, 0.12);
+  --color-glass-border-strong: rgba(255, 240, 235, 0.22);
+
+  /* ── Tipografía ──────────────────────────── */
+  --font-display: var(--font-bricolage), system-ui, sans-serif;
+  --font-body:    var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono:    var(--font-geist-mono), ui-monospace, monospace;
+
+  /* ── Radios ──────────────────────────────── */
+  --radius-sm:  10px;
+  --radius-md:  16px;
+  --radius-lg:  24px;
+  --radius-xl:  32px;
+  --radius-2xl: 44px;
+}
+
+:root {
+  /* ── Sistema glass ───────────────────────── */
+  --glass-bg:        rgba(255, 245, 240, 0.045);
+  --glass-bg-strong: rgba(255, 245, 240, 0.075);
+  --glass-shadow:
+    0 30px 60px -20px rgba(0, 0, 0, 0.6),
+    0 8px 24px -8px rgba(0, 0, 0, 0.5);
+
+  /* ── Escala alpha — red-0 ────────────────── */
+  --red-0-08: oklch(56% 0.26 27 / 0.08);
+  --red-0-15: oklch(56% 0.26 27 / 0.15);
+  --red-0-18: oklch(56% 0.26 27 / 0.18);
+  --red-0-25: oklch(56% 0.26 27 / 0.25);
+  --red-0-35: oklch(56% 0.26 27 / 0.35);
+  --red-0-40: oklch(56% 0.26 27 / 0.40);
+  --red-0-50: oklch(56% 0.26 27 / 0.50);
+  --red-0-60: oklch(56% 0.26 27 / 0.60);
+
+  /* ── Escala alpha — red-1 ────────────────── */
+  --red-1-15: oklch(47% 0.26 25 / 0.15);
+  --red-1-20: oklch(47% 0.26 25 / 0.20);
+  --red-1-25: oklch(47% 0.26 25 / 0.25);
+  --red-1-30: oklch(47% 0.26 25 / 0.30);
+  --red-1-35: oklch(47% 0.26 25 / 0.35);
+  --red-1-40: oklch(47% 0.26 25 / 0.40);
+  --red-1-50: oklch(47% 0.26 25 / 0.50);
+  --red-1-55: oklch(47% 0.26 25 / 0.55);
+
+  /* ── Escala alpha — red-2 ────────────────── */
+  --red-2-25: oklch(41% 0.25 25 / 0.25);
+  --red-2-30: oklch(41% 0.25 25 / 0.30);
+  --red-2-35: oklch(41% 0.25 25 / 0.35);
+  --red-2-40: oklch(41% 0.25 25 / 0.40);
+
+  /* ── Escala alpha — red-3 ────────────────── */
+  --red-3-20: oklch(35% 0.24 24 / 0.20);
+  --red-3-25: oklch(35% 0.24 24 / 0.25);
+  --red-3-40: oklch(35% 0.24 24 / 0.40);
+  --red-3-60: oklch(35% 0.24 24 / 0.60);
+
+  /* ── Variantes más claras (para brillos/insets) ── */
+  --red-hi-40: oklch(65% 0.22 27 / 0.40);   /* inset shine en glass */
+  --red-hi-60: oklch(70% 0.20 27 / 0.60);   /* btn inset highlight  */
+
+  /* ── Atmósfera (ambient background) ─────── */
+  --ambient-hi:  var(--red-1-35);
+  --ambient-mid: var(--red-2-25);
+  --ambient-lo:  var(--red-2-30);
+
+  /* ── UI global ───────────────────────────── */
+  --cursor-glow:   var(--red-0-18);
+  --selection-bg:  var(--red-1-50);
+  --scroll-thumb:  var(--red-3-40);
+  --scroll-hover:  var(--red-0-60);
+
+  /* ── Botón primario ──────────────────────── */
+  --btn-from:         oklch(64% 0.24 27);      /* acento + ~8L    */
+  --btn-to:           oklch(49% 0.26 25);      /* entre red-0/1   */
+  --btn-shine:        var(--red-hi-60);
+  --btn-base:         oklch(35% 0.24 24);      /* = red-3         */
+  --btn-shadow:       var(--red-1-40);
+  --btn-shadow-hover: var(--red-1-55);
+
+  /* ── glass-red component ─────────────────── */
+  --glass-red-from:   var(--red-1-35);
+  --glass-red-to:     var(--red-3-20);
+  --glass-red-border: var(--red-0-40);
+  --glass-red-inset:  var(--red-hi-40);
+  --glass-red-glow:   var(--red-1-25);
+
+  /* ── Price feature ───────────────────────── */
+  --price-bg-hi:   var(--red-1-35);
+  --price-bg-lo:   var(--red-3-25);
+  --price-bg-deep: oklch(20% 0.12 24 / 0.15);
+  --price-glow:    var(--red-1-20);
+  --price-inset:   var(--red-hi-40);
+  --price-grid:    var(--red-0-08);
+
+  /* ── Iconos / pills ──────────────────────── */
+  --icon-bg:     var(--red-1-15);
+  --icon-border: var(--red-0-25);
+
+  /* ── Emblema hero ────────────────────────── */
+  --emblem-bg:     var(--red-3-60);
+  --emblem-border: var(--red-0-35);
+  --emblem-inset:  var(--red-hi-40);
+  --emblem-glow:   var(--red-1-30);
+}
