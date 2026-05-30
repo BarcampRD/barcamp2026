@@ -27,8 +27,12 @@ export function Keynote() {
 
         <Reveal delay={100}>
           <div
-            className="glass-red grid items-center gap-12 rounded-[var(--radius-xl)] p-12 max-[800px]:grid-cols-1 max-[800px]:p-8"
-            style={{ gridTemplateColumns: "280px 1fr" }}
+            className="glass grid items-center gap-12 rounded-[var(--radius-xl)] p-12 max-[800px]:grid-cols-1 max-[800px]:p-8"
+            style={{
+              gridTemplateColumns: "280px 1fr",
+              background: "linear-gradient(135deg, oklch(47% 0.26 25 / 0.10), oklch(35% 0.24 24 / 0.05))",
+              borderColor: "oklch(56% 0.26 27 / 0.20)",
+            }}
           >
             {/* Portrait placeholder */}
             <div
@@ -36,15 +40,13 @@ export function Keynote() {
               style={{
                 aspectRatio: "1",
                 background:
-                  "linear-gradient(135deg, oklch(40% 0.2 25 / 0.4), oklch(25% 0.15 25 / 0.4)), repeating-linear-gradient(45deg, transparent 0 12px, oklch(50% 0.2 25 / 0.08) 12px 13px)",
-                border: "1px solid oklch(60% 0.22 25 / 0.3)",
+                  "linear-gradient(135deg, oklch(40% 0.2 25 / 0.18), oklch(25% 0.15 25 / 0.18)), repeating-linear-gradient(45deg, transparent 0 12px, oklch(50% 0.2 25 / 0.04) 12px 13px)",
+                border: "1px solid oklch(60% 0.22 25 / 0.15)",
                 fontSize: "0.7rem",
                 lineHeight: 1.6,
               }}
             >
               [PHOTO]<br />
-              Drop keynote<br />
-              portrait here
             </div>
 
             {/* Meta */}
@@ -63,7 +65,7 @@ export function Keynote() {
                   letterSpacing: "-0.03em",
                 }}
               >
-                Anunciamos<br />pronto.
+                Anunciamos pronto.
               </div>
 
               <div className="text-red-0 font-medium text-[1rem]">
@@ -71,10 +73,8 @@ export function Keynote() {
               </div>
 
               <p className="text-ink-2 text-[1rem] leading-[1.55] mt-2 max-w-[60ch]">
-                Cada año arrancamos con una voz que marca el tono. Este 2026
-                traemos a alguien que viene construyendo a escala desde la
-                región — código, producto y comunidad desde Latinoamérica para
-                el mundo.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
               </p>
 
               <div className="flex gap-3 mt-3">
