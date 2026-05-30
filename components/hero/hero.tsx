@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Icons } from "@/components/icons";
 import { Countdown } from "./countdown";
+import { RotatingWord } from "./rotating-word";
 
 export function Hero() {
   return (
@@ -39,7 +40,7 @@ export function Hero() {
 
           <div className="mt-9 font-display font-semibold text-[clamp(1.4rem,2.2vw,1.9rem)] leading-[1.05] text-ink-1 max-w-[22ch] tracking-[-0.02em] relative pl-5">
             <span className="absolute left-0 top-[0.15em] bottom-[0.15em] w-[3px] bg-red-0 shadow-[0_0_12px_var(--color-red-0)]" />
-            Código,<br />Conexión<br />y Comunidad
+            Código,<br />Conexión<br /><RotatingWord />
           </div>
 
           <div className="mt-10 flex flex-wrap gap-4 items-center">
