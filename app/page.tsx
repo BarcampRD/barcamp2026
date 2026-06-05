@@ -5,6 +5,7 @@ import { Pillars } from "@/components/pillars";
 import { About } from "@/components/about";
 import { Keynote } from "@/components/keynote";
 import { Schedule } from "@/components/schedule";
+import { Speakers } from "@/components/speakers";
 import { CursorGlow } from "@/components/ui/cursor-glow";
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
       <About />
       <Keynote />
       <Schedule />
+      <Speakers />
     </>
   );
 }
