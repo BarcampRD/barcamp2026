@@ -1,30 +1,30 @@
 import { Reveal } from "@/components/ui/reveal";
 import { Icons } from "@/components/icons";
 
-const ROOMS = ["Sala A", "Sala B", "Sala C"];
+const ROOMS = ["Sala A", "Sala B", "Sala C", "Sala D"];
 
 interface SpanCell {
   kind: "keynote" | "break";
   tag?: string;
   t: string;
   who: string;
-  span: 3;
+  span: 4;
 }
 interface OpenCell { open: true }
 type Cell = SpanCell | OpenCell;
 
 const SLOTS: { time: string; cells: Cell[] }[] = [
-  { time: "08:00 AM", cells: [{ kind: "break", t: "Registro y bienvenida", who: "Lobby principal", span: 3 }] },
-  { time: "09:00 AM", cells: [{ kind: "keynote", tag: "Apertura", t: "Acto de apertura · Barcamp 2026", who: "Organización", span: 3 }] },
-  { time: "09:30 AM", cells: [{ kind: "keynote", tag: "Keynote", t: "Charla magistral inaugural", who: "Por anunciar", span: 3 }] },
-  { time: "10:30 AM", cells: [{ open: true }, { open: true }, { open: true }] },
-  { time: "11:30 AM", cells: [{ open: true }, { open: true }, { open: true }] },
-  { time: "12:30 PM", cells: [{ kind: "break", t: "Almuerzo · Networking", who: "Patio central", span: 3 }] },
-  { time: "2:00 PM", cells: [{ open: true }, { open: true }, { open: true }] },
-  { time: "3:00 PM", cells: [{ open: true }, { open: true }, { open: true }] },
-  { time: "4:00 PM", cells: [{ kind: "break", t: "Coffee break", who: "Lobby", span: 3 }] },
-  { time: "4:30 PM", cells: [{ kind: "keynote", tag: "Cierre", t: "Charla de cierre", who: "Equipo Barcamp", span: 3 }] },
-  { time: "5:30 PM", cells: [{ kind: "break", t: "After & networking", who: "Patio central", span: 3 }] },
+  { time: "08:00 AM", cells: [{ kind: "break", t: "Registro y bienvenida", who: "Lobby principal", span: 4 }] },
+  { time: "09:00 AM", cells: [{ kind: "keynote", tag: "Apertura", t: "Acto de apertura · Barcamp 2026", who: "Organización", span: 4 }] },
+  { time: "09:30 AM", cells: [{ kind: "keynote", tag: "Keynote", t: "Charla magistral inaugural", who: "Por anunciar", span: 4 }] },
+  { time: "10:30 AM", cells: [{ open: true }, { open: true }, { open: true }, { open: true }] },
+  { time: "11:30 AM", cells: [{ open: true }, { open: true }, { open: true }, { open: true }] },
+  { time: "12:30 PM", cells: [{ kind: "break", t: "Almuerzo · Networking", who: "Patio central", span: 4 }] },
+  { time: "2:00 PM", cells: [{ open: true }, { open: true }, { open: true }, { open: true }] },
+  { time: "3:00 PM", cells: [{ open: true }, { open: true }, { open: true }, { open: true }] },
+  { time: "4:00 PM", cells: [{ kind: "break", t: "Coffee break", who: "Lobby", span: 4 }] },
+  { time: "4:30 PM", cells: [{ kind: "keynote", tag: "Cierre", t: "Charla de cierre", who: "Equipo Barcamp", span: 4 }] },
+  { time: "5:30 PM", cells: [{ kind: "break", t: "After & networking", who: "Patio central", span: 4 }] },
 ];
 
 const CFS_STATS = [
@@ -205,12 +205,6 @@ export function Schedule() {
                 Así se ve un sábado de Barcamp
               </h4>
             </div>
-            <p
-              className="font-mono text-ink-3 text-right leading-relaxed max-[700px]:hidden"
-              style={{ fontSize: "0.72rem" }}
-            >
-              * Los slots abiertos los<br />llenamos con tus propuestas
-            </p>
           </div>
 
           <Reveal>
@@ -224,7 +218,7 @@ export function Schedule() {
               }}
             >
               <div className="border-r border-glass-border" />
-              <div className="sch-cells" style={{ borderBottom: "none" }}>
+              <div className="sch-cells" style={{ borderBottom: "none", gridTemplateColumns: "repeat(4, 1fr)" }}>
                 {ROOMS.map((r) => (
                   <div
                     key={r}
@@ -265,7 +259,7 @@ export function Schedule() {
                         </div>
                       </div>
                     ) : (
-                      <div className="sch-cells">
+                      <div className="sch-cells" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
                         {slot.cells.map((_, j) => (
                           <div key={j} className="sch-cell sch-open">
                             <span className="sch-tag">Slot abierto</span>

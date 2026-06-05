@@ -46,10 +46,6 @@ export function Sponsors() {
               </h2>
             </div>
 
-            <a href="mailto:barcamp@pucmm.edu.do" className="btn btn-primary shrink-0">
-              Quiero patrocinar
-              <span className="btn-arrow"><Icons.Arrow /></span>
-            </a>
           </div>
         </Reveal>
 

@@ -1,7 +1,6 @@
 "use client";
 
 import { Reveal } from "@/components/ui/reveal";
-import { Icons } from "@/components/icons";
 
 const PAST_EDITIONS = [
   { year: "2024", talks: 32, attendees: 280 },
@@ -85,10 +84,6 @@ export function Speakers() {
               </p>
             </div>
 
-            <a href="#agenda" className="btn btn-primary">
-              Propón tu charla
-              <span className="btn-arrow"><Icons.Arrow /></span>
-            </a>
           </div>
         </Reveal>
 

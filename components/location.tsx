@@ -102,7 +102,7 @@ export function Location() {
                   Madre y Maestra
                 </h3>
                 <p className="text-ink-2 text-[0.95rem] leading-[1.6] mt-1">
-                  Campus principal — Recinto Santiago
+                  Campus Santiago
                 </p>
               </div>
 
