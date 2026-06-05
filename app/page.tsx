@@ -7,6 +7,7 @@ import { Keynote } from "@/components/keynote";
 import { Schedule } from "@/components/schedule";
 import { Speakers } from "@/components/speakers";
 import { Sponsors } from "@/components/sponsors";
+import { Location } from "@/components/location";
 import { CursorGlow } from "@/components/ui/cursor-glow";
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
       <Schedule />
       <Speakers />
       <Sponsors />
+      <Location />
     </>
   );
 }
