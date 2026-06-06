@@ -8,6 +8,9 @@ import { Schedule } from "@/components/schedule";
 import { Speakers } from "@/components/speakers";
 import { Sponsors } from "@/components/sponsors";
 import { Location } from "@/components/location";
+import { Conduct } from "@/components/conduct";
+import { Register } from "@/components/register";
+import { Footer } from "@/components/footer";
 import { CursorGlow } from "@/components/ui/cursor-glow";
 
 export default function Home() {
@@ -26,6 +29,9 @@ export default function Home() {
       <Speakers />
       <Sponsors />
       <Location />
+      <Conduct />
+      <Register />
+      <Footer />
     </>
   );
 }
