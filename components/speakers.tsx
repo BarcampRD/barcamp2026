@@ -1,12 +1,13 @@
 "use client";
 
 import { Reveal } from "@/components/ui/reveal";
+import Link from "next/link";
 
 const PAST_EDITIONS = [
-  { year: "2024", talks: 32, attendees: 280 },
-  { year: "2023", talks: 28, attendees: 240 },
-  { year: "2022", talks: 24, attendees: 200 },
-  { year: "2021", talks: 20, attendees: 180 },
+  { year: "2024", talks: 32, attendees: 280, url: "https://2024.barcamp.org.do" },
+  { year: "2023", talks: 28, attendees: 240, url: "https://2023.barcamp.org.do" },
+  { year: "2022", talks: 24, attendees: 200, url: "https://2022.barcamp.org.do" },
+  { year: "2021", talks: 20, attendees: 180, url: "https://2021.barcamp.org.do" },
 ];
 
 export function Speakers() {
@@ -101,7 +102,7 @@ export function Speakers() {
           <div className="grid grid-cols-4 max-[900px]:grid-cols-2 max-[500px]:grid-cols-1 gap-5">
             {PAST_EDITIONS.map((ed, i) => (
               <Reveal key={ed.year} delay={i * 80}>
-                <article className="glass p-7 rounded-[var(--radius-lg)] flex flex-col gap-6 hover:-translate-y-1 transition-transform duration-300">
+                <Link href={ed.url} target="_blank" rel="noopener noreferrer" className="glass p-7 rounded-[var(--radius-lg)] flex flex-col gap-6 hover:-translate-y-1 transition-transform duration-300">
                   <span
                     className="text-ink-0"
                     style={{
@@ -158,7 +159,7 @@ export function Speakers() {
                       </span>
                     </div>
                   </div>
-                </article>
+                </Link>
               </Reveal>
             ))}
           </div>

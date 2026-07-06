@@ -1,12 +1,15 @@
 import { Reveal } from "@/components/ui/reveal";
 
 const ROWS = [
-  { k: "Fecha",   v: "14 Nov 2026" },
-  { k: "Hora",    v: "8:00 AM — 6:00 PM" },
-  { k: "Sede",    v: "PUCMM · Santiago" },
+  { k: "Fecha", v: "14 Nov 2026" },
+  { k: "Hora", v: "8:00 AM — 6:00 PM" },
+  { k: "Sede", v: "PUCMM · Santiago" },
   { k: "Formato", v: "Presencial" },
-  { k: "Organiza",v: "CICC · PUCMM STI" },
+  { k: "Organiza", v: "CICC · PUCMM STI" },
 ];
+
+const price = "1,500";
+const previusPrice = "2,000";
 
 export function About() {
   return (
@@ -65,7 +68,7 @@ export function About() {
                     className="font-mono text-ink-3 line-through"
                     style={{ fontSize: "0.78rem" }}
                   >
-                    RD$ 1,500
+                    RD$ {previusPrice}
                   </span>
                 </div>
 
@@ -89,7 +92,7 @@ export function About() {
                       textShadow: "0 4px 24px var(--btn-shadow)",
                     }}
                   >
-                    1,000
+                    {price}
                   </span>
                 </div>
 
@@ -107,11 +110,10 @@ export function About() {
               {ROWS.map((row, i) => (
                 <div
                   key={row.k}
-                  className={`flex justify-between items-baseline ${
-                    i < ROWS.length - 1
-                      ? "pb-[18px] border-b border-glass-border"
-                      : ""
-                  }`}
+                  className={`flex justify-between items-baseline ${i < ROWS.length - 1
+                    ? "pb-[18px] border-b border-glass-border"
+                    : ""
+                    }`}
                 >
                   <span
                     className="font-mono text-ink-2 uppercase"
