@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/ui/reveal";
 import { Icons } from "@/components/icons";
+import { MapEmbed } from "@/components/ui/map-embed";
 
 const DETAILS = [
   { k: "Institución", v: "PUCMM" },
@@ -41,48 +42,9 @@ export function Location() {
             className="glass rounded-[var(--radius-xl)] overflow-hidden grid max-[900px]:grid-cols-1"
             style={{ gridTemplateColumns: "1fr 1fr" }}
           >
-            {/* Mapa placeholder */}
-            <div
-              className="relative flex items-center justify-center"
-              style={{
-                minHeight: 340,
-                background: "linear-gradient(135deg, oklch(14% 0.06 25), oklch(10% 0.03 25))",
-              }}
-            >
-              {/* Grid de puntos */}
-              <div
-                className="absolute inset-0"
-                style={{
-                  backgroundImage:
-                    "radial-gradient(oklch(50% 0.15 25 / 0.18) 1px, transparent 1px)",
-                  backgroundSize: "28px 28px",
-                }}
-              />
-              {/* Glow central */}
-              <div
-                className="absolute"
-                style={{
-                  width: 200,
-                  height: 200,
-                  borderRadius: "50%",
-                  background: "radial-gradient(circle, oklch(47% 0.26 25 / 0.2), transparent 70%)",
-                  pointerEvents: "none",
-                }}
-              />
-              <div className="relative z-10 flex flex-col items-center gap-3">
-                <Icons.Pin
-                  width={52}
-                  height={52}
-                  className="text-red-0"
-                  style={{ filter: "drop-shadow(0 0 20px var(--color-red-0))" }}
-                />
-                <span
-                  className="font-mono text-ink-2 uppercase"
-                  style={{ fontSize: "0.7rem", letterSpacing: "0.12em" }}
-                >
-                  PUCMM · Santiago
-                </span>
-              </div>
+            {/* Mapa interactivo */}
+            <div className="relative overflow-hidden" style={{ minHeight: 340, height: "100%" }}>
+              <MapEmbed />
             </div>
 
             {/* Info */}

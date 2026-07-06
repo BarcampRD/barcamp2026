@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "../styles/tokens.css";
+@import "maplibre-gl/dist/maplibre-gl.css";
 
 @layer base {
   * { box-sizing: border-box; margin: 0; padding: 0; }
