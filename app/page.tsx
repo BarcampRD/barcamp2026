@@ -12,8 +12,11 @@ import { Conduct } from "@/components/conduct";
 import { Register } from "@/components/register";
 import { Footer } from "@/components/footer";
 import { CursorGlow } from "@/components/ui/cursor-glow";
+import { currentFeatures } from "@/config/event-stages";
 
 export default function Home() {
+  const f = currentFeatures;
+
   return (
     <>
       <div className="ambient" />
@@ -24,13 +27,13 @@ export default function Home() {
       <Stats />
       <Pillars />
       <About />
-      <Keynote />
-      <Schedule />
-      <Speakers />
+      {f.showKeynote && <Keynote />}
+      {(f.showCallForSpeakers || f.showAgenda) && <Schedule />}
+      {(f.showConfirmedSpeakers || f.showSpeakersToAnounce) && <Speakers />}
       <Sponsors />
       <Location />
       <Conduct />
-      <Register />
+      {f.showRegister && <Register />}
       <Footer />
     </>
   );

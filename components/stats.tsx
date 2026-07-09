@@ -2,10 +2,10 @@ import { Reveal } from "@/components/ui/reveal";
 import { CountUp } from "@/components/ui/count-up";
 
 const STATS = [
-  { n: 260, suffix: "+", label: "Personas" },
-  { n: 13,  suffix: "",  label: "Ediciones" },
-  { n: 25,  suffix: "+", label: "Desconferencias" },
-  { n: 10,  suffix: "+", label: "Años de comunidad" },
+  { n: 780, suffix: "+", label: "Personas" },
+  { n: 13, suffix: "", label: "Ediciones" },
+  { n: 25, suffix: "+", label: "Desconferencias" },
+  { n: 12, suffix: "+", label: "Años de comunidad" },
 ];
 
 export function Stats() {

@@ -1,17 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Icons } from "./icons";
-
-const NAV_LINKS = [
-  { href: "#acerca", label: "Acerca" },
-  { href: "#keynote", label: "Keynote" },
-  { href: "#agenda", label: "Agenda" },
-  { href: "#speakers", label: "Speakers" },
-  { href: "#patrocinadores", label: "Patrocinadores" },
-  { href: "#ubicacion", label: "Ubicación" },
-];
+import { currentFeatures } from "@/config/event-stages";
 
 export function Nav() {
+  const { showKeynote, showAgenda, showCallForSpeakers, showRegister } = currentFeatures;
+
+  const NAV_LINKS = [
+    { href: "#acerca", label: "Acerca", show: true },
+    { href: "#keynote", label: "Keynote", show: showKeynote },
+    { href: "#agenda", label: "Agenda", show: showAgenda || showCallForSpeakers },
+    { href: "#charlistas", label: "Speakers", show: true },
+    { href: "#patrocinadores", label: "Patrocinadores", show: true },
+    { href: "#ubicacion", label: "Ubicación", show: true },
+  ].filter((l) => l.show);
+
   return (
     <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-40px)] max-w-[1200px]">
       <div
@@ -45,15 +48,17 @@ export function Nav() {
           ))}
         </div>
 
-        <Link
-          href="#registro"
-          className="btn btn-primary !py-[10px] !px-[18px] !text-[0.85rem]"
-        >
-          Inscríbete
-          <span className="btn-arrow">
-            <Icons.Arrow />
-          </span>
-        </Link>
+        {showRegister && (
+          <Link
+            href="#registro"
+            className="btn btn-primary !py-[10px] !px-[18px] !text-[0.85rem]"
+          >
+            Inscríbete
+            <span className="btn-arrow">
+              <Icons.Arrow />
+            </span>
+          </Link>
+        )}
       </div>
     </nav>
   );

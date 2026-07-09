@@ -79,7 +79,7 @@ export function Keynote() {
 
               <div className="flex gap-3 mt-3">
                 <a
-                  href="#"
+                  href="https://barcamp.org.do/#keynote"
                   className="btn btn-glass"
                   style={{ fontSize: "0.82rem", padding: "10px 18px" }}
                 >
