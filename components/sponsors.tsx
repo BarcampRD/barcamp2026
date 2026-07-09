@@ -1,5 +1,10 @@
+import Image from "next/image";
 import { Reveal } from "@/components/ui/reveal";
-import { Icons } from "@/components/icons";
+
+const ORGANIZERS = [
+  { label: "PUCMM",             src: "/pucmm-logo.png", width: 120, height: 120 },
+  { label: "Comité Organizador", src: "/cicc-logo.png",  width: 120, height: 120 },
+];
 
 const TIERS = [
   { name: "Platino", slots: 2 },
@@ -25,27 +30,61 @@ export function Sponsors() {
       <div className="w-full max-w-[1400px] mx-auto px-8">
 
         <Reveal className="mb-16">
-          <div className="flex items-end justify-between gap-8 max-[800px]:flex-col max-[800px]:items-start">
-            <div className="flex flex-col gap-4">
-              <span className="eyebrow">
-                <span className="dot" />
-                Patrocinadores
-              </span>
-              <h2
-                className="text-ink-0"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "clamp(2.8rem, 5vw, 4.5rem)",
-                  fontWeight: 700,
-                  letterSpacing: "-0.03em",
-                  lineHeight: 0.92,
-                }}
-              >
-                Quienes hacen<br />
-                posible el evento.
-              </h2>
-            </div>
+          <div className="flex flex-col gap-4">
+            <span className="eyebrow">
+              <span className="dot" />
+              Patrocinadores
+            </span>
+            <h2
+              className="text-ink-0"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(2.8rem, 5vw, 4.5rem)",
+                fontWeight: 700,
+                letterSpacing: "-0.03em",
+                lineHeight: 0.92,
+              }}
+            >
+              Quienes hacen<br />
+              posible el evento.
+            </h2>
+          </div>
+        </Reveal>
 
+        {/* Organizadores — por encima de los tiers de sponsors */}
+        <Reveal className="mb-16">
+          <div>
+            <p
+              className="font-mono text-ink-2 uppercase mb-5"
+              style={{ fontSize: "0.72rem", letterSpacing: "0.12em" }}
+            >
+              Presentado por
+            </p>
+
+            <div className="grid grid-cols-2 max-[600px]:grid-cols-1 gap-4">
+              {ORGANIZERS.map(({ label, src, width, height }) => (
+                <div
+                  key={label}
+                  className="glass rounded-[var(--radius-md)] flex flex-col items-center justify-center gap-4 py-10 px-8"
+                  style={{ minHeight: 160 }}
+                >
+                  <Image
+                    src={src}
+                    alt={label}
+                    width={width}
+                    height={height}
+                    className="object-contain"
+                    style={{ maxHeight: 100 }}
+                  />
+                  <span
+                    className="font-mono text-ink-2 text-center"
+                    style={{ fontSize: "0.7rem", letterSpacing: "0.08em", textTransform: "uppercase" }}
+                  >
+                    {label}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </Reveal>
 
