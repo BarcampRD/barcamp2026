@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { Reveal } from "@/components/ui/reveal";
+import { currentFeatures } from "@/config/event-stages";
 
 const ORGANIZERS = [
-  { label: "PUCMM",             src: "/pucmm-logo.png", width: 120, height: 120 },
-  { label: "Comité Organizador", src: "/cicc-logo.png",  width: 120, height: 120 },
+  { label: "PUCMM", src: "/pucmm-logo.png" },
+  { label: "Comité de Ingeniería en Ciencias de la Computación", src: "/cicc-logo.png" },
 ];
 
 const TIERS = [
@@ -25,6 +26,8 @@ const TIER_HEIGHT: Record<string, number> = {
 };
 
 export function Sponsors() {
+  const { showSponsors } = currentFeatures;
+
   return (
     <section id="patrocinadores" className="py-[100px]">
       <div className="w-full max-w-[1400px] mx-auto px-8">
@@ -33,7 +36,7 @@ export function Sponsors() {
           <div className="flex flex-col gap-4">
             <span className="eyebrow">
               <span className="dot" />
-              Patrocinadores
+              {showSponsors ? "Patrocinadores" : "Organización"}
             </span>
             <h2
               className="text-ink-0"
@@ -62,67 +65,63 @@ export function Sponsors() {
             </p>
 
             <div className="grid grid-cols-2 max-[600px]:grid-cols-1 gap-4">
-              {ORGANIZERS.map(({ label, src, width, height }) => (
+              {ORGANIZERS.map(({ label, src }) => (
                 <div
                   key={label}
-                  className="glass rounded-[var(--radius-md)] flex flex-col items-center justify-center gap-4 py-10 px-8"
-                  style={{ minHeight: 160 }}
+                  className="glass rounded-[var(--radius-md)] flex items-center justify-center py-8 px-8"
+                  style={{ minHeight: 128 }}
                 >
                   <Image
                     src={src}
                     alt={label}
-                    width={width}
-                    height={height}
+                    width={200}
+                    height={200}
                     className="object-contain"
-                    style={{ maxHeight: 100 }}
+                    style={{ height: 80, width: "auto" }}
                   />
-                  <span
-                    className="font-mono text-ink-2 text-center"
-                    style={{ fontSize: "0.7rem", letterSpacing: "0.08em", textTransform: "uppercase" }}
-                  >
-                    {label}
-                  </span>
                 </div>
               ))}
             </div>
           </div>
         </Reveal>
 
-        <div className="flex flex-col gap-12">
-          {TIERS.map((tier, ti) => (
-            <Reveal key={tier.name} delay={ti * 80}>
-              <div>
-                <p
-                  className="font-mono text-ink-2 uppercase mb-5"
-                  style={{ fontSize: "0.72rem", letterSpacing: "0.12em" }}
-                >
-                  {tier.name}
-                </p>
+        {showSponsors && (
+          <div className="flex flex-col gap-12">
+            {TIERS.map((tier, ti) => (
+              <Reveal key={tier.name} delay={ti * 80}>
+                <div>
+                  <p
+                    className="font-mono text-ink-2 uppercase mb-5"
+                    style={{ fontSize: "0.72rem", letterSpacing: "0.12em" }}
+                  >
+                    {tier.name}
+                  </p>
 
-                <div className={`grid gap-4 ${TIER_GRID[tier.name]}`}>
-                  {Array.from({ length: tier.slots }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="glass rounded-[var(--radius-md)] flex items-center justify-center"
-                      style={{
-                        minHeight: TIER_HEIGHT[tier.name],
-                        aspectRatio: "16/9",
-                        transition: "background 200ms",
-                      }}
-                    >
-                      <span
-                        className="font-mono text-ink-3"
-                        style={{ fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase" }}
+                  <div className={`grid gap-4 ${TIER_GRID[tier.name]}`}>
+                    {Array.from({ length: tier.slots }).map((_, i) => (
+                      <div
+                        key={i}
+                        className="glass rounded-[var(--radius-md)] flex items-center justify-center"
+                        style={{
+                          minHeight: TIER_HEIGHT[tier.name],
+                          aspectRatio: "16/9",
+                          transition: "background 200ms",
+                        }}
                       >
-                        [logo]
-                      </span>
-                    </div>
-                  ))}
+                        <span
+                          className="font-mono text-ink-3"
+                          style={{ fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase" }}
+                        >
+                          [logo]
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+              </Reveal>
+            ))}
+          </div>
+        )}
 
       </div>
     </section>

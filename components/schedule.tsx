@@ -290,7 +290,12 @@ export function Schedule() {
                               <div key={j} className="sch-cell sch-open">
                                 <span className="sch-tag">Slot abierto</span>
                                 <span className="sch-title">Coming soon</span>
-                                <a href="#agenda" className="sch-open-cta">
+                                <a
+                                  href="https://cfp.barcamp.org.do/barcamp-rd-2026/cfp"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="sch-open-cta"
+                                >
                                   Postúlate <Icons.Arrow />
                                 </a>
                               </div>

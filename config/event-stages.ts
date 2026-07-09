@@ -7,6 +7,7 @@ export interface EventFeatures {
   showConfirmedSpeakers: boolean;
   showAgenda: boolean;
   showSpeakersToAnounce: boolean;
+  showSponsors: boolean;
   showThanks: boolean;
   showRegister: boolean;
 }
@@ -19,6 +20,7 @@ export const STAGE_FEATURES: Record<EventStage, EventFeatures> = {
     showAgenda: true,
     showTicketPurchase: true,
     showSpeakersToAnounce: true,
+    showSponsors: true,
     showThanks: true,
     showRegister: true,
   },
@@ -29,8 +31,9 @@ export const STAGE_FEATURES: Record<EventStage, EventFeatures> = {
     showKeynote: false,
     showTicketPurchase: false,
     showSpeakersToAnounce: true,
+    showSponsors: false,
     showThanks: false,
-    showRegister: true,
+    showRegister: false,
   },
   TICKETS_SALE: {
     showTicketPurchase: true,
@@ -39,6 +42,7 @@ export const STAGE_FEATURES: Record<EventStage, EventFeatures> = {
     showAgenda: true,
     showConfirmedSpeakers: true,
     showSpeakersToAnounce: false,
+    showSponsors: true,
     showThanks: false,
     showRegister: true,
   },
@@ -49,6 +53,7 @@ export const STAGE_FEATURES: Record<EventStage, EventFeatures> = {
     showAgenda: true,
     showConfirmedSpeakers: true,
     showSpeakersToAnounce: false,
+    showSponsors: true,
     showThanks: false,
     showRegister: false,
   },
@@ -59,6 +64,7 @@ export const STAGE_FEATURES: Record<EventStage, EventFeatures> = {
     showAgenda: true,
     showConfirmedSpeakers: true,
     showSpeakersToAnounce: false,
+    showSponsors: true,
     showThanks: true,
     showRegister: false,
   },

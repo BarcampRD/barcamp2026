@@ -26,7 +26,7 @@ export function Footer() {
     ].filter((l) => l.show),
     Contacto: [
       { label: "barcamp@pucmm.edu.do", href: "mailto:barcamp@pucmm.edu.do" },
-      { label: "CICC · PUCMM STI", href: "#" },
+      { label: "CICC · PUCMM STI", href: "https://www.linkedin.com/company/comit%C3%A9-de-estudiantes-de-ingenier%C3%ADa-en-ciencias-de-la-computaci%C3%B3n/posts/?feedView=all" },
     ],
   };
 

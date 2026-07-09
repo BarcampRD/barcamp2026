@@ -1,10 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Icons } from "@/components/icons";
+import { currentFeatures } from "@/config/event-stages";
 import { Countdown } from "./countdown";
 import { RotatingWord } from "./rotating-word";
 
+const CFP_URL = "https://cfp.barcamp.org.do/barcamp-rd-2026/cfp";
+
 export function Hero() {
+  const { showRegister } = currentFeatures;
+
   return (
     <section
       id="top"
@@ -58,12 +63,21 @@ export function Hero() {
               </span>
             </div>
 
-            <Link href="#registro" className="btn btn-primary">
-              Inscríbete pronto
-              <span className="btn-arrow">
-                <Icons.Arrow />
-              </span>
-            </Link>
+            {showRegister ? (
+              <Link href="#registro" className="btn btn-primary">
+                Inscríbete pronto
+                <span className="btn-arrow">
+                  <Icons.Arrow />
+                </span>
+              </Link>
+            ) : (
+              <a href={CFP_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                Propón tu charla
+                <span className="btn-arrow">
+                  <Icons.Arrow />
+                </span>
+              </a>
+            )}
           </div>
 
           <Countdown />
