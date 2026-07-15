@@ -8,7 +8,7 @@ const ROWS = [
   { k: "Organiza", v: "CICC · PUCMM STI" },
 ];
 
-const price = "1,500";
+const price = "1,750";
 const previusPrice = "2,000";
 
 export function About() {

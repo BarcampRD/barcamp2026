@@ -98,7 +98,7 @@ export function Register() {
               className="font-mono text-ink-3 uppercase"
               style={{ fontSize: "0.65rem", letterSpacing: "0.12em" }}
             >
-              {showTicketPurchase ? "Entrada RD$1,500 · Cupos limitados" : "Sin spam · Solo el anuncio de cupos"}
+              {showTicketPurchase ? "Entrada RD$1,750 · Cupos limitados" : "Sin spam · Solo el anuncio de cupos"}
             </p>
           </div>
         </Reveal>
