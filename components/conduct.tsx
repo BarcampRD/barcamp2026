@@ -27,7 +27,7 @@ const ITEMS = [
   {
     n: "05",
     title: "Cómo denunciar",
-    body: "Si estás sufriendo algún abuso, has sido testigo de abusos sobre otra persona, o tienes alguna otra preocupación, contacta con el personal del evento inmediatamente a través de logistica@barcamp.org.do. Esperamos que los participantes sigan estas reglas en todas las conferencias y eventos relacionados.",
+    body: "Si estás sufriendo algún abuso, has sido testigo de abusos sobre otra persona, o tienes alguna otra preocupación, contacta con el personal del evento inmediatamente a través de cicc-csti@ce.pucmm.edu.do. Esperamos que los participantes sigan estas reglas en todas las conferencias y eventos relacionados.",
   },
 ];
 
@@ -35,17 +35,17 @@ export function Conduct() {
   const [open, setOpen] = useState<string | null>(null);
 
   return (
-    <section id="conducta" className="py-[100px]">
+    <section id="conducta" className="section-y">
       <div className="w-full max-w-[1400px] mx-auto px-8">
 
-        <Reveal className="mb-16">
+        <Reveal className="section-head">
           <div className="flex flex-col gap-4">
             <span className="eyebrow">
               <span className="dot" />
               Código de conducta
             </span>
             <h2
-              className="text-ink-0"
+              className="text-ink-0 balance-title"
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "clamp(2.8rem, 5vw, 4.5rem)",
@@ -54,7 +54,7 @@ export function Conduct() {
                 lineHeight: 0.92,
               }}
             >
-              Un espacio seguro<br />
+              Un espacio seguro{" "}<br />
               para <span className="text-red-0">todos</span>.
             </h2>
           </div>
@@ -70,8 +70,11 @@ export function Conduct() {
                   className="border-b border-glass-border"
                 >
                   <button
+                    id={`conduct-trigger-${item.n}`}
                     onClick={() => setOpen(isOpen ? null : item.n)}
-                    className="w-full flex items-center gap-6 py-6 text-left group"
+                    aria-expanded={isOpen}
+                    aria-controls={`conduct-panel-${item.n}`}
+                    className="w-full flex items-center gap-6 max-[600px]:gap-4 py-6 text-left group"
                     style={{ background: "none", border: "none", cursor: "pointer" }}
                   >
                     <span
@@ -108,21 +111,24 @@ export function Conduct() {
                   </button>
 
                   <div
+                    id={`conduct-panel-${item.n}`}
+                    role="region"
+                    aria-labelledby={`conduct-trigger-${item.n}`}
+                    inert={!isOpen}
                     style={{
-                      maxHeight: isOpen ? "200px" : "0px",
-                      overflow: "hidden",
-                      transition: "max-height 400ms cubic-bezier(0.2, 0.7, 0.2, 1)",
+                      display: "grid",
+                      gridTemplateRows: isOpen ? "1fr" : "0fr",
+                      transition: "grid-template-rows 400ms cubic-bezier(0.2, 0.7, 0.2, 1)",
                     }}
                   >
-                    <p
-                      className="text-ink-2 leading-[1.65] pb-6"
-                      style={{
-                        fontSize: "1rem",
-                        paddingLeft: "calc(0.72rem * 2 + 24px)",
-                      }}
-                    >
-                      {item.body}
-                    </p>
+                    <div style={{ overflow: "hidden", minHeight: 0 }}>
+                      <p
+                        className="text-ink-2 leading-[1.65] pb-6 pl-[calc(0.72rem*2+24px)] max-[600px]:pl-0"
+                        style={{ fontSize: "1rem" }}
+                      >
+                        {item.body}
+                      </p>
+                    </div>
                   </div>
                 </div>
               );

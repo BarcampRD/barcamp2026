@@ -10,7 +10,7 @@ const STATS = [
 
 export function Stats() {
   return (
-    <section className="py-10 pb-20">
+    <section className="pt-4 pb-[clamp(48px,5.5vw,76px)]">
       <div className="w-full max-w-[1400px] mx-auto px-8 relative z-10">
         <Reveal className="glass grid grid-cols-4 max-[800px]:grid-cols-2 gap-4 p-5 rounded-[var(--radius-xl)]">
           {STATS.map((s) => (

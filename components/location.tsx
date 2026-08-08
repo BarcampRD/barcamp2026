@@ -12,17 +12,17 @@ const DETAILS = [
 
 export function Location() {
   return (
-    <section id="ubicacion" className="py-[100px]">
+    <section id="ubicacion" className="section-y">
       <div className="w-full max-w-[1400px] mx-auto px-8">
 
-        <Reveal className="mb-12">
+        <Reveal className="section-head">
           <div className="flex flex-col gap-4">
             <span className="eyebrow">
               <span className="dot" />
               Ubicación · PUCMM, Santiago
             </span>
             <h2
-              className="text-ink-0"
+              className="text-ink-0 balance-title"
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "clamp(2.8rem, 5vw, 4.5rem)",
@@ -31,27 +31,24 @@ export function Location() {
                 lineHeight: 0.92,
               }}
             >
-              Te esperamos<br />
+              Te esperamos{" "}<br />
               en la <span className="text-red-0">PUCMM</span>.
             </h2>
           </div>
         </Reveal>
 
         <Reveal>
-          <div
-            className="glass rounded-[var(--radius-xl)] overflow-hidden grid max-[900px]:grid-cols-1"
-            style={{ gridTemplateColumns: "1fr 1fr" }}
-          >
+          <div className="glass rounded-[var(--radius-xl)] overflow-hidden grid grid-cols-2 max-[900px]:grid-cols-1">
             {/* Mapa interactivo */}
-            <div className="relative overflow-hidden" style={{ minHeight: 340, height: "100%" }}>
+            <div className="relative overflow-hidden h-full min-h-[340px] max-[900px]:min-h-[260px]">
               <MapEmbed />
             </div>
 
             {/* Info */}
-            <div className="p-10 flex flex-col gap-8 max-[900px]:p-8">
+            <div className="p-10 flex flex-col gap-8 max-[900px]:p-8 max-[480px]:p-6">
               <div className="flex flex-col gap-2">
                 <h3
-                  className="text-ink-0"
+                  className="text-ink-0 balance-title"
                   style={{
                     fontFamily: "var(--font-display)",
                     fontSize: "clamp(1.4rem, 2.5vw, 1.9rem)",
@@ -60,7 +57,7 @@ export function Location() {
                     lineHeight: 1.1,
                   }}
                 >
-                  Pontificia Universidad Católica<br />
+                  Pontificia Universidad Católica{" "}<br />
                   Madre y Maestra
                 </h3>
                 <p className="text-ink-2 text-[0.95rem] leading-[1.6] mt-1">
@@ -72,18 +69,18 @@ export function Location() {
                 {DETAILS.map((row, i) => (
                   <div
                     key={row.k}
-                    className={`flex justify-between items-baseline py-[14px] ${
+                    className={`flex justify-between items-baseline gap-4 py-[14px] max-[480px]:flex-col max-[480px]:items-start max-[480px]:gap-1 ${
                       i < DETAILS.length - 1 ? "border-b border-glass-border" : ""
                     }`}
                   >
                     <span
-                      className="font-mono text-ink-2 uppercase"
+                      className="font-mono text-ink-2 uppercase shrink-0"
                       style={{ fontSize: "0.72rem", letterSpacing: "0.12em" }}
                     >
                       {row.k}
                     </span>
                     <span
-                      className="text-ink-0 text-right font-medium"
+                      className="text-ink-0 text-right font-medium max-[480px]:text-left"
                       style={{
                         fontFamily: "var(--font-display)",
                         fontSize: "0.95rem",

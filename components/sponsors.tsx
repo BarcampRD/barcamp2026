@@ -29,17 +29,17 @@ export function Sponsors() {
   const { showSponsors } = currentFeatures;
 
   return (
-    <section id="patrocinadores" className="py-[100px]">
+    <section id="patrocinadores" className="section-y">
       <div className="w-full max-w-[1400px] mx-auto px-8">
 
-        <Reveal className="mb-16">
+        <Reveal className="section-head">
           <div className="flex flex-col gap-4">
             <span className="eyebrow">
               <span className="dot" />
               {showSponsors ? "Patrocinadores" : "Organización"}
             </span>
             <h2
-              className="text-ink-0"
+              className="text-ink-0 balance-title"
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "clamp(2.8rem, 5vw, 4.5rem)",
@@ -48,14 +48,15 @@ export function Sponsors() {
                 lineHeight: 0.92,
               }}
             >
-              Quienes hacen<br />
+              Quienes hacen{" "}<br />
               posible el evento.
             </h2>
           </div>
         </Reveal>
 
-        {/* Organizadores — por encima de los tiers de sponsors */}
-        <Reveal className="mb-16">
+        {/* Organizadores — por encima de los tiers de sponsors.
+            Sin tiers visibles este bloque cierra la sección: el margen sobra. */}
+        <Reveal className={showSponsors ? "mb-12" : ""}>
           <div>
             <p
               className="font-mono text-ink-2 uppercase mb-5"
@@ -68,16 +69,14 @@ export function Sponsors() {
               {ORGANIZERS.map(({ label, src }) => (
                 <div
                   key={label}
-                  className="glass rounded-[var(--radius-md)] flex items-center justify-center py-8 px-8"
-                  style={{ minHeight: 128 }}
+                  className="glass rounded-[var(--radius-md)] flex items-center justify-center py-8 px-8 min-h-[168px] max-[600px]:min-h-[140px]"
                 >
                   <Image
                     src={src}
                     alt={label}
-                    width={200}
-                    height={200}
-                    className="object-contain"
-                    style={{ height: 80, width: "auto" }}
+                    width={240}
+                    height={240}
+                    className="object-contain h-[112px] max-[900px]:h-[96px] max-[600px]:h-[84px] w-auto"
                   />
                 </div>
               ))}

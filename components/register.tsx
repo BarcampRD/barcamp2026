@@ -18,18 +18,22 @@ export function Register() {
   }
 
   return (
-    <section id="registro" className="py-[100px]">
+    <section id="registro" className="section-y">
       <div className="w-full max-w-[1400px] mx-auto px-8">
         <Reveal>
           <div className="glass-red rounded-[var(--radius-xl)] px-12 py-16 flex flex-col items-center text-center gap-8 max-[700px]:px-8 max-[700px]:py-12">
             <div className="flex flex-col gap-4 max-w-[52ch]">
+              {/* El texto va en su propio span: como nodo suelto ocupa todo el
+                  ancho del flex y justify-center no lo centra. */}
               <span className="eyebrow justify-center">
                 <span className="dot" />
-                {showTicketPurchase ? "Inscripción · Cupos disponibles" : "Inscripción · Próximamente"}
+                <span>
+                  {showTicketPurchase ? "Inscripción · Cupos disponibles" : "Inscripción · Próximamente"}
+                </span>
               </span>
 
               <h2
-                className="text-ink-0"
+                className="text-ink-0 balance-title"
                 style={{
                   fontFamily: "var(--font-display)",
                   fontSize: "clamp(2.4rem, 5vw, 4rem)",
@@ -38,7 +42,7 @@ export function Register() {
                   lineHeight: 0.92,
                 }}
               >
-                Reserva tu lugar<br />
+                Reserva tu lugar{" "}<br />
                 en el <span style={{ color: "var(--color-ink-0)", opacity: 0.5 }}>Barcamp 2026</span>.
               </h2>
 

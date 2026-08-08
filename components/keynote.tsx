@@ -2,16 +2,16 @@ import { Reveal } from "@/components/ui/reveal";
 
 export function Keynote() {
   return (
-    <section id="keynote" className="py-[80px]">
+    <section id="keynote" className="section-y">
       <div className="w-full max-w-[1400px] mx-auto px-8">
-        <Reveal className="mb-12">
+        <Reveal className="section-head">
           <div className="flex flex-col gap-3">
             <span className="eyebrow">
               <span className="dot" />
               Keynote · 09:30 AM
             </span>
             <h2
-              className="text-ink-0"
+              className="text-ink-0 balance-title"
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "clamp(2.8rem, 5vw, 4.5rem)",
@@ -20,16 +20,15 @@ export function Keynote() {
                 lineHeight: 0.92,
               }}
             >
-              Charla<br />magistral.
+              El keynote{" "}<br />del año.
             </h2>
           </div>
         </Reveal>
 
         <Reveal delay={100}>
           <div
-            className="glass grid items-center gap-12 rounded-[var(--radius-xl)] p-12 max-[800px]:grid-cols-1 max-[800px]:p-8"
+            className="glass grid grid-cols-[280px_1fr] items-center gap-12 rounded-[var(--radius-xl)] p-12 max-[800px]:grid-cols-1 max-[800px]:gap-8 max-[800px]:p-8"
             style={{
-              gridTemplateColumns: "280px 1fr",
               background: "linear-gradient(135deg, oklch(47% 0.26 25 / 0.10), oklch(35% 0.24 24 / 0.05))",
               borderColor: "oklch(56% 0.26 27 / 0.20)",
             }}
@@ -69,7 +68,7 @@ export function Keynote() {
               </div>
 
               <div className="text-red-0 font-medium text-[1rem]">
-                Keynote inaugural · 60 min
+                El único keynote del evento · 60 min
               </div>
 
               <p className="text-ink-2 text-[1rem] leading-[1.55] mt-2 max-w-[60ch]">

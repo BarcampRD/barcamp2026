@@ -4,8 +4,10 @@ import { currentFeatures } from "@/config/event-stages";
 
 const ROOMS = ["Sala A", "Sala B", "Sala C", "Sala D"];
 
+// "keynote" es exclusivo de la charla magistral: hay una sola en todo el evento.
+// Apertura y cierre son plenarias, no keynotes.
 interface SpanCell {
-  kind: "keynote" | "break";
+  kind: "keynote" | "plenary" | "break";
   tag?: string;
   t: string;
   who: string;
@@ -16,7 +18,7 @@ type Cell = SpanCell | OpenCell;
 
 const SLOTS: { time: string; cells: Cell[] }[] = [
   { time: "08:00 AM", cells: [{ kind: "break", t: "Registro y bienvenida", who: "Lobby principal", span: 4 }] },
-  { time: "09:00 AM", cells: [{ kind: "keynote", tag: "Apertura", t: "Acto de apertura · Barcamp 2026", who: "Organización", span: 4 }] },
+  { time: "09:00 AM", cells: [{ kind: "plenary", tag: "Apertura", t: "Acto de apertura · Barcamp 2026", who: "Organización", span: 4 }] },
   { time: "09:30 AM", cells: [{ kind: "keynote", tag: "Keynote", t: "Charla magistral inaugural", who: "Por anunciar", span: 4 }] },
   { time: "10:30 AM", cells: [{ open: true }, { open: true }, { open: true }, { open: true }] },
   { time: "11:30 AM", cells: [{ open: true }, { open: true }, { open: true }, { open: true }] },
@@ -24,13 +26,13 @@ const SLOTS: { time: string; cells: Cell[] }[] = [
   { time: "2:00 PM", cells: [{ open: true }, { open: true }, { open: true }, { open: true }] },
   { time: "3:00 PM", cells: [{ open: true }, { open: true }, { open: true }, { open: true }] },
   { time: "4:00 PM", cells: [{ kind: "break", t: "Coffee break", who: "Lobby", span: 4 }] },
-  { time: "4:30 PM", cells: [{ kind: "keynote", tag: "Cierre", t: "Charla de cierre", who: "Equipo Barcamp", span: 4 }] },
+  { time: "4:30 PM", cells: [{ kind: "plenary", tag: "Cierre", t: "Charla de cierre", who: "Equipo Barcamp", span: 4 }] },
   { time: "5:30 PM", cells: [{ kind: "break", t: "After & networking", who: "Patio central", span: 4 }] },
 ];
 
 const CFS_STATS = [
   { n: "25+", l: "slots disponibles" },
-  { n: "5", l: "salas paralelas" },
+  { n: "45", l: "min por sesión" },
   { n: "∞", l: "temas posibles" },
 ];
 
@@ -41,20 +43,20 @@ export function Schedule() {
   const { showCallForSpeakers, showAgenda } = currentFeatures;
 
   return (
-    <section id="agenda" className="py-[100px]">
+    <section id="agenda" className="section-y">
       <div className="w-full max-w-[1400px] mx-auto px-8">
 
         {showCallForSpeakers && (
           <>
             {/* Cabecera CFS */}
-            <Reveal className="mb-16">
+            <Reveal className="section-head">
               <div className="flex flex-col gap-4">
                 <span className="eyebrow">
                   <span className="dot" />
                   Call for speakers · Convocatoria abierta
                 </span>
                 <h2
-                  className="text-ink-0"
+                  className="text-ink-0 balance-title"
                   style={{
                     fontFamily: "var(--font-display)",
                     fontSize: "clamp(2.8rem, 5vw, 4.5rem)",
@@ -63,20 +65,20 @@ export function Schedule() {
                     lineHeight: 0.92,
                   }}
                 >
-                  Sé tú quien<br />
+                  Sé tú quien{" "}<br />
                   sube al <span className="text-red-0">escenario</span>.
                 </h2>
                 <p className="text-ink-1 text-[1.05rem] leading-[1.55] max-w-[55ch] mt-2">
                   Barcamp es una desconferencia: la agenda la construimos con las
                   propuestas de la comunidad. Si tienes algo que compartir — desde
-                  un caso real, una idea loca, hasta un taller de 30 minutos — este
+                  un caso real, una idea loca, hasta un taller práctico — este
                   es el momento.
                 </p>
               </div>
             </Reveal>
 
-            {/* CFS Hero */}
-            <Reveal className="mb-16">
+            {/* CFS Hero — si no hay agenda debajo, este bloque cierra la sección */}
+            <Reveal className={showAgenda ? "mb-12" : ""}>
               <div
                 className="glass-red relative overflow-hidden rounded-[var(--radius-xl)]"
                 style={{ padding: 0 }}
@@ -87,8 +89,7 @@ export function Schedule() {
                 </div>
 
                 <div
-                  className="relative z-10 grid items-center gap-12 px-12 py-14 max-[800px]:grid-cols-1 max-[800px]:px-7 max-[800px]:py-10"
-                  style={{ gridTemplateColumns: "1.4fr 1fr" }}
+                  className="relative z-10 grid grid-cols-[1.4fr_1fr] items-center gap-12 px-12 py-14 max-[800px]:grid-cols-1 max-[800px]:gap-8 max-[800px]:px-7 max-[800px]:py-10"
                 >
                   <div className="flex flex-col">
                     <div
@@ -116,7 +117,7 @@ export function Schedule() {
                     </div>
 
                     <h3
-                      className="text-ink-0 mb-5"
+                      className="text-ink-0 balance-title mb-5"
                       style={{
                         fontFamily: "var(--font-display)",
                         fontSize: "clamp(3rem, 6.5vw, 5.5rem)",
@@ -127,13 +128,13 @@ export function Schedule() {
                         textShadow: "0 4px 32px oklch(55% 0.23 25 / 0.4)",
                       }}
                     >
-                      Propón tu<br />charla.
+                      Propón tu{" "}<br />charla.
                     </h3>
 
                     <p className="text-ink-1 text-[1.05rem] leading-[1.55] max-w-[48ch] mb-7">
-                      Charlas de 30 min, lightning talks de 8 min o talleres de 60
-                      min. Sin filtros corporativos, sin gate-keeping — solo
-                      personas compartiendo.
+                      Todas las sesiones son de 45 min: charla, taller o demo, tú
+                      eliges el formato. Sin filtros corporativos, sin
+                      gate-keeping — solo personas compartiendo.
                     </p>
 
                     <div className="flex gap-3 flex-wrap">
@@ -189,14 +190,14 @@ export function Schedule() {
         {showAgenda && (
           <>
             {!showCallForSpeakers && (
-              <Reveal className="mb-16">
+              <Reveal className="section-head">
                 <div className="flex flex-col gap-4">
                   <span className="eyebrow">
                     <span className="dot" />
                     Agenda · Barcamp 2026
                   </span>
                   <h2
-                    className="text-ink-0"
+                    className="text-ink-0 balance-title"
                     style={{
                       fontFamily: "var(--font-display)",
                       fontSize: "clamp(2.8rem, 5vw, 4.5rem)",
@@ -205,7 +206,7 @@ export function Schedule() {
                       lineHeight: 0.92,
                     }}
                   >
-                    Un día lleno de<br />
+                    Un día lleno de{" "}<br />
                     <span className="text-red-0">ideas</span>.
                   </h2>
                 </div>
@@ -233,9 +234,18 @@ export function Schedule() {
                     Así se ve un sábado de Barcamp
                   </h4>
                 </div>
+
+                {/* En móvil la tabla se desplaza en horizontal: hay que decirlo */}
+                <p
+                  className="font-mono text-ink-3 uppercase min-[901px]:hidden"
+                  style={{ fontSize: "0.65rem", letterSpacing: "0.1em" }}
+                >
+                  Desliza para ver las salas →
+                </p>
               </div>
 
-              <Reveal>
+              <Reveal className="overflow-x-auto overscroll-x-contain -mx-8 px-8 max-[900px]:pb-2">
+                <div className="min-w-[760px]">
                 <div
                   className="glass grid"
                   style={{
@@ -305,6 +315,7 @@ export function Schedule() {
                       </div>
                     );
                   })}
+                </div>
                 </div>
               </Reveal>
             </div>
