@@ -25,7 +25,7 @@ export function Footer() {
       { label: "Inscríbete", href: "#registro", show: showRegister },
     ].filter((l) => l.show),
     Contacto: [
-      { label: "barcamp@pucmm.edu.do", href: "mailto:barcamp@pucmm.edu.do" },
+      { label: "cicc-csti@ce.pucmm.edu.do", href: "mailto:cicc-csti@ce.pucmm.edu.do" },
       { label: "CICC · PUCMM STI", href: "https://www.linkedin.com/company/comit%C3%A9-de-estudiantes-de-ingenier%C3%ADa-en-ciencias-de-la-computaci%C3%B3n/posts/?feedView=all" },
     ],
   };
@@ -49,7 +49,7 @@ export function Footer() {
               Barcamp 2026 · 14 de noviembre
             </span>
             <h2
-              className="text-ink-0"
+              className="text-ink-0 balance-title"
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "clamp(2.4rem, 5vw, 4rem)",
@@ -58,7 +58,7 @@ export function Footer() {
                 lineHeight: 0.92,
               }}
             >
-              Gracias por<br />
+              Gracias por{" "}<br />
               hacer esto <span className="text-red-0">posible</span>.
             </h2>
             <p className="text-ink-1 text-[1.05rem] leading-[1.6] max-w-[52ch]">
@@ -85,7 +85,7 @@ export function Footer() {
         )}
 
         {/* Grid principal */}
-        <div className="grid grid-cols-4 max-[900px]:grid-cols-2 max-[500px]:grid-cols-1 gap-12 mb-16">
+        <div className="grid grid-cols-4 max-[900px]:grid-cols-2 gap-12 max-[900px]:gap-x-6 max-[900px]:gap-y-10 mb-12">
 
           {/* Brand */}
           <div className="flex flex-col gap-5">
@@ -131,7 +131,7 @@ export function Footer() {
                   <li key={l.label}>
                     <a
                       href={l.href}
-                      className="text-ink-2 hover:text-ink-0 transition-colors text-[0.9rem]"
+                      className="text-ink-2 hover:text-ink-0 transition-colors text-[0.9rem] [overflow-wrap:anywhere]"
                     >
                       {l.label}
                     </a>

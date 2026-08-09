@@ -5,7 +5,15 @@
 @layer base {
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html { scroll-behavior: smooth; }
+  /* scroll-padding evita que el nav flotante tape el título de la sección destino */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 104px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
 
   body {
     font-family: var(--font-body);
@@ -31,6 +39,29 @@
   ::selection {
     background: var(--selection-bg);
     color: var(--color-ink-0);
+  }
+}
+
+/* ── Ritmo vertical ────────────────────────── */
+
+/* Un solo ritmo para todas las secciones: evita que unas respiren 200px
+   y otras 160px, que es lo que se lee como "hueco sin razón". */
+@utility section-y {
+  padding-block: clamp(48px, 5.5vw, 76px);
+}
+
+/* Cabecera de sección (eyebrow + h2) */
+@utility section-head {
+  margin-bottom: clamp(32px, 4.5vw, 56px);
+}
+
+/* Los <br> de los titulares están pensados para el ancho de escritorio.
+   En móvil producen líneas huérfanas: ahí dejamos que el texto fluya. */
+@utility balance-title {
+  text-wrap: balance;
+
+  @media (width <= 700px) {
+    & br { display: none; }
   }
 }
 
@@ -355,8 +386,13 @@
   margin-top: auto;
 }
 
+/* Solo el keynote lleva el tratamiento fuerte: hay uno solo en todo el evento */
 .sch-cell.sch-keynote {
   background: linear-gradient(135deg, oklch(45% 0.22 25 / 0.2), oklch(35% 0.2 25 / 0.1));
+}
+
+.sch-cell.sch-plenary {
+  background: linear-gradient(135deg, oklch(40% 0.12 25 / 0.10), oklch(30% 0.1 25 / 0.05));
 }
 
 .sch-cell.sch-break {

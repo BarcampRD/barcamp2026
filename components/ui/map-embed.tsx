@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const LAT = 19.441938309476637;
 const LNG = -70.6851007330878;
+const MAPS_URL =
+  "https://maps.google.com/?q=Pontificia+Universidad+Católica+Madre+y+Maestra+Santiago";
 
 export function MapEmbed() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     let map: import("maplibre-gl").Map | null = null;
@@ -70,12 +73,38 @@ export function MapEmbed() {
       });
     }
 
-    init();
+    // Sin WebGL (navegadores viejos, GPU bloqueada) MapLibre lanza y rompe la sección
+    init().catch(() => setFailed(true));
 
     return () => {
       map?.remove();
     };
   }, []);
+
+  if (failed) {
+    return (
+      <a
+        href={MAPS_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center no-underline"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 60% at 50% 40%, oklch(25% 0.08 25 / 0.5), transparent 70%), oklch(12% 0.02 25)",
+        }}
+      >
+        <span
+          className="font-mono text-ink-2 uppercase"
+          style={{ fontSize: "0.68rem", letterSpacing: "0.12em" }}
+        >
+          PUCMM · Campus Santiago
+        </span>
+        <span className="text-ink-0 font-medium text-[0.95rem]">
+          Ver ubicación en Google Maps →
+        </span>
+      </a>
+    );
+  }
 
   return <div ref={containerRef} style={{ position: "absolute", inset: 0 }} />;
 }

@@ -6,7 +6,7 @@ const PILLARS = [
     icon: Icons.Users,
     title: "Comunidad",
     description:
-      "Una desconferencia construida por y para la comunidad tech dominicana. Aquí todos son ponentes y participantes.",
+      "Una desconferencia construida por y para la comunidad tech y dev dominicana. Aquí todos son ponentes y participantes.",
   },
   {
     icon: Icons.Bulb,
@@ -18,7 +18,7 @@ const PILLARS = [
     icon: Icons.Rocket,
     title: "Innovación",
     description:
-      "Tecnología, startups, diseño, ciencia de datos — sin agenda fija, sin temas limitados. Todo cabe si la comunidad lo vota.",
+      "Tecnología, startups, diseño, ciencia de datos — sin agenda fija, sin temas limitados. Todo cabe: la comunidad propone y aquí hay espacio.",
   },
   {
     icon: Icons.Target,
@@ -30,9 +30,9 @@ const PILLARS = [
 
 export function Pillars() {
   return (
-    <section className="py-20">
+    <section className="section-y">
       <div className="w-full max-w-[1400px] mx-auto px-8">
-        <Reveal className="mb-12">
+        <Reveal className="section-head">
           <span className="eyebrow">
             <span className="dot" />
             Por qué Barcamp

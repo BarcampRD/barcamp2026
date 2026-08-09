@@ -13,9 +13,9 @@ const previusPrice = "2,000";
 
 export function About() {
   return (
-    <section id="acerca" className="py-[100px]">
+    <section id="acerca" className="section-y">
       <div className="w-full max-w-[1400px] mx-auto px-8">
-        <Reveal className="mb-12">
+        <Reveal className="section-head">
           <span className="eyebrow">
             <span className="dot" />
             Acerca del evento
@@ -40,15 +40,15 @@ export function About() {
             </h2>
             <p className="text-[1.05rem] leading-[1.6] text-ink-1 mb-4">
               Barcamp PUCMM es una <strong>desconferencia</strong> sin agenda
-              fija ni jerarquías. La comunidad propone, vota y construye el
-              programa al vivo: cualquiera puede ser ponente, cualquiera puede
-              facilitar, todos aprendemos.
+              fija ni jerarquías. La comunidad propone las charlas y el comité
+              organizador arma el programa: cualquiera puede ser ponente,
+              cualquiera puede facilitar, todos aprendemos.
             </p>
             <p className="text-[1.05rem] leading-[1.6] text-ink-1">
-              Llegamos a la décimo tercera edición — un día entero de charlas
-              relámpago, talleres prácticos, keynotes y conversaciones
-              espontáneas alrededor del código, la conexión humana y los
-              proyectos que mueven la industria tech dominicana hacia adelante.
+              Llegamos a la décimo tercera edición — un día entero de charlas,
+              talleres prácticos, un keynote y conversaciones espontáneas
+              alrededor del código, la conexión humana y los proyectos que
+              mueven la industria tech y dev dominicana hacia adelante.
             </p>
           </Reveal>
 
