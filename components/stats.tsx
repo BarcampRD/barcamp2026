@@ -2,8 +2,8 @@ import { Reveal } from "@/components/ui/reveal";
 import { CountUp } from "@/components/ui/count-up";
 
 const STATS = [
-  // Acumulado de las ediciones pasadas que lista la sección de charlistas
-  { n: 1160, suffix: "+", label: "Personas" },
+  // Acumulado estimado de asistentes a lo largo de todas las ediciones
+  { n: 1500, suffix: "+", label: "Personas" },
   { n: 13, suffix: "", label: "Ediciones" },
   { n: 25, suffix: "+", label: "Desconferencias" },
   { n: 12, suffix: "+", label: "Años de comunidad" },
