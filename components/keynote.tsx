@@ -72,8 +72,7 @@ export function Keynote() {
               </div>
 
               <p className="text-ink-2 text-[1rem] leading-[1.55] mt-2 max-w-[60ch]">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                Estamos preparando una sesión magistral con una figura referente en tecnología y desarrollo de software. Pronto revelaremos todos los detalles de la charla y quién nos acompañará en el escenario principal.
               </p>
 
               <div className="flex gap-3 mt-3">

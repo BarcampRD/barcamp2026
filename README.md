@@ -14,6 +14,6 @@ Abre [http://localhost:3000](http://localhost:3000).
 ## Desarrollo local
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
