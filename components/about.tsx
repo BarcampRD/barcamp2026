@@ -9,7 +9,7 @@ const ROWS = [
 ];
 
 const price = "1,750";
-const previusPrice = "2,000";
+const previousPrice = "2,000";
 
 export function About() {
   return (
@@ -68,7 +68,7 @@ export function About() {
                     className="font-mono text-ink-3 line-through"
                     style={{ fontSize: "0.78rem" }}
                   >
-                    RD$ {previusPrice}
+                    RD$ {previousPrice}
                   </span>
                 </div>
 

@@ -1,5 +1,7 @@
+import Image from "next/image";
 import { Icons } from "@/components/icons";
 import { currentFeatures } from "@/config/event-stages";
+import { APP_VERSION } from "@/config/version";
 
 const SOCIAL = [
   { icon: Icons.Twitter, href: "https://x.com/barcamprd", label: "Twitter / X" },
@@ -89,10 +91,12 @@ export function Footer() {
 
           {/* Brand */}
           <div className="flex flex-col gap-5">
-            <img
+            <Image
               src="/barcamp-logo-extended.svg"
               alt="Barcamp PUCMM 2026"
-              style={{ width: 160, height: "auto" }}
+              width={160}
+              height={88}
+              className="w-40 h-auto"
             />
 
             <p className="text-ink-2 text-[0.88rem] leading-[1.6] max-w-[24ch]">
@@ -150,12 +154,20 @@ export function Footer() {
           >
             © 2026 Barcamp PUCMM · Todos los derechos reservados
           </p>
-          <p
-            className="font-mono text-ink-3"
-            style={{ fontSize: "0.72rem", letterSpacing: "0.08em" }}
-          >
-            Organizado por CICC · PUCMM STI
-          </p>
+          <div className="flex items-center gap-3">
+            <span
+              className="font-mono text-ink-3 px-2 py-0.5 rounded-full border border-glass-border bg-white/[0.02]"
+              style={{ fontSize: "0.68rem", letterSpacing: "0.08em" }}
+            >
+              v{APP_VERSION}
+            </span>
+            <p
+              className="font-mono text-ink-3"
+              style={{ fontSize: "0.72rem", letterSpacing: "0.08em" }}
+            >
+              Organizado por CICC · PUCMM STI
+            </p>
+          </div>
         </div>
 
       </div>

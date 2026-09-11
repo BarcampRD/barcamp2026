@@ -33,7 +33,10 @@ export function Countdown() {
     <div className="mt-7 flex gap-[10px]">
       {CELLS.map((c) => (
         <div key={c.key} className="glass flex-1 px-3 py-4 text-center rounded-[var(--radius-md)]">
-          <span className="block font-display text-[2rem] font-bold leading-none tracking-[-0.03em] text-ink-0 tabular-nums">
+          <span
+            suppressHydrationWarning
+            className="block font-display text-[2rem] font-bold leading-none tracking-[-0.03em] text-ink-0 tabular-nums"
+          >
             {String(values[c.key]).padStart(2, "0")}
           </span>
           <span className="block font-mono text-[0.65rem] tracking-[0.12em] uppercase text-ink-2 mt-[6px]">
