@@ -1,6 +1,7 @@
 name: Branch model
 on:
-  pull_request:
+  pull_request_target:
+    types: [opened, synchronize, reopened, edited]
     branches: [dev, main]
 permissions:
   contents: read
@@ -12,9 +13,11 @@ jobs:
         env:
           BASE_BRANCH: ${{ github.base_ref }}
           HEAD_BRANCH: ${{ github.head_ref }}
+          HEAD_REPOSITORY: ${{ github.event.pull_request.head.repo.full_name }}
+          BASE_REPOSITORY: ${{ github.repository }}
         shell: bash
         run: |
           if [[ "$BASE_BRANCH" == dev && "$HEAD_BRANCH" != main && "$HEAD_BRANCH" != dev ]]; then exit 0; fi
-          if [[ "$BASE_BRANCH" == main && "$HEAD_BRANCH" == dev ]]; then exit 0; fi
+          if [[ "$BASE_BRANCH" == main && "$HEAD_BRANCH" == dev && "$HEAD_REPOSITORY" == "$BASE_REPOSITORY" ]]; then exit 0; fi
           echo 'BRANCH_POLICY: task PRs target dev; only dev may release into main' >&2
           exit 1
