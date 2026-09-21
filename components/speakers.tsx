@@ -58,7 +58,9 @@ export function Speakers() {
                       // el último no lleva margen negativo: si no, el grupo queda descentrado
                       marginRight: i === arr.length - 1 ? 0 : -16,
                       zIndex: 5 - i,
-                      background: `oklch(${18 + i * 5}% 0.1 25)`,
+                      // La pila se lee como profundidad: cada ficha da un paso
+                      // de luminosidad. El sentido del paso lo pone el tema.
+                      background: `oklch(calc(var(--avatar-l) + ${i} * var(--avatar-step)) var(--avatar-c) var(--avatar-h))`,
                       boxShadow: "0 0 0 2px var(--color-glass-border)",
                       fontFamily: "var(--font-display)",
                       fontSize: "1.4rem",
@@ -106,7 +108,7 @@ export function Speakers() {
                       style={{
                         width: 72,
                         height: 72,
-                        background: "linear-gradient(135deg, oklch(30% 0.15 25 / 0.4), oklch(20% 0.1 25 / 0.4))",
+                        background: "linear-gradient(135deg, var(--avatar-card-from), var(--avatar-card-to))",
                         border: "1px solid var(--color-glass-border)",
                         fontSize: "1.6rem",
                         fontFamily: "var(--font-display)",

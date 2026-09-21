@@ -58,7 +58,7 @@ export function Sponsors() {
               {ORGANIZERS.map(({ label, src }) => (
                 <div
                   key={label}
-                  className="glass rounded-[var(--radius-md)] flex items-center justify-center py-8 px-8 min-h-[168px] max-[600px]:min-h-[140px]"
+                  className="glass logo-plate rounded-[var(--radius-md)] flex items-center justify-center py-8 px-8 min-h-[168px] max-[600px]:min-h-[140px]"
                 >
                   <Image
                     src={src}
@@ -93,7 +93,7 @@ export function Sponsors() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={s.name}
-                    className="glass rounded-[var(--radius-md)] flex items-center justify-center
+                    className="glass logo-plate logo-plate-link rounded-[var(--radius-md)] flex items-center justify-center
                       grow basis-[148px] max-w-[260px] min-h-[124px] px-6 py-6
                       transition-[border-color,background] duration-200
                       hover:bg-[var(--glass-bg-strong)] hover:border-glass-border-strong"

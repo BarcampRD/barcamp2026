@@ -70,7 +70,7 @@ export function About() {
                     Boleto general
                   </span>
                   <span
-                    className="font-mono text-ink-3 line-through"
+                    className="font-mono text-ink-2 line-through"
                     style={{ fontSize: "0.78rem" }}
                   >
                     RD$ {previousPrice}
@@ -94,7 +94,7 @@ export function About() {
                     style={{
                       fontSize: "clamp(3.5rem, 6vw, 4.8rem)",
                       fontVariantNumeric: "tabular-nums",
-                      textShadow: "0 4px 24px var(--btn-shadow)",
+                      textShadow: "var(--price-number-shadow)",
                     }}
                   >
                     {price}
