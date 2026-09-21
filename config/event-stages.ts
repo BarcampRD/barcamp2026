@@ -24,16 +24,18 @@ export const STAGE_FEATURES: Record<EventStage, EventFeatures> = {
     showThanks: true,
     showRegister: true,
   },
+  // La inscripción abrió mientras el CFP sigue recibiendo propuestas: las dos
+  // llamadas conviven en esta etapa.
   CALL_FOR_SPEAKERS: {
     showCallForSpeakers: true,
     showConfirmedSpeakers: false,
     showAgenda: false,
     showKeynote: false,
-    showTicketPurchase: false,
+    showTicketPurchase: true,
     showSpeakersToAnounce: true,
-    showSponsors: false,
+    showSponsors: true,
     showThanks: false,
-    showRegister: false,
+    showRegister: true,
   },
   TICKETS_SALE: {
     showTicketPurchase: true,
