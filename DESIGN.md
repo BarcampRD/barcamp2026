@@ -18,9 +18,9 @@ para eyebrows, datos y etiquetas, variable `--font-geist-mono`.
 Brand hue: `#ED2917`, el rojo del logo oficial Barcamp. Los cuatro rojos de marca
 (`#ED2917 #D61211 #BA1513 #B60604`) están mapeados a oklch en `--color-red-0..3`.
 
-Neutrals (oscuro): #0a0707 bg, #110c0c bg-1, #1a1212 bg-2, #f5f1ec ink, #e5dfd8 ink-1, #a8a09a mute, #6b6460 ink-3. Derivados del hue rojo #ED2917, nunca slate ni zinc.
+Neutrals: #0a0707 bg, #110c0c bg-1, #1a1212 bg-2, #f5f1ec ink, #e5dfd8 ink-1, #a8a09a mute, #6b6460 ink-3. Derivados del hue rojo #ED2917, nunca slate ni zinc.
 
-Neutrals (claro): #f9f2ef bg, #fffbf9 bg-1, #f0e7e5 bg-2, #291b19 ink, #423431 ink-1, #625552 mute, #716664 ink-3. Mismo hue, papel cálido en vez de blanco. Contraste sobre el fondo: 15:1, 10.7:1, 6.5:1 y 5:1.
+Neutrals en claro: #f9f2ef bg, #fffbf9 bg-1, #f0e7e5 bg-2, #291b19 ink, #423431 ink-1, #625552 mute, #716664 ink-3. Mismo hue, papel cálido en vez de blanco. Contraste sobre el fondo: 15:1, 10.7:1, 6.5:1 y 5:1.
 
 Accent: `--color-red-0`. En oscuro es oklch 56% 0.26 27 (#ED2917); en claro baja
 a oklch 47% 0.25 26, que es la familia de #BA1513 y #B60604 del propio logo y
