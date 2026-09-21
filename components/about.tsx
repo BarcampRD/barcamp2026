@@ -1,4 +1,7 @@
 import { Reveal } from "@/components/ui/reveal";
+import { Icons } from "@/components/icons";
+import { currentFeatures } from "@/config/event-stages";
+import { REGISTRATION_URL } from "@/config/links";
 
 const ROWS = [
   { k: "Fecha", v: "14 Nov 2026" },
@@ -12,6 +15,8 @@ const price = "1,750";
 const previousPrice = "2,000";
 
 export function About() {
+  const { showTicketPurchase } = currentFeatures;
+
   return (
     <section id="acerca" className="section-y">
       <div className="w-full max-w-[1400px] mx-auto px-8">
@@ -105,6 +110,20 @@ export function About() {
                   </span>
                 </div>
               </div>
+
+              {/* El precio sin forma de pagarlo obligaba a bajar hasta el final
+                  de la página: la acción vive junto al número. */}
+              {showTicketPurchase && (
+                <a
+                  href={REGISTRATION_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary justify-center"
+                >
+                  Inscríbete
+                  <span className="btn-arrow"><Icons.Arrow /></span>
+                </a>
+              )}
 
               {/* Filas de info */}
               {ROWS.map((row, i) => (
