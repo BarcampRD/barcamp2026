@@ -11,6 +11,10 @@ import { RotatingWord } from "./rotating-word";
  * Todo lo vertical está atado a `vh` además de a `vw`: en un portátil de 1920
  * de ancho y 900 de alto, un tamaño calculado solo con `vw` desbordaba el
  * viewport y cortaba los botones y la cuenta regresiva.
+ *
+ * Dos composiciones, no una encogida: por encima de 1000px el póster de tres
+ * líneas junto al emblema, y por debajo el lockup horizontal de la marca, que
+ * cabe en un móvil y es donde el logo por fin se ve.
  */
 export function Hero() {
   const { showRegister, showCallForSpeakers } = currentFeatures;
@@ -31,16 +35,28 @@ export function Hero() {
             <span>PUCMM · STI · República Dominicana</span>
           </div>
 
-          <div className="font-display font-extrabold leading-[0.82] tracking-[-0.045em] text-[clamp(3.6rem,min(12vw,16.5vh),10rem)] text-ink-0 [font-variation-settings:'wdth'_100]">
+          {/* Por debajo de 1000px el póster de tres líneas se comía la pantalla
+              entera y el logo no aparecía por ningún lado. El lockup horizontal
+              dice lo mismo (marca, año, sede) en un tercio del alto. */}
+          <Image
+            src="/barcamp-logo-extended.svg"
+            alt="Barcamp 2026 · PUCMM, R.D."
+            width={906}
+            height={500}
+            priority
+            className="min-[1001px]:hidden w-full max-w-[clamp(260px,74vw,420px)] h-auto"
+          />
+
+          <div className="max-[1000px]:hidden font-display font-extrabold leading-[0.82] tracking-[-0.045em] text-[clamp(3.6rem,min(12vw,16.5vh),10rem)] text-ink-0 [font-variation-settings:'wdth'_100]">
             BAR
           </div>
 
-          <div className="font-display font-extrabold leading-[0.82] tracking-[-0.045em] text-[clamp(3.6rem,min(12vw,16.5vh),10rem)] text-red-0 [font-variation-settings:'wdth'_100] -mt-[0.08em] relative inline-block w-fit">
+          <div className="max-[1000px]:hidden font-display font-extrabold leading-[0.82] tracking-[-0.045em] text-[clamp(3.6rem,min(12vw,16.5vh),10rem)] text-red-0 [font-variation-settings:'wdth'_100] -mt-[0.08em] relative inline-block w-fit">
             CAMP
             <span className="absolute -left-[10%] -right-[10%] top-[8%] -bottom-[8%] [background:radial-gradient(ellipse,var(--red-1-50),transparent_60%)] -z-10 blur-[40px] pointer-events-none" />
           </div>
 
-          <div className="flex items-end gap-6 mt-[0.05em]">
+          <div className="max-[1000px]:hidden flex items-end gap-6 mt-[0.05em]">
             <div className="font-display font-extrabold leading-[0.82] tracking-[-0.05em] text-[clamp(2.6rem,min(8.5vw,11.5vh),7rem)] text-ink-0 [font-variation-settings:'wdth'_100]">
               2026
             </div>
@@ -87,8 +103,8 @@ export function Hero() {
           <Countdown />
         </div>
 
-        {/* Emblema: por debajo de 1000px el póster ya es el único protagonista
-            y la tarjeta solo empujaría los botones fuera de la pantalla. */}
+        {/* Emblema: por debajo de 1000px manda el lockup horizontal de arriba y
+            esta tarjeta vertical solo empujaría los botones fuera de pantalla. */}
         <div className="relative aspect-[3/4] max-h-[min(620px,64vh)] ml-auto w-full max-w-[480px] max-[1000px]:hidden">
           {/* Tarjeta de fondo */}
           <div className="glass absolute rounded-[44px] overflow-hidden rotate-[4deg] opacity-70 inset-[24px_-24px_-8px_24px]" />
