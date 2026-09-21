@@ -44,7 +44,15 @@ export function Hero() {
             width={906}
             height={500}
             priority
-            className="min-[1001px]:hidden w-full max-w-[clamp(260px,74vw,420px)] h-auto"
+            className="on-dark-only min-[1001px]:hidden w-full max-w-[clamp(260px,74vw,420px)] h-auto"
+          />
+          <Image
+            src="/barcamp-logo-extended-on-light.svg"
+            alt="Barcamp 2026 · PUCMM, R.D."
+            width={906}
+            height={500}
+            priority
+            className="on-light-only min-[1001px]:hidden w-full max-w-[clamp(260px,74vw,420px)] h-auto"
           />
 
           <div className="max-[1000px]:hidden font-display font-extrabold leading-[0.82] tracking-[-0.045em] text-[clamp(3.6rem,min(12vw,16.5vh),10rem)] text-ink-0 [font-variation-settings:'wdth'_100]">
@@ -53,7 +61,7 @@ export function Hero() {
 
           <div className="max-[1000px]:hidden font-display font-extrabold leading-[0.82] tracking-[-0.045em] text-[clamp(3.6rem,min(12vw,16.5vh),10rem)] text-red-0 [font-variation-settings:'wdth'_100] -mt-[0.08em] relative inline-block w-fit">
             CAMP
-            <span className="absolute -left-[10%] -right-[10%] top-[8%] -bottom-[8%] [background:radial-gradient(ellipse,var(--red-1-50),transparent_60%)] -z-10 blur-[40px] pointer-events-none" />
+            <span className="absolute -left-[10%] -right-[10%] top-[8%] -bottom-[8%] [background:radial-gradient(ellipse,var(--poster-glow),transparent_60%)] -z-10 blur-[40px] pointer-events-none" />
           </div>
 
           <div className="max-[1000px]:hidden flex items-end gap-6 mt-[0.05em]">
@@ -66,7 +74,7 @@ export function Hero() {
           </div>
 
           <div className="mt-[clamp(18px,3.4vh,36px)] font-display font-semibold text-[clamp(1.15rem,min(2.2vw,3.1vh),1.9rem)] leading-[1.05] text-ink-1 max-w-[22ch] tracking-[-0.02em] relative pl-5">
-            <span className="absolute left-0 top-[0.15em] bottom-[0.15em] w-[3px] bg-red-0 shadow-[0_0_12px_var(--color-red-0)]" />
+            <span className="absolute left-0 top-[0.15em] bottom-[0.15em] w-[3px] bg-red-0 shadow-[var(--dot-glow)]" />
             Código,<br />Conexión<br /><RotatingWord />
           </div>
 
@@ -111,7 +119,7 @@ export function Hero() {
 
           {/* Tarjeta principal */}
           <div className="absolute inset-0 rounded-[44px] overflow-hidden flex items-center justify-center
-            [background:radial-gradient(ellipse_80%_80%_at_50%_50%,var(--emblem-bg),transparent_70%),rgba(20,12,12,0.4)]
+            [background:radial-gradient(ellipse_80%_80%_at_50%_50%,var(--emblem-bg),transparent_70%),var(--emblem-base)]
             [backdrop-filter:blur(30px)_saturate(180%)]
             [-webkit-backdrop-filter:blur(30px)_saturate(180%)]
             border border-[var(--emblem-border)]
@@ -123,6 +131,15 @@ export function Hero() {
                 alt="Barcamp 2026"
                 fill
                 priority
+                className="on-dark-only"
+                style={{ objectFit: "contain", padding: "10%" }}
+              />
+              <Image
+                src="/barcamp-logo-black.svg"
+                alt="Barcamp 2026"
+                fill
+                priority
+                className="on-light-only"
                 style={{ objectFit: "contain", padding: "10%" }}
               />
             </div>

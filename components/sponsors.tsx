@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Reveal } from "@/components/ui/reveal";
 import { currentFeatures } from "@/config/event-stages";
-import { SPONSORS } from "@/config/sponsors";
+import { SPONSORS, type SponsorLogo } from "@/config/sponsors";
 
 const ORGANIZERS = [
   { label: "PUCMM", src: "/pucmm-logo.png" },
@@ -11,6 +11,34 @@ const ORGANIZERS = [
 /** Altura de render responsiva: la de config a 1400px, y nunca menos del 72%. */
 function logoHeight(px: number) {
   return `clamp(${Math.round(px * 0.72)}px, ${((px / 1400) * 100).toFixed(2)}vw, ${px}px)`;
+}
+
+/**
+ * Un logo del muro. Cuando la marca tiene dos variantes se pintan las dos y el
+ * CSS esconde la que no toca, igual que con la marca propia: elegir una en el
+ * render rompería la hidratación, porque el tema lo fija un script del `<head>`.
+ */
+function SponsorMark({
+  logo,
+  alt,
+  displayHeight,
+  className = "",
+}: {
+  logo: SponsorLogo;
+  alt: string;
+  displayHeight: number;
+  className?: string;
+}) {
+  return (
+    <Image
+      src={logo.src}
+      alt={alt}
+      width={logo.width}
+      height={logo.height}
+      className={`object-contain w-auto max-w-full ${className}`}
+      style={{ height: logoHeight(displayHeight) }}
+    />
+  );
 }
 
 export function Sponsors() {
@@ -98,14 +126,20 @@ export function Sponsors() {
                       transition-[border-color,background] duration-200
                       hover:bg-[var(--glass-bg-strong)] hover:border-glass-border-strong"
                   >
-                    <Image
-                      src={s.logo}
+                    <SponsorMark
+                      logo={s.logo}
                       alt={s.name}
-                      width={s.width}
-                      height={s.height}
-                      className="object-contain w-auto max-w-full"
-                      style={{ height: logoHeight(s.displayHeight) }}
+                      displayHeight={s.displayHeight}
+                      className={s.logoOnLight ? "on-dark-only" : ""}
                     />
+                    {s.logoOnLight && (
+                      <SponsorMark
+                        logo={s.logoOnLight}
+                        alt={s.name}
+                        displayHeight={s.displayHeight}
+                        className="on-light-only"
+                      />
+                    )}
                   </a>
                 ))}
               </div>

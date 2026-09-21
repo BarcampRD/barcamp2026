@@ -29,8 +29,8 @@ export function Keynote() {
           <div
             className="glass grid grid-cols-[280px_1fr] items-center gap-12 rounded-[var(--radius-xl)] p-12 max-[800px]:grid-cols-1 max-[800px]:gap-8 max-[800px]:p-8"
             style={{
-              background: "linear-gradient(135deg, oklch(47% 0.26 25 / 0.10), oklch(35% 0.24 24 / 0.05))",
-              borderColor: "oklch(56% 0.26 27 / 0.20)",
+              background: "linear-gradient(135deg, var(--keynote-from), var(--keynote-to))",
+              borderColor: "var(--keynote-border)",
             }}
           >
             {/* Portrait placeholder */}
@@ -39,8 +39,8 @@ export function Keynote() {
               style={{
                 aspectRatio: "1",
                 background:
-                  "linear-gradient(135deg, oklch(40% 0.2 25 / 0.18), oklch(25% 0.15 25 / 0.18)), repeating-linear-gradient(45deg, transparent 0 12px, oklch(50% 0.2 25 / 0.04) 12px 13px)",
-                border: "1px solid oklch(60% 0.22 25 / 0.15)",
+                  "linear-gradient(135deg, var(--portrait-bg-from), var(--portrait-bg-to)), repeating-linear-gradient(45deg, transparent 0 12px, var(--portrait-stripe) 12px 13px)",
+                border: "1px solid var(--portrait-border)",
                 fontSize: "0.7rem",
                 lineHeight: 1.6,
               }}

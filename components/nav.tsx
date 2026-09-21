@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Icons } from "./icons";
+import { ThemeToggle } from "./ui/theme-toggle";
 import { currentFeatures } from "@/config/event-stages";
 import { CFP_URL, CONTACT_EMAIL, REGISTRATION_URL } from "@/config/links";
 
@@ -45,7 +46,7 @@ export function Nav() {
         <div
           className="glass flex items-center justify-between gap-3 py-[10px] pl-[22px] pr-3 rounded-full max-[420px]:pl-4"
           style={{
-            background: "rgba(15, 10, 10, 0.55)",
+            background: "var(--nav-bg)",
             backdropFilter: "blur(32px) saturate(180%)",
             WebkitBackdropFilter: "blur(32px) saturate(180%)",
           }}
@@ -58,6 +59,16 @@ export function Nav() {
               height={32}
               priority
               unoptimized
+              className="on-dark-only"
+            />
+            <Image
+              src="/barcamp-logo-nav-on-light.svg"
+              alt="Barcamp 2026"
+              width={152}
+              height={32}
+              priority
+              unoptimized
+              className="on-light-only"
             />
           </Link>
 
@@ -66,7 +77,7 @@ export function Nav() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-[14px] py-2 rounded-full text-[0.88rem] text-ink-1 no-underline transition-[background,color] duration-200 hover:bg-white/[0.06] hover:text-ink-0"
+                className="px-[14px] py-2 rounded-full text-[0.88rem] text-ink-1 no-underline transition-[background,color] duration-200 hover:bg-[var(--nav-link-hover)] hover:text-ink-0"
               >
                 {link.label}
               </Link>
@@ -74,6 +85,8 @@ export function Nav() {
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
+            <ThemeToggle />
+
             {showRegister && (
               <a
                 href={REGISTRATION_URL}
@@ -125,7 +138,7 @@ export function Nav() {
           onClick={() => setMenuOpen(false)}
           className="absolute inset-0 w-full h-full border-none cursor-default"
           style={{
-            background: "oklch(8% 0.03 25 / 0.7)",
+            background: "var(--scrim)",
             backdropFilter: "blur(20px)",
             WebkitBackdropFilter: "blur(20px)",
           }}
@@ -134,7 +147,7 @@ export function Nav() {
         <div
           className="absolute top-0 right-0 h-full w-[88%] max-w-[380px] flex flex-col overflow-y-auto overscroll-contain px-7 pt-6 pb-10"
           style={{
-            background: "linear-gradient(180deg, oklch(14% 0.05 25 / 0.98), oklch(9% 0.03 25 / 0.98))",
+            background: "linear-gradient(180deg, var(--drawer-from), var(--drawer-to))",
             borderLeft: "1px solid var(--color-glass-border)",
             transform: menuOpen ? "translateX(0)" : "translateX(100%)",
             transition: "transform 320ms cubic-bezier(0.2, 0.7, 0.2, 1)",

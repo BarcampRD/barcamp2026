@@ -86,7 +86,7 @@ export function Register() {
                   onChange={(e) => setEmail(e.target.value)}
                   className="flex-1 px-5 py-[14px] rounded-full text-ink-0 font-body"
                   style={{
-                    background: "oklch(10% 0.05 25 / 0.6)",
+                    background: "var(--field-bg)",
                     border: "1px solid var(--color-glass-border-strong)",
                     backdropFilter: "blur(20px)",
                     WebkitBackdropFilter: "blur(20px)",
@@ -102,7 +102,7 @@ export function Register() {
             )}
 
             <p
-              className="font-mono text-ink-3 uppercase"
+              className="font-mono text-ink-2 uppercase"
               style={{ fontSize: "0.65rem", letterSpacing: "0.12em" }}
             >
               {showTicketPurchase ? "Entrada RD$1,750 · Pago en la plataforma de PUCMM" : "Sin spam · Solo el anuncio de cupos"}

@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { MAP_STYLE } from "@/config/map-style";
+import { mapStyle } from "@/config/map-style";
+import { useTheme } from "./use-theme";
 import { MAPS_URL } from "@/config/links";
 
 const LAT = 19.441938309476637;
@@ -10,7 +11,11 @@ const LNG = -70.6851007330878;
 export function MapEmbed() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [failed, setFailed] = useState(false);
+  const theme = useTheme();
 
+  // El mapa se reconstruye entero al cambiar de tema. `setStyle` sería más
+  // barato, pero borra el marcador y obliga a reponerlo en `styledata`: para
+  // algo que pasa cuando alguien pulsa el interruptor, no vale la complejidad.
   useEffect(() => {
     let map: import("maplibre-gl").Map | null = null;
 
@@ -20,7 +25,7 @@ export function MapEmbed() {
 
       map = new maplibregl.Map({
         container: containerRef.current,
-        style: MAP_STYLE,
+        style: mapStyle(theme),
         center: [LNG, LAT],
         zoom: 15.5,
         scrollZoom: false,
@@ -59,7 +64,7 @@ export function MapEmbed() {
     return () => {
       map?.remove();
     };
-  }, []);
+  }, [theme]);
 
   if (failed) {
     return (
@@ -70,7 +75,7 @@ export function MapEmbed() {
         className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center no-underline"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 50% 40%, oklch(25% 0.08 25 / 0.5), transparent 70%), oklch(12% 0.02 25)",
+            "radial-gradient(ellipse 80% 60% at 50% 40%, var(--map-fallback-hi), transparent 70%), var(--map-fallback-bg)",
         }}
       >
         <span
