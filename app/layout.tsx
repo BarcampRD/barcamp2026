@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
+import { THEME_BOOTSTRAP_SCRIPT } from "@/config/theme";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -68,8 +69,14 @@ export default function RootLayout({
   return (
     <html
       lang="es"
+      /* El script de abajo escribe `data-theme` antes de que React hidrate: sin
+         esto, esa diferencia con el HTML del servidor sale por consola. */
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${bricolage.variable}`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP_SCRIPT }} />
+      </head>
       <body>{children}</body>
     </html>
   );
