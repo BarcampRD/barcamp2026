@@ -7,7 +7,7 @@
  *   :root[data-theme="light"]  → tema claro: reescribe las mismas variables
  *
  * Dos temas, un solo sistema. Ningún componente decide un color: pide un rol
- * (`--glass-bg`, `--plate-bg`, `--nav-bg`) y el tema activo lo resuelve. Si hay
+ * (`--glass-bg`, `--nav-bg`, `--field-bg`) y el tema activo lo resuelve. Si hay
  * que escribir un color literal dentro de un componente, falta un token aquí.
  *
  * El tema lo fija el script de `app/layout.tsx` sobre <html data-theme>, antes
@@ -183,13 +183,6 @@
   --drawer-from:     oklch(14% 0.05 25 / 0.98);
   --drawer-to:       oklch(9% 0.03 25 / 0.98);
 
-  /* ── Placa de logos de terceros ──────────── */
-  /* Los logos de organizadores y patrocinadores son blancos sobre
-     transparente: su placa es oscura en los dos temas o desaparecen. */
-  --plate-bg:      var(--glass-bg);
-  --plate-border:  var(--color-glass-border);
-  --plate-hover:   var(--glass-bg-strong);
-
   /* ── Formularios ─────────────────────────── */
   --field-bg: oklch(10% 0.05 25 / 0.6);
 
@@ -350,13 +343,6 @@
   --scrim:          oklch(38% 0.05 30 / 0.35);
   --drawer-from:    oklch(99% 0.006 40 / 0.98);
   --drawer-to:      oklch(96% 0.010 38 / 0.98);
-
-  /* ── Placa de logos de terceros ──────────── */
-  /* Sigue oscura en claro: union-medica, la-fabril y cecomsa son logos
-     blancos sobre transparente y sobre papel no se verían. */
-  --plate-bg:     oklch(24% 0.022 32 / 0.94);
-  --plate-border: oklch(100% 0 0 / 0.10);
-  --plate-hover:  oklch(30% 0.030 32 / 0.94);
 
   /* ── Formularios ─────────────────────────── */
   --field-bg: oklch(100% 0 0 / 0.75);

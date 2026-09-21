@@ -52,24 +52,6 @@
 :root[data-theme="light"] .on-dark-only { display: none !important; }
 :root[data-theme="dark"]  .on-light-only { display: none !important; }
 
-/* Placa de logos de terceros.
-   Los logos de organizadores y patrocinadores vienen en blanco sobre
-   transparente. En oscuro la placa es el glass de siempre y esto no añade
-   nada; en claro es la única superficie que no sigue al papel, porque sobre
-   papel esos logos no se verían. */
-:root[data-theme="light"] .logo-plate {
-  background: var(--plate-bg);
-  border-color: var(--plate-border);
-  box-shadow: var(--glass-shadow), inset 0 1px 0 oklch(100% 0 0 / 0.12);
-}
-
-:root[data-theme="light"] .logo-plate::before { opacity: 0.35; }
-
-:root[data-theme="light"] .logo-plate-link:hover {
-  background: var(--plate-hover);
-  border-color: var(--plate-border);
-}
-
 /* ── Ritmo vertical ────────────────────────── */
 
 /* Un solo ritmo para todas las secciones: evita que unas respiren 200px

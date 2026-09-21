@@ -55,15 +55,20 @@ haya, sustituyen al emblema del hero antes que cualquier stock.
 
 - Dos temas, un sistema. Los tokens de `styles/tokens.css` se reescriben enteros
   bajo `:root[data-theme="light"]` y ningún componente escribe un color literal:
-  si hace falta uno, falta un token. Dentro de un tema las secciones nunca se
-  invierten, con la única excepción de la placa de logos.
+  si hace falta uno, falta un token. Dentro de un tema ninguna superficie se
+  invierte: no hay placas oscuras sobre papel ni al revés.
 - El tema por defecto lo pone el sistema operativo y la elección del visitante
   lo sobrescribe (`localStorage`, interruptor en el nav). Sin JavaScript el
   sitio se queda en oscuro, que es su identidad.
-- Los logos de terceros (organizadores, patrocinadores) van sobre placa oscura
-  en los dos temas, con fondo transparente y en su variante legible sobre
-  oscuro: `union-medica`, `la-fabril` y `cecomsa` son blancos y sobre papel
-  desaparecerían. Nunca sobre una placa blanca suelta.
+- Los logos de terceros van en sus colores de marca, sobre el mismo glass que
+  todo lo demás. Una marca cuyo archivo oficial no se lee sobre negro lleva dos
+  archivos en `config/sponsors.ts`: `logo` es la recoloración a la tinta clara
+  de Barcamp, y `logoOnLight` es el original. Cecomsa, Unión Médica, La Fabril
+  y Banco Popular tienen los dos; PUCMM, CICC y Net Tech se leen en los dos
+  temas con un solo archivo.
+- Un `logoOnLight` sale de la marca, nunca de recolorear el blanco a ojo. Si una
+  marca no publica su logo y el comité no lo tiene, se pide: un color inventado
+  sobre un logo ajeno es peor que no tener modo claro.
 - La marca propia sí cambia de tinta: `barcamp-logo-nav-on-light.svg` y
   `barcamp-logo-extended-on-light.svg` son los mismos archivos oficiales con el
   blanco sustituido por `#291b19`, y el emblema del hero usa
