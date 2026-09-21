@@ -1,6 +1,7 @@
 import { Reveal } from "@/components/ui/reveal";
 import { Icons } from "@/components/icons";
 import { currentFeatures } from "@/config/event-stages";
+import { CFP_URL } from "@/config/links";
 
 const ROOMS = ["Sala A", "Sala B", "Sala C", "Sala D"];
 
@@ -138,7 +139,7 @@ export function Schedule() {
                     </p>
 
                     <div className="flex gap-3 flex-wrap">
-                      <a href="https://cfp.barcamp.org.do/barcamp-rd-2026/cfp" className="btn btn-primary">
+                      <a href={CFP_URL} className="btn btn-primary">
                         Envía tu propuesta
                         <span className="btn-arrow"><Icons.Arrow /></span>
                       </a>
@@ -301,7 +302,7 @@ export function Schedule() {
                                 <span className="sch-tag">Slot abierto</span>
                                 <span className="sch-title">Coming soon</span>
                                 <a
-                                  href="https://cfp.barcamp.org.do/barcamp-rd-2026/cfp"
+                                  href={CFP_URL}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   className="sch-open-cta"

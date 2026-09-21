@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Icons } from "./icons";
 import { currentFeatures } from "@/config/event-stages";
+import { CFP_URL, CONTACT_EMAIL, REGISTRATION_URL } from "@/config/links";
 
 export function Nav() {
   const { showKeynote, showAgenda, showCallForSpeakers, showRegister } = currentFeatures;
@@ -74,15 +75,17 @@ export function Nav() {
 
           <div className="flex items-center gap-2 shrink-0">
             {showRegister && (
-              <Link
-                href="#registro"
+              <a
+                href={REGISTRATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn btn-primary !py-[10px] !px-[18px] !text-[0.85rem] max-[520px]:hidden"
               >
                 Inscríbete
                 <span className="btn-arrow">
                   <Icons.Arrow />
                 </span>
-              </Link>
+              </a>
             )}
 
             <button
@@ -190,38 +193,44 @@ export function Nav() {
             ))}
           </ul>
 
-          {showRegister ? (
-            <Link
-              href="#registro"
-              onClick={() => setMenuOpen(false)}
-              className="btn btn-primary mt-8 justify-center"
-            >
-              Inscríbete
-              <span className="btn-arrow">
-                <Icons.Arrow />
-              </span>
-            </Link>
-          ) : showCallForSpeakers ? (
-            <a
-              href="https://cfp.barcamp.org.do/barcamp-rd-2026/cfp"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMenuOpen(false)}
-              className="btn btn-primary mt-8 justify-center"
-            >
-              Envía tu propuesta
-              <span className="btn-arrow">
-                <Icons.Arrow />
-              </span>
-            </a>
-          ) : null}
+          <div className="flex flex-col gap-3 mt-8">
+            {showRegister && (
+              <a
+                href={REGISTRATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMenuOpen(false)}
+                className="btn btn-primary justify-center"
+              >
+                Inscríbete
+                <span className="btn-arrow">
+                  <Icons.Arrow />
+                </span>
+              </a>
+            )}
+
+            {showCallForSpeakers && (
+              <a
+                href={CFP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMenuOpen(false)}
+                className={`btn justify-center ${showRegister ? "btn-glass" : "btn-primary"}`}
+              >
+                Propón tu charla
+                <span className="btn-arrow">
+                  <Icons.Arrow />
+                </span>
+              </a>
+            )}
+          </div>
 
           <a
-            href="mailto:cicc-csti@ce.pucmm.edu.do"
+            href={`mailto:${CONTACT_EMAIL}`}
             className="font-mono text-ink-3 hover:text-ink-1 transition-colors mt-8"
             style={{ fontSize: "0.72rem", letterSpacing: "0.06em" }}
           >
-            cicc-csti@ce.pucmm.edu.do
+            {CONTACT_EMAIL}
           </a>
         </div>
       </div>

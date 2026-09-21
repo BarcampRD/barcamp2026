@@ -1,32 +1,21 @@
 import Image from "next/image";
 import { Reveal } from "@/components/ui/reveal";
 import { currentFeatures } from "@/config/event-stages";
+import { SPONSORS } from "@/config/sponsors";
 
 const ORGANIZERS = [
   { label: "PUCMM", src: "/pucmm-logo.png" },
   { label: "Comité de Ingeniería en Ciencias de la Computación", src: "/cicc-logo.png" },
 ];
 
-const TIERS = [
-  { name: "Platino", slots: 2 },
-  { name: "Oro", slots: 4 },
-  { name: "Plata", slots: 6 },
-];
-
-const TIER_GRID: Record<string, string> = {
-  Platino: "grid-cols-2 max-[600px]:grid-cols-1",
-  Oro:     "grid-cols-4 max-[800px]:grid-cols-2",
-  Plata:   "grid-cols-6 max-[900px]:grid-cols-3 max-[500px]:grid-cols-2",
-};
-
-const TIER_HEIGHT: Record<string, number> = {
-  Platino: 120,
-  Oro:     80,
-  Plata:   60,
-};
+/** Altura de render responsiva: la de config a 1400px, y nunca menos del 72%. */
+function logoHeight(px: number) {
+  return `clamp(${Math.round(px * 0.72)}px, ${((px / 1400) * 100).toFixed(2)}vw, ${px}px)`;
+}
 
 export function Sponsors() {
   const { showSponsors } = currentFeatures;
+  const hasSponsors = showSponsors && SPONSORS.length > 0;
 
   return (
     <section id="patrocinadores" className="section-y">
@@ -36,7 +25,7 @@ export function Sponsors() {
           <div className="flex flex-col gap-4">
             <span className="eyebrow">
               <span className="dot" />
-              {showSponsors ? "Patrocinadores" : "Organización"}
+              {hasSponsors ? "Patrocinadores" : "Organización"}
             </span>
             <h2
               className="text-ink-0 balance-title"
@@ -54,9 +43,9 @@ export function Sponsors() {
           </div>
         </Reveal>
 
-        {/* Organizadores — por encima de los tiers de sponsors.
-            Sin tiers visibles este bloque cierra la sección: el margen sobra. */}
-        <Reveal className={showSponsors ? "mb-12" : ""}>
+        {/* Organizadores: por encima de los patrocinadores.
+            Sin patrocinadores este bloque cierra la sección: el margen sobra. */}
+        <Reveal className={hasSponsors ? "mb-12" : ""}>
           <div>
             <p
               className="font-mono text-ink-2 uppercase mb-5"
@@ -84,42 +73,44 @@ export function Sponsors() {
           </div>
         </Reveal>
 
-        {showSponsors && (
-          <div className="flex flex-col gap-12">
-            {TIERS.map((tier, ti) => (
-              <Reveal key={tier.name} delay={ti * 80}>
-                <div>
-                  <p
-                    className="font-mono text-ink-2 uppercase mb-5"
-                    style={{ fontSize: "0.72rem", letterSpacing: "0.12em" }}
-                  >
-                    {tier.name}
-                  </p>
+        {hasSponsors && (
+          <Reveal>
+            <div>
+              <p
+                className="font-mono text-ink-2 uppercase mb-5"
+                style={{ fontSize: "0.72rem", letterSpacing: "0.12em" }}
+              >
+                Con el respaldo de
+              </p>
 
-                  <div className={`grid gap-4 ${TIER_GRID[tier.name]}`}>
-                    {Array.from({ length: tier.slots }).map((_, i) => (
-                      <div
-                        key={i}
-                        className="glass rounded-[var(--radius-md)] flex items-center justify-center"
-                        style={{
-                          minHeight: TIER_HEIGHT[tier.name],
-                          aspectRatio: "16/9",
-                          transition: "background 200ms",
-                        }}
-                      >
-                        <span
-                          className="font-mono text-ink-3"
-                          style={{ fontSize: "0.65rem", letterSpacing: "0.1em", textTransform: "uppercase" }}
-                        >
-                          [logo]
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+              {/* Flex en vez de grid: con cinco marcas la última fila queda
+                  centrada a cualquier ancho, sin celdas vacías. */}
+              <div className="flex flex-wrap gap-4 justify-center">
+                {SPONSORS.map((s) => (
+                  <a
+                    key={s.name}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.name}
+                    className="glass rounded-[var(--radius-md)] flex items-center justify-center
+                      grow basis-[148px] max-w-[260px] min-h-[124px] px-6 py-6
+                      transition-[border-color,background] duration-200
+                      hover:bg-[var(--glass-bg-strong)] hover:border-glass-border-strong"
+                  >
+                    <Image
+                      src={s.logo}
+                      alt={s.name}
+                      width={s.width}
+                      height={s.height}
+                      className="object-contain w-auto max-w-full"
+                      style={{ height: logoHeight(s.displayHeight) }}
+                    />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </Reveal>
         )}
 
       </div>

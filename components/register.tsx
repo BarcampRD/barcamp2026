@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Icons } from "@/components/icons";
 import { Reveal } from "@/components/ui/reveal";
 import { currentFeatures } from "@/config/event-stages";
+import { REGISTRATION_URL } from "@/config/links";
 
 export function Register() {
   const [email, setEmail] = useState("");
@@ -48,18 +49,20 @@ export function Register() {
 
               <p className="text-ink-1 text-[1.05rem] leading-[1.6]">
                 {showTicketPurchase
-                  ? "Los cupos son limitados. Asegura el tuyo antes de que se agoten."
+                  ? "Los cupos son limitados. La inscripción se completa en la plataforma de pago de la PUCMM."
                   : "Los cupos son limitados. Déjanos tu correo y te avisamos en el momento exacto en que abran las inscripciones."}
               </p>
             </div>
 
             {showTicketPurchase ? (
               <a
-                href="https://tickets.barcamp.org.do"
+                href={REGISTRATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn btn-primary"
                 style={{ fontSize: "1rem", padding: "14px 28px" }}
               >
-                Consigue tu entrada
+                Inscríbete
                 <span className="btn-arrow"><Icons.Arrow /></span>
               </a>
             ) : sent ? (
@@ -102,7 +105,7 @@ export function Register() {
               className="font-mono text-ink-3 uppercase"
               style={{ fontSize: "0.65rem", letterSpacing: "0.12em" }}
             >
-              {showTicketPurchase ? "Entrada RD$1,750 · Cupos limitados" : "Sin spam · Solo el anuncio de cupos"}
+              {showTicketPurchase ? "Entrada RD$1,750 · Pago en la plataforma de PUCMM" : "Sin spam · Solo el anuncio de cupos"}
             </p>
           </div>
         </Reveal>

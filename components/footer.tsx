@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Icons } from "@/components/icons";
 import { currentFeatures } from "@/config/event-stages";
 import { APP_VERSION } from "@/config/version";
+import { CFP_URL, CONTACT_EMAIL, REGISTRATION_URL } from "@/config/links";
 
 const SOCIAL = [
   { icon: Icons.Twitter, href: "https://x.com/barcamprd", label: "Twitter / X" },
@@ -23,11 +24,11 @@ export function Footer() {
     ],
     Comunidad: [
       { label: "Código de conducta", href: "#conducta", show: true },
-      { label: "Propón tu charla", href: "#agenda", show: showCallForSpeakers },
-      { label: "Inscríbete", href: "#registro", show: showRegister },
+      { label: "Propón tu charla", href: CFP_URL, show: showCallForSpeakers },
+      { label: "Inscríbete", href: REGISTRATION_URL, show: showRegister },
     ].filter((l) => l.show),
     Contacto: [
-      { label: "cicc-csti@ce.pucmm.edu.do", href: "mailto:cicc-csti@ce.pucmm.edu.do" },
+      { label: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
       { label: "CICC · PUCMM STI", href: "https://www.linkedin.com/company/comit%C3%A9-de-estudiantes-de-ingenier%C3%ADa-en-ciencias-de-la-computaci%C3%B3n/posts/?feedView=all" },
     ],
   };
