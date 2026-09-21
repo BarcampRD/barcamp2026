@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { MAP_STYLE } from "@/config/map-style";
+import { MAPS_URL } from "@/config/links";
 
 const LAT = 19.441938309476637;
 const LNG = -70.6851007330878;
-const MAPS_URL =
-  "https://maps.google.com/?q=Pontificia+Universidad+Católica+Madre+y+Maestra+Santiago";
 
 export function MapEmbed() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -20,37 +20,17 @@ export function MapEmbed() {
 
       map = new maplibregl.Map({
         container: containerRef.current,
-        style: {
-          version: 8,
-          sources: {
-            "carto-dark": {
-              type: "raster",
-              tiles: [
-                "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
-                "https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
-                "https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
-              ],
-              tileSize: 256,
-              attribution:
-                '© <a href="https://carto.com/attributions">CARTO</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-            },
-          },
-          layers: [
-            {
-              id: "carto-dark-layer",
-              type: "raster",
-              source: "carto-dark",
-            },
-          ],
-        },
+        style: MAP_STYLE,
         center: [LNG, LAT],
         zoom: 15.5,
         scrollZoom: false,
         attributionControl: false,
       });
 
+      // Sin `compact`: el botón blanco de MapLibre es una pastilla clara sobre
+      // un mapa negro. Abierta y con los neutros del sitio se lee como pie.
       map.addControl(
-        new maplibregl.AttributionControl({ compact: true }),
+        new maplibregl.AttributionControl({ compact: false }),
         "bottom-left"
       );
 
