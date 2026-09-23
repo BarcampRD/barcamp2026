@@ -1,16 +1,21 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { mapStyle } from "@/config/map-style";
+import { useTheme } from "./use-theme";
+import { MAPS_URL } from "@/config/links";
 
 const LAT = 19.441938309476637;
 const LNG = -70.6851007330878;
-const MAPS_URL =
-  "https://maps.google.com/?q=Pontificia+Universidad+Católica+Madre+y+Maestra+Santiago";
 
 export function MapEmbed() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [failed, setFailed] = useState(false);
+  const theme = useTheme();
 
+  // El mapa se reconstruye entero al cambiar de tema. `setStyle` sería más
+  // barato, pero borra el marcador y obliga a reponerlo en `styledata`: para
+  // algo que pasa cuando alguien pulsa el interruptor, no vale la complejidad.
   useEffect(() => {
     let map: import("maplibre-gl").Map | null = null;
 
@@ -20,37 +25,17 @@ export function MapEmbed() {
 
       map = new maplibregl.Map({
         container: containerRef.current,
-        style: {
-          version: 8,
-          sources: {
-            "carto-dark": {
-              type: "raster",
-              tiles: [
-                "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
-                "https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
-                "https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
-              ],
-              tileSize: 256,
-              attribution:
-                '© <a href="https://carto.com/attributions">CARTO</a> © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-            },
-          },
-          layers: [
-            {
-              id: "carto-dark-layer",
-              type: "raster",
-              source: "carto-dark",
-            },
-          ],
-        },
+        style: mapStyle(theme),
         center: [LNG, LAT],
         zoom: 15.5,
         scrollZoom: false,
         attributionControl: false,
       });
 
+      // Sin `compact`: el botón blanco de MapLibre es una pastilla clara sobre
+      // un mapa negro. Abierta y con los neutros del sitio se lee como pie.
       map.addControl(
-        new maplibregl.AttributionControl({ compact: true }),
+        new maplibregl.AttributionControl({ compact: false }),
         "bottom-left"
       );
 
@@ -79,7 +64,7 @@ export function MapEmbed() {
     return () => {
       map?.remove();
     };
-  }, []);
+  }, [theme]);
 
   if (failed) {
     return (
@@ -90,7 +75,7 @@ export function MapEmbed() {
         className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center no-underline"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 50% 40%, oklch(25% 0.08 25 / 0.5), transparent 70%), oklch(12% 0.02 25)",
+            "radial-gradient(ellipse 80% 60% at 50% 40%, var(--map-fallback-hi), transparent 70%), var(--map-fallback-bg)",
         }}
       >
         <span

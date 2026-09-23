@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Icons } from "@/components/icons";
 import { currentFeatures } from "@/config/event-stages";
 import { APP_VERSION } from "@/config/version";
+import { CFP_URL, CONTACT_EMAIL, REGISTRATION_URL } from "@/config/links";
 
 const SOCIAL = [
   { icon: Icons.Twitter, href: "https://x.com/barcamprd", label: "Twitter / X" },
@@ -23,11 +24,11 @@ export function Footer() {
     ],
     Comunidad: [
       { label: "Código de conducta", href: "#conducta", show: true },
-      { label: "Propón tu charla", href: "#agenda", show: showCallForSpeakers },
-      { label: "Inscríbete", href: "#registro", show: showRegister },
+      { label: "Propón tu charla", href: CFP_URL, show: showCallForSpeakers },
+      { label: "Inscríbete", href: REGISTRATION_URL, show: showRegister },
     ].filter((l) => l.show),
     Contacto: [
-      { label: "cicc-csti@ce.pucmm.edu.do", href: "mailto:cicc-csti@ce.pucmm.edu.do" },
+      { label: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
       { label: "CICC · PUCMM STI", href: "https://www.linkedin.com/company/comit%C3%A9-de-estudiantes-de-ingenier%C3%ADa-en-ciencias-de-la-computaci%C3%B3n/posts/?feedView=all" },
     ],
   };
@@ -40,7 +41,7 @@ export function Footer() {
           <div
             className="mb-16 rounded-[var(--radius-xl)] px-12 py-14 flex flex-col items-center text-center gap-6"
             style={{
-              background: "linear-gradient(135deg, oklch(18% 0.08 25 / 0.6), oklch(12% 0.05 25 / 0.6))",
+              background: "linear-gradient(135deg, var(--thanks-from), var(--thanks-to))",
               border: "1px solid var(--color-glass-border)",
             }}
           >
@@ -96,7 +97,14 @@ export function Footer() {
               alt="Barcamp PUCMM 2026"
               width={160}
               height={88}
-              className="w-40 h-auto"
+              className="on-dark-only w-40 h-auto"
+            />
+            <Image
+              src="/barcamp-logo-extended-on-light.svg"
+              alt="Barcamp PUCMM 2026"
+              width={160}
+              height={88}
+              className="on-light-only w-40 h-auto"
             />
 
             <p className="text-ink-2 text-[0.88rem] leading-[1.6] max-w-[24ch]">
@@ -156,7 +164,7 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-3">
             <span
-              className="font-mono text-ink-3 px-2 py-0.5 rounded-full border border-glass-border bg-white/[0.02]"
+              className="font-mono text-ink-3 px-2 py-0.5 rounded-full border border-glass-border bg-[var(--chip-bg)]"
               style={{ fontSize: "0.68rem", letterSpacing: "0.08em" }}
             >
               v{APP_VERSION}

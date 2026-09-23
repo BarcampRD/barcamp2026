@@ -1,6 +1,7 @@
 import { Reveal } from "@/components/ui/reveal";
 import { Icons } from "@/components/icons";
 import { currentFeatures } from "@/config/event-stages";
+import { CFP_URL } from "@/config/links";
 
 const ROOMS = ["Sala A", "Sala B", "Sala C", "Sala D"];
 
@@ -95,8 +96,8 @@ export function Schedule() {
                     <div
                       className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 w-fit"
                       style={{
-                        background: "oklch(20% 0.1 25 / 0.5)",
-                        border: "1px solid oklch(60% 0.22 25 / 0.3)",
+                        background: "var(--cfs-pill-bg)",
+                        border: "1px solid var(--cfs-pill-border)",
                         fontFamily: "var(--font-mono)",
                         fontSize: "0.72rem",
                         letterSpacing: "0.1em",
@@ -109,7 +110,7 @@ export function Schedule() {
                         style={{
                           width: 6, height: 6,
                           background: "var(--color-red-0)",
-                          boxShadow: "0 0 12px var(--color-red-0)",
+                          boxShadow: "var(--dot-glow)",
                           animation: "pulse 2s ease-in-out infinite",
                         }}
                       />
@@ -125,7 +126,7 @@ export function Schedule() {
                         lineHeight: 0.85,
                         letterSpacing: "-0.045em",
                         fontVariationSettings: '"wdth" 125',
-                        textShadow: "0 4px 32px oklch(55% 0.23 25 / 0.4)",
+                        textShadow: "0 4px 32px var(--cfs-title-shadow)",
                       }}
                     >
                       Propón tu{" "}<br />charla.
@@ -138,7 +139,7 @@ export function Schedule() {
                     </p>
 
                     <div className="flex gap-3 flex-wrap">
-                      <a href="https://cfp.barcamp.org.do/barcamp-rd-2026/cfp" className="btn btn-primary">
+                      <a href={CFP_URL} className="btn btn-primary">
                         Envía tu propuesta
                         <span className="btn-arrow"><Icons.Arrow /></span>
                       </a>
@@ -151,11 +152,11 @@ export function Schedule() {
                         key={s.l}
                         className="flex items-baseline justify-between px-6 py-5 rounded-[var(--radius-md)]"
                         style={{
-                          background: "oklch(20% 0.08 25 / 0.4)",
+                          background: "var(--cfs-stat-bg)",
                           backdropFilter: "blur(20px)",
                           WebkitBackdropFilter: "blur(20px)",
-                          border: "1px solid oklch(60% 0.22 25 / 0.25)",
-                          boxShadow: "inset 0 1px 0 oklch(70% 0.22 25 / 0.25)",
+                          border: "1px solid var(--cfs-stat-border)",
+                          boxShadow: "inset 0 1px 0 var(--cfs-stat-inset)",
                         }}
                       >
                         <span
@@ -301,7 +302,7 @@ export function Schedule() {
                                 <span className="sch-tag">Slot abierto</span>
                                 <span className="sch-title">Coming soon</span>
                                 <a
-                                  href="https://cfp.barcamp.org.do/barcamp-rd-2026/cfp"
+                                  href={CFP_URL}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   className="sch-open-cta"
