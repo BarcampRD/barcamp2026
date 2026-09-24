@@ -20,7 +20,21 @@
  * `displayHeight` es la altura de render en px a 1400px de ancho de viewport, y
  * está ajustada por marca, no por archivo: un logo apaisado necesita menos
  * altura que un sello cuadrado para ocupar la misma área óptica en el muro.
+ * Es la altura dentro del paquete Geek; los paquetes superiores la multiplican
+ * por su `logoScale`, así el equilibrio óptico entre marcas se conserva.
  */
+
+/**
+ * Paquetes de patrocinio, del mayor al menor. El orden de este objeto es el
+ * orden en que el muro pinta los grupos.
+ */
+export const SPONSOR_TIERS = {
+  "geek-gold": { label: "Paquete Geek Gold", logoScale: 1.5 },
+  "geek-silver": { label: "Paquete Geek Silver", logoScale: 1.25 },
+  geek: { label: "Paquete Geek", logoScale: 1 },
+} as const satisfies Record<string, { label: string; logoScale: number }>;
+
+export type SponsorTier = keyof typeof SPONSOR_TIERS;
 
 export interface SponsorLogo {
   /** Ruta dentro de /public. */
@@ -39,6 +53,7 @@ export interface Sponsor {
   /** Altura de render en px a 1400px de viewport, común a las dos variantes. */
   displayHeight: number;
   href: string;
+  tier: SponsorTier;
 }
 
 export const SPONSORS: Sponsor[] = [
@@ -48,6 +63,7 @@ export const SPONSORS: Sponsor[] = [
     logoOnLight: { src: "/sponsors/cecomsa-on-light.svg", width: 378, height: 187 },
     displayHeight: 58,
     href: "https://www.cecomsa.com",
+    tier: "geek",
   },
   {
     name: "Clínica Unión Médica",
@@ -55,6 +71,7 @@ export const SPONSORS: Sponsor[] = [
     logoOnLight: { src: "/sponsors/union-medica-on-light.png", width: 511, height: 355 },
     displayHeight: 76,
     href: "https://clinicaunionmedica.com",
+    tier: "geek",
   },
   {
     name: "La Fabril",
@@ -62,6 +79,7 @@ export const SPONSORS: Sponsor[] = [
     logoOnLight: { src: "/sponsors/la-fabril-on-light.png", width: 250, height: 83 },
     displayHeight: 46,
     href: "https://www.lafabril.com.do",
+    tier: "geek-silver",
   },
   {
     name: "Banco Popular",
@@ -69,11 +87,13 @@ export const SPONSORS: Sponsor[] = [
     logoOnLight: { src: "/sponsors/banco-popular-on-light.png", width: 300, height: 81 },
     displayHeight: 42,
     href: "https://www.popularenlinea.com",
+    tier: "geek-gold",
   },
   {
     name: "Net Tech International",
     logo: { src: "/sponsors/net-tech-international.png", width: 238, height: 44 },
     displayHeight: 34,
     href: "https://www.nettechinternational.com",
+    tier: "geek",
   },
 ];
