@@ -1,12 +1,29 @@
 import Image from "next/image";
 import { Reveal } from "@/components/ui/reveal";
 import { currentFeatures } from "@/config/event-stages";
-import { SPONSORS, type SponsorLogo } from "@/config/sponsors";
+import {
+  SPONSORS,
+  SPONSOR_TIERS,
+  type SponsorLogo,
+  type SponsorTier,
+} from "@/config/sponsors";
 
 const ORGANIZERS = [
   { label: "PUCMM", src: "/pucmm-logo.png" },
   { label: "Comité de Ingeniería en Ciencias de la Computación", src: "/cicc-logo.png" },
 ];
+
+/** Tamaño de tarjeta por paquete: el paquete mayor ocupa más muro. */
+const TIER_CARD: Record<SponsorTier, string> = {
+  "geek-gold": "basis-[280px] max-w-[440px] min-h-[184px] max-[600px]:min-h-[150px]",
+  "geek-silver": "basis-[220px] max-w-[340px] min-h-[152px] max-[600px]:min-h-[136px]",
+  geek: "basis-[148px] max-w-[260px] min-h-[124px]",
+};
+
+/** Los paquetes en su orden, cada uno con sus marcas; un paquete vacío no se pinta. */
+const SPONSOR_GROUPS = (Object.keys(SPONSOR_TIERS) as SponsorTier[])
+  .map((tier) => ({ tier, sponsors: SPONSORS.filter((s) => s.tier === tier) }))
+  .filter((group) => group.sponsors.length > 0);
 
 /** Altura de render responsiva: la de config a 1400px, y nunca menos del 72%. */
 function logoHeight(px: number) {
@@ -103,46 +120,53 @@ export function Sponsors() {
 
         {hasSponsors && (
           <Reveal>
-            <div>
-              <p
-                className="font-mono text-ink-2 uppercase mb-5"
-                style={{ fontSize: "0.72rem", letterSpacing: "0.12em" }}
-              >
-                Con el respaldo de
-              </p>
+            <div className="flex flex-col gap-10">
+              {SPONSOR_GROUPS.map(({ tier, sponsors }) => {
+                const { label, logoScale } = SPONSOR_TIERS[tier];
+                return (
+                  <div key={tier}>
+                    <p
+                      className="font-mono text-ink-2 uppercase mb-5"
+                      style={{ fontSize: "0.72rem", letterSpacing: "0.12em" }}
+                    >
+                      {label}
+                    </p>
 
-              {/* Flex en vez de grid: con cinco marcas la última fila queda
-                  centrada a cualquier ancho, sin celdas vacías. */}
-              <div className="flex flex-wrap gap-4 justify-center">
-                {SPONSORS.map((s) => (
-                  <a
-                    key={s.name}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={s.name}
-                    className="glass rounded-[var(--radius-md)] flex items-center justify-center
-                      grow basis-[148px] max-w-[260px] min-h-[124px] px-6 py-6
-                      transition-[border-color,background] duration-200
-                      hover:bg-[var(--glass-bg-strong)] hover:border-glass-border-strong"
-                  >
-                    <SponsorMark
-                      logo={s.logo}
-                      alt={s.name}
-                      displayHeight={s.displayHeight}
-                      className={s.logoOnLight ? "on-dark-only" : ""}
-                    />
-                    {s.logoOnLight && (
-                      <SponsorMark
-                        logo={s.logoOnLight}
-                        alt={s.name}
-                        displayHeight={s.displayHeight}
-                        className="on-light-only"
-                      />
-                    )}
-                  </a>
-                ))}
-              </div>
+                    {/* Flex en vez de grid: la última fila de cada paquete queda
+                        centrada a cualquier ancho, sin celdas vacías. */}
+                    <div className="flex flex-wrap gap-4 justify-center">
+                      {sponsors.map((s) => (
+                        <a
+                          key={s.name}
+                          href={s.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={s.name}
+                          className={`glass rounded-[var(--radius-md)] flex items-center justify-center
+                            grow px-6 py-6 ${TIER_CARD[tier]}
+                            transition-[border-color,background] duration-200
+                            hover:bg-[var(--glass-bg-strong)] hover:border-glass-border-strong`}
+                        >
+                          <SponsorMark
+                            logo={s.logo}
+                            alt={s.name}
+                            displayHeight={s.displayHeight * logoScale}
+                            className={s.logoOnLight ? "on-dark-only" : ""}
+                          />
+                          {s.logoOnLight && (
+                            <SponsorMark
+                              logo={s.logoOnLight}
+                              alt={s.name}
+                              displayHeight={s.displayHeight * logoScale}
+                              className="on-light-only"
+                            />
+                          )}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </Reveal>
         )}

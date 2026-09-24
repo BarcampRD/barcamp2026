@@ -38,7 +38,8 @@ que se recuerda del sitio y es lo único que puede gritar.
 
 Borrowed from: la composición del póster viene de los afiches de Vercel Ship; las
 superficies glass y el nav flotante, de la barra de macOS Sonoma; el muro de
-patrocinadores en grid uniforme, de Next.js Conf.
+patrocinadores agrupado por paquete, con tarjetas que crecen con el paquete, de
+Next.js Conf.
 
 Rejected default: el `create-next-app` con Geist Sans sobre `slate-950`, tres
 tarjetas iguales de features y hero centrado. Ninguna de las tres aparece. En el
