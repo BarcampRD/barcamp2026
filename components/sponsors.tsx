@@ -25,6 +25,42 @@ const SPONSOR_GROUPS = (Object.keys(SPONSOR_TIERS) as SponsorTier[])
   .map((tier) => ({ tier, sponsors: SPONSORS.filter((s) => s.tier === tier) }))
   .filter((group) => group.sponsors.length > 0);
 
+/**
+ * Título de un paquete, centrado entre dos líneas que se desvanecen hacia
+ * fuera en el color del paquete, como el encabezado de los posts.
+ */
+function TierTitle({ tier }: { tier: SponsorTier }) {
+  const { prefix, name }: { prefix?: string; name: string } = SPONSOR_TIERS[tier];
+  const color = `var(--tier-${tier})`;
+  const rule = (direction: "left" | "right") => (
+    <span
+      aria-hidden
+      className="flex-1 h-px opacity-70"
+      style={{ background: `linear-gradient(to ${direction}, ${color}, transparent)` }}
+    />
+  );
+
+  return (
+    <div className="flex items-center gap-3.5 mb-5">
+      {rule("left")}
+      <h3
+        className="text-ink-0 whitespace-nowrap"
+        style={{
+          fontFamily: "var(--font-display)",
+          fontSize: "clamp(1.75rem, 2.4vw, 2.25rem)",
+          fontWeight: 700,
+          letterSpacing: "-0.03em",
+          lineHeight: 1,
+        }}
+      >
+        {prefix && <>{prefix} </>}
+        <span style={{ color }}>{name}</span>
+      </h3>
+      {rule("right")}
+    </div>
+  );
+}
+
 /** Altura de render responsiva: la de config a 1400px, y nunca menos del 72%. */
 function logoHeight(px: number) {
   return `clamp(${Math.round(px * 0.72)}px, ${((px / 1400) * 100).toFixed(2)}vw, ${px}px)`;
@@ -122,15 +158,10 @@ export function Sponsors() {
           <Reveal>
             <div className="flex flex-col gap-10">
               {SPONSOR_GROUPS.map(({ tier, sponsors }) => {
-                const { label, logoScale } = SPONSOR_TIERS[tier];
+                const { logoScale } = SPONSOR_TIERS[tier];
                 return (
                   <div key={tier}>
-                    <p
-                      className="font-mono text-ink-2 uppercase mb-5"
-                      style={{ fontSize: "0.72rem", letterSpacing: "0.12em" }}
-                    >
-                      {label}
-                    </p>
+                    <TierTitle tier={tier} />
 
                     {/* Flex en vez de grid: la última fila de cada paquete queda
                         centrada a cualquier ancho, sin celdas vacías. */}

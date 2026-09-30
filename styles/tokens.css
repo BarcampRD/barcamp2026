@@ -115,6 +115,13 @@
   --glass-inset-lo: rgba(0, 0, 0, 0.30);
   --glass-sheen:    rgb(255, 250, 245);
 
+  /* ── Paquetes de patrocinio ──────────────── */
+  /* El color de la palabra que nombra cada paquete, como en los posts.
+     Geek sigue al acento, así que cambia de tema solo. */
+  --tier-geek-gold:   #d8b25a;
+  --tier-geek-silver: #c4c8ce;
+  --tier-geek:        var(--color-red-0);
+
   /* ── Atmósfera (ambient background) ─────── */
   --ambient-hi:  var(--red-1-35);
   --ambient-mid: var(--red-2-25);
@@ -278,6 +285,10 @@
   --glass-inset-hi: oklch(100% 0 0 / 0.70);
   --glass-inset-lo: oklch(40% 0.05 32 / 0.05);
   --glass-sheen:    oklch(100% 0 0);
+
+  /* ── Paquetes de patrocinio: oscurecidos para pasar AA sobre papel ── */
+  --tier-geek-gold:   #8a6414;
+  --tier-geek-silver: #5d6168;
 
   /* ── Atmósfera: un rubor, no un degradado ── */
   --ambient-hi:  oklch(72% 0.16 30 / 0.12);
