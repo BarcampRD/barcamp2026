@@ -64,9 +64,9 @@ haya, sustituyen al emblema del hero antes que cualquier stock.
 - Los logos de terceros van en sus colores de marca, sobre el mismo glass que
   todo lo demás. Una marca cuyo archivo oficial no se lee sobre negro lleva dos
   archivos en `config/sponsors.ts`: `logo` es la recoloración a la tinta clara
-  de Barcamp, y `logoOnLight` es el original. Cecomsa, Unión Médica, La Fabril
-  y Banco Popular tienen los dos; PUCMM, CICC y Net Tech se leen en los dos
-  temas con un solo archivo.
+  de Barcamp, y `logoOnLight` es el original. Cecomsa, Unión Médica, La Fabril,
+  Banco Popular y Avathar Tech tienen los dos; PUCMM, CICC, Net Tech y
+  Alphnology se leen en los dos temas con un solo archivo.
 - Un `logoOnLight` sale de la marca, nunca de recolorear el blanco a ojo. Si una
   marca no publica su logo y el comité no lo tiene, se pide: un color inventado
   sobre un logo ajeno es peor que no tener modo claro.

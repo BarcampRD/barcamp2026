@@ -12,7 +12,8 @@
  * La Fabril, de sus propios sitios; Unión Médica, de su biblioteca de medios
  * (recortado el margen transparente, nada más); Banco Popular, del original del
  * que salió la variante oscura, que solo le cambió el logotipo de `#11316f` a
- * `#f5f1ec`.
+ * `#f5f1ec`; Avathar Tech, de su sitio, con el negro y el azul oscuro del
+ * logotipo llevados a la misma tinta.
  *
  * Una marca sin `logoOnLight` es una cuyo archivo oficial se lee en los dos
  * temas, y entonces el segundo archivo sobraría.
@@ -26,12 +27,13 @@
 
 /**
  * Paquetes de patrocinio, del mayor al menor. El orden de este objeto es el
- * orden en que el muro pinta los grupos.
+ * orden en que el muro pinta los grupos. `label` es solo la clasificación: el
+ * encabezado de la sección ya dice que son patrocinadores.
  */
 export const SPONSOR_TIERS = {
-  "geek-gold": { label: "Paquete Geek Gold", logoScale: 1.5 },
-  "geek-silver": { label: "Paquete Geek Silver", logoScale: 1.25 },
-  geek: { label: "Paquete Geek", logoScale: 1 },
+  "geek-gold": { label: "Geek Gold", logoScale: 1.5 },
+  "geek-silver": { label: "Geek Silver", logoScale: 1.25 },
+  geek: { label: "Geek", logoScale: 1 },
 } as const satisfies Record<string, { label: string; logoScale: number }>;
 
 export type SponsorTier = keyof typeof SPONSOR_TIERS;
@@ -94,6 +96,21 @@ export const SPONSORS: Sponsor[] = [
     logo: { src: "/sponsors/net-tech-international.png", width: 238, height: 44 },
     displayHeight: 34,
     href: "https://www.nettechinternational.com",
+    tier: "geek",
+  },
+  {
+    name: "Avathar Tech",
+    logo: { src: "/sponsors/avathar-tech.png", width: 740, height: 242 },
+    logoOnLight: { src: "/sponsors/avathar-tech-on-light.png", width: 740, height: 242 },
+    displayHeight: 44,
+    href: "https://avathartech.com",
+    tier: "geek",
+  },
+  {
+    name: "Alphnology",
+    logo: { src: "/sponsors/alphnology.png", width: 1200, height: 242 },
+    displayHeight: 34,
+    href: "https://alphnology.com",
     tier: "geek",
   },
 ];
