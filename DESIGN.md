@@ -76,6 +76,11 @@ haya, sustituyen al emblema del hero antes que cualquier stock.
   `barcamp-logo-black.svg`. Se pintan las dos versiones y el CSS esconde la que
   sobra (`.on-dark-only` / `.on-light-only`): así el logo no parpadea al
   hidratar. Si cambia el logo oficial, hay que regenerar las variantes.
+- Cada paquete de patrocinio tiene su color, y solo lo lleva la palabra que lo
+  nombra: "Gold" en `--tier-geek-gold`, "Silver" en `--tier-geek-silver` y
+  "Geek" en el acento, como en los posts de Instagram. Picked: "1B" (2026-09-30),
+  el título en Bricolage centrado entre dos líneas que se desvanecen en ese
+  color. Oro y plata no son acentos: no marcan acciones ni fondos.
 - El mapa es la única superficie que no lee los tokens: su paleta vive en
   `config/map-style.ts`, una por tema, y se mantiene a mano alineada con ellos.
 - Todo enlace externo de inscripción o CFP sale de `config/links.ts`. No se

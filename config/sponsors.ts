@@ -27,14 +27,15 @@
 
 /**
  * Paquetes de patrocinio, del mayor al menor. El orden de este objeto es el
- * orden en que el muro pinta los grupos. `label` es solo la clasificación: el
- * encabezado de la sección ya dice que son patrocinadores.
+ * orden en que el muro pinta los grupos. El título es solo la clasificación
+ * (el encabezado de la sección ya dice que son patrocinadores): `prefix` va en
+ * tinta y `name` en el color del paquete, `--tier-<clave>` de tokens.css.
  */
 export const SPONSOR_TIERS = {
-  "geek-gold": { label: "Geek Gold", logoScale: 1.5 },
-  "geek-silver": { label: "Geek Silver", logoScale: 1.25 },
-  geek: { label: "Geek", logoScale: 1 },
-} as const satisfies Record<string, { label: string; logoScale: number }>;
+  "geek-gold": { prefix: "Geek", name: "Gold", logoScale: 1.5 },
+  "geek-silver": { prefix: "Geek", name: "Silver", logoScale: 1.25 },
+  geek: { name: "Geek", logoScale: 1 },
+} as const satisfies Record<string, { prefix?: string; name: string; logoScale: number }>;
 
 export type SponsorTier = keyof typeof SPONSOR_TIERS;
 
