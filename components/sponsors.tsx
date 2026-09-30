@@ -8,7 +8,7 @@ import {
   type SponsorTier,
 } from "@/config/sponsors";
 
-const ORGANIZERS = [
+const COLLABORATORS = [
   { label: "PUCMM", src: "/pucmm-logo.png" },
   { label: "Comité de Ingeniería en Ciencias de la Computación", src: "/cicc-logo.png" },
 ];
@@ -124,7 +124,7 @@ export function Sponsors() {
           </div>
         </Reveal>
 
-        {/* Organizadores: por encima de los patrocinadores.
+        {/* Colaboradores: por encima de los patrocinadores.
             Sin patrocinadores este bloque cierra la sección: el margen sobra. */}
         <Reveal className={hasSponsors ? "mb-12" : ""}>
           <div>
@@ -132,11 +132,11 @@ export function Sponsors() {
               className="font-mono text-ink-2 uppercase mb-5"
               style={{ fontSize: "0.72rem", letterSpacing: "0.12em" }}
             >
-              Presentado por
+              Colaboradores
             </p>
 
             <div className="grid grid-cols-2 max-[600px]:grid-cols-1 gap-4">
-              {ORGANIZERS.map(({ label, src }) => (
+              {COLLABORATORS.map(({ label, src }) => (
                 <div
                   key={label}
                   className="glass rounded-[var(--radius-md)] flex items-center justify-center py-8 px-8 min-h-[168px] max-[600px]:min-h-[140px]"
