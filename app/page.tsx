@@ -3,6 +3,7 @@ import { Hero } from "@/components/hero/hero";
 import { Stats } from "@/components/stats";
 import { Pillars } from "@/components/pillars";
 import { About } from "@/components/about";
+import { Merch } from "@/components/merch";
 import { Keynote } from "@/components/keynote";
 import { Schedule } from "@/components/schedule";
 import { Speakers } from "@/components/speakers";
@@ -27,6 +28,7 @@ export default function Home() {
       <Stats />
       <Pillars />
       <About />
+      {f.showMerch && <Merch />}
       {f.showKeynote && <Keynote />}
       {(f.showCallForSpeakers || f.showAgenda) && <Schedule />}
       {(f.showConfirmedSpeakers || f.showSpeakersToAnounce) && <Speakers />}
