@@ -8,6 +8,8 @@ export interface EventFeatures {
   showAgenda: boolean;
   showSpeakersToAnounce: boolean;
   showSponsors: boolean;
+  /** La vitrina de mercancía: deja de tener sentido cuando el evento ya pasó. */
+  showMerch: boolean;
   showThanks: boolean;
   showRegister: boolean;
 }
@@ -21,6 +23,7 @@ export const STAGE_FEATURES: Record<EventStage, EventFeatures> = {
     showTicketPurchase: true,
     showSpeakersToAnounce: true,
     showSponsors: true,
+    showMerch: true,
     showThanks: true,
     showRegister: true,
   },
@@ -34,6 +37,7 @@ export const STAGE_FEATURES: Record<EventStage, EventFeatures> = {
     showTicketPurchase: true,
     showSpeakersToAnounce: true,
     showSponsors: true,
+    showMerch: true,
     showThanks: false,
     showRegister: true,
   },
@@ -45,6 +49,7 @@ export const STAGE_FEATURES: Record<EventStage, EventFeatures> = {
     showConfirmedSpeakers: true,
     showSpeakersToAnounce: false,
     showSponsors: true,
+    showMerch: true,
     showThanks: false,
     showRegister: true,
   },
@@ -56,6 +61,7 @@ export const STAGE_FEATURES: Record<EventStage, EventFeatures> = {
     showConfirmedSpeakers: true,
     showSpeakersToAnounce: false,
     showSponsors: true,
+    showMerch: true,
     showThanks: false,
     showRegister: false,
   },
@@ -67,6 +73,7 @@ export const STAGE_FEATURES: Record<EventStage, EventFeatures> = {
     showConfirmedSpeakers: true,
     showSpeakersToAnounce: false,
     showSponsors: true,
+    showMerch: false,
     showThanks: true,
     showRegister: false,
   },
