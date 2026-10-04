@@ -9,11 +9,12 @@ import { currentFeatures } from "@/config/event-stages";
 import { CFP_URL, CONTACT_EMAIL, REGISTRATION_URL } from "@/config/links";
 
 export function Nav() {
-  const { showKeynote, showAgenda, showCallForSpeakers, showRegister } = currentFeatures;
+  const { showKeynote, showAgenda, showCallForSpeakers, showRegister, showMerch } = currentFeatures;
   const [menuOpen, setMenuOpen] = useState(false);
 
   const NAV_LINKS = [
     { href: "#acerca", label: "Acerca", show: true },
+    { href: "#mercancia", label: "Mercancía", show: showMerch },
     { href: "#keynote", label: "Keynote", show: showKeynote },
     { href: "#agenda", label: showCallForSpeakers && !showAgenda ? "Propón tu charla" : "Agenda", show: showAgenda || showCallForSpeakers },
     { href: "#charlistas", label: "Speakers", show: true },
@@ -77,7 +78,10 @@ export function Nav() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-[14px] py-2 rounded-full text-[0.88rem] text-ink-1 no-underline transition-[background,color] duration-200 hover:bg-[var(--nav-link-hover)] hover:text-ink-0"
+                className={`px-[14px] py-2 rounded-full text-[0.88rem] text-ink-1 no-underline transition-[background,color] duration-200 hover:bg-[var(--nav-link-hover)] hover:text-ink-0 ${
+                  // Con este enlace la barra no cabe en una línea por debajo de 1180px; ahí queda solo en el menú.
+                  link.href === "#mercancia" ? "max-[1179px]:hidden" : ""
+                }`}
               >
                 {link.label}
               </Link>
