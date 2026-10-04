@@ -513,9 +513,16 @@
   overflow: hidden;
 }
 
+/* Arriba y no al centro: centrada dejaba un hueco de media pantalla entre
+   Acerca y la vitrina mientras el escenario todavía no se fija. */
 .merch-intro {
   justify-items: start;
-  align-content: center;
+  align-content: start;
+  /* El nav flotante termina a 90px: la intro arranca al menos 24px debajo.
+     El mínimo va en una variable porque el compilador de CSS pliega el `max()`
+     con las dos medidas en dvh y se queda solo con 4dvh. */
+  --intro-floor: calc(114px - 11dvh);
+  padding-top: max(4dvh, var(--intro-floor));
   gap: 22px;
   padding-inline: max(32px, calc((100% - 1336px) / 2));
 }
@@ -680,6 +687,8 @@
   }
 
   .merch-intro {
+    align-content: center;
+    padding-top: 0;
     padding-inline: 24px;
     background: transparent;
     border-color: transparent;
