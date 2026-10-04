@@ -8,6 +8,8 @@ Picked: "el hero no se ve muy bien en distintas pantallas, hay cosas que se cort
 
 Picked (modo claro): "crees el modo claro de la web, debe sentirse igual de comodo y profesional, tampoco quiero que se sienta como un flashbang en la cara" (2026-09-21). De ahí la dirección: papel impreso, no pantalla blanca. El fondo es papel cálido teñido con el hue de la marca, el acento baja al extremo profundo de la paleta oficial y ninguna superficie llega al blanco puro.
 
+Picked (mercancía): "OK, implementa la opcion B" (2026-10-04), la vitrina de los tres mocks de mercancía. En escritorio la sección se fija y el scroll vertical recorre las cinco piezas de lado; en teléfono es un carrusel con swipe, y en los dos la pieza gira siguiendo el movimiento.
+
 Display face: Bricolage Grotesque, ejes `wdth` y `opsz`, servida por `next/font`
 (`app/layout.tsx`), variable `--font-bricolage`. Titulares, numerales y el póster
 del hero.
@@ -39,7 +41,8 @@ que se recuerda del sitio y es lo único que puede gritar.
 Borrowed from: la composición del póster viene de los afiches de Vercel Ship; las
 superficies glass y el nav flotante, de la barra de macOS Sonoma; el muro de
 patrocinadores agrupado por paquete, con tarjetas que crecen con el paquete, de
-Next.js Conf.
+Next.js Conf.; la vitrina de mercancía, del carrusel de Instagram de la campaña y
+de la galería horizontal "Take a closer look" de las páginas del iPhone.
 
 Rejected default: el `create-next-app` con Geist Sans sobre `slate-950`, tres
 tarjetas iguales de features y hero centrado. Ninguna de las tres aparece. En el
@@ -51,6 +54,9 @@ Imagery: sin fotografía de stock. La única imagery es la marca (logos SVG
 propios, logos de patrocinadores sobre fondo transparente) y el mapa vectorial de
 la sede. El evento todavía no tiene fotos propias de esta edición; cuando las
 haya, sustituyen al emblema del hero antes que cualquier stock.
+La excepción es la mercancía: sus fotos son los mockups recortados del post
+`Mercancía` de Figma (`public/merch/`), los mismos de la campaña. Cuando haya
+fotos del producto real, sustituyen a esos mockups.
 
 ## Reglas que este repo añade
 
