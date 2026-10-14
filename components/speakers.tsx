@@ -1,8 +1,10 @@
 "use client";
 
 import { Reveal } from "@/components/ui/reveal";
+import Image from "next/image";
 import Link from "next/link";
 import { currentFeatures } from "@/config/event-stages";
+import { SPEAKERS, type Speaker } from "@/config/speakers";
 
 const PAST_EDITIONS = [
   { year: "2025", talks: 25, attendees: 260, url: "https://2025.barcamp.org.do" },
@@ -12,11 +14,63 @@ const PAST_EDITIONS = [
   { year: "2021", talks: 20, attendees: 180, url: "https://2021.barcamp.org.do" },
 ];
 
-// Fill with confirmed speakers as they're announced
-const CONFIRMED_SPEAKERS: { name: string; title: string; topic: string; avatar?: string }[] = [];
+/** Diámetro de la foto: es lo primero que se lee en la tarjeta. */
+const PHOTO_SIZE = 128;
+
+function SpeakerCard({ speaker }: { speaker: Speaker }) {
+  return (
+    <article className="glass h-full rounded-[var(--radius-lg)] p-7 flex flex-col gap-6 max-[640px]:p-6">
+      <div
+        className="shrink-0 rounded-full overflow-hidden flex items-center justify-center"
+        style={{
+          width: PHOTO_SIZE,
+          height: PHOTO_SIZE,
+          background: "linear-gradient(135deg, var(--avatar-card-from), var(--avatar-card-to))",
+          boxShadow: "0 0 0 1px var(--color-glass-border)",
+          fontFamily: "var(--font-display)",
+          fontSize: "3rem",
+          fontWeight: 700,
+          color: "var(--color-ink-1)",
+        }}
+      >
+        {speaker.photo ? (
+          // El nombre va justo debajo: la foto no lo repite para el lector de pantalla.
+          <Image
+            src={speaker.photo.src}
+            alt=""
+            width={speaker.photo.width}
+            height={speaker.photo.height}
+            sizes={`${PHOTO_SIZE}px`}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <span aria-hidden="true">{speaker.name.charAt(0)}</span>
+        )}
+      </div>
+
+      <div className="flex flex-col gap-2 min-w-0">
+        <h3
+          className="text-ink-0 font-semibold balance-title"
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "1.3rem",
+            letterSpacing: "-0.015em",
+            lineHeight: 1.15,
+          }}
+        >
+          {speaker.name}
+        </h3>
+        <p className="text-ink-2 text-[0.95rem] leading-[1.5] break-words [text-wrap:pretty]">
+          {speaker.talk}
+        </p>
+      </div>
+    </article>
+  );
+}
 
 export function Speakers() {
   const { showConfirmedSpeakers, showSpeakersToAnounce } = currentFeatures;
+  const hasConfirmed = showConfirmedSpeakers && SPEAKERS.length > 0;
 
   return (
     <section id="charlistas" className="section-y">
@@ -26,7 +80,7 @@ export function Speakers() {
           <div className="flex flex-col gap-4">
             <span className="eyebrow">
               <span className="dot" />
-              {showConfirmedSpeakers ? "Charlistas · Confirmados" : "Charlistas · Por anunciar"}
+              {hasConfirmed ? "Charlistas · Confirmados" : "Charlistas · Por anunciar"}
             </span>
             <h2
               className="text-ink-0 balance-title"
@@ -44,6 +98,17 @@ export function Speakers() {
           </div>
         </Reveal>
 
+        {hasConfirmed && (
+          <div className="grid grid-cols-3 max-[900px]:grid-cols-2 max-[500px]:grid-cols-1 gap-5 mb-12">
+            {SPEAKERS.map((speaker, i) => (
+              <Reveal key={speaker.name} delay={(i % 3) * 60}>
+                <SpeakerCard speaker={speaker} />
+              </Reveal>
+            ))}
+          </div>
+        )}
+
+        {/* Va debajo de los confirmados: la lista sigue creciendo. */}
         {showSpeakersToAnounce && (
           <Reveal className="mb-12">
             <div className="glass rounded-[var(--radius-xl)] p-16 flex flex-col items-center text-center gap-8 max-[700px]:p-10">
@@ -84,63 +149,13 @@ export function Speakers() {
                     lineHeight: 0.95,
                   }}
                 >
-                  ¿Y si el próximo nombre{" "}<br />
-                  aquí es el tuyo?
+                  Vienen más nombres.
                 </h3>
                 <p className="text-ink-2 text-[1rem] leading-[1.6]">
-                  La convocatoria está abierta. Todos los slots son de 45 min —
-                  charla, taller o demo, tú eliges el formato. Sin filtros, sin
-                  jerarquías — solo personas compartiendo lo que saben.
+                  Estamos confirmando más charlistas para esta edición y los
+                  iremos sumando aquí.
                 </p>
               </div>
-            </div>
-          </Reveal>
-        )}
-
-        {showConfirmedSpeakers && CONFIRMED_SPEAKERS.length > 0 && (
-          <Reveal className="mb-12">
-            <div className="grid grid-cols-3 max-[900px]:grid-cols-2 max-[500px]:grid-cols-1 gap-5">
-              {CONFIRMED_SPEAKERS.map((speaker, i) => (
-                <Reveal key={speaker.name} delay={i * 60}>
-                  <div className="glass rounded-[var(--radius-lg)] p-7 flex flex-col gap-5">
-                    <div
-                      className="rounded-[var(--radius-md)] flex items-center justify-center"
-                      style={{
-                        width: 72,
-                        height: 72,
-                        background: "linear-gradient(135deg, var(--avatar-card-from), var(--avatar-card-to))",
-                        border: "1px solid var(--color-glass-border)",
-                        fontSize: "1.6rem",
-                        fontFamily: "var(--font-display)",
-                        fontWeight: 700,
-                        color: "var(--color-ink-1)",
-                      }}
-                    >
-                      {speaker.avatar ? (
-                        <img
-                          src={speaker.avatar}
-                          alt={speaker.name}
-                          className="w-full h-full rounded-[var(--radius-md)] object-cover"
-                        />
-                      ) : (
-                        speaker.name.charAt(0)
-                      )}
-                    </div>
-
-                    <div className="flex flex-col gap-1">
-                      <span
-                        className="text-ink-0 font-semibold"
-                        style={{ fontFamily: "var(--font-display)", fontSize: "1.15rem", letterSpacing: "-0.01em" }}
-                      >
-                        {speaker.name}
-                      </span>
-                      <span className="text-ink-2 text-[0.85rem]">{speaker.title}</span>
-                    </div>
-
-                    <p className="text-ink-2 text-[0.9rem] leading-[1.55] mt-auto">{speaker.topic}</p>
-                  </div>
-                </Reveal>
-              ))}
             </div>
           </Reveal>
         )}
