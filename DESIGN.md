@@ -57,6 +57,9 @@ haya, sustituyen al emblema del hero antes que cualquier stock.
 La excepción es la mercancía: sus fotos son los mockups recortados del post
 `Mercancía` de Figma (`public/merch/`), los mismos de la campaña. Cuando haya
 fotos del producto real, sustituyen a esos mockups.
+La otra excepción son los charlistas: la foto que entregó cada persona, con su
+fondo original, en círculo (`public/speakers/`, datos en `config/speakers.ts`).
+Quien no tiene foto lleva su inicial, nunca un retrato genérico.
 
 ## Reglas que este repo añade
 
