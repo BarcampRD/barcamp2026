@@ -151,7 +151,7 @@ export function Speakers() {
                 >
                   Vienen más nombres.
                 </h3>
-                <p className="text-ink-2 text-[1rem] leading-[1.6]">
+                <p className="text-ink-2 text-[1rem] leading-[1.6] [text-wrap:pretty]">
                   Estamos confirmando más charlistas para esta edición y los
                   iremos sumando aquí.
                 </p>
