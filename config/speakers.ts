@@ -49,7 +49,7 @@ export const SPEAKERS: Speaker[] = [
   },
   {
     name: "Helen Lisbeth Rodriguez Evans",
-    talk: "泄露 (Exfiltrados): Lo que GitHub le cuenta a los atacantes",
+    talk: "Exfiltrados: Lo que GitHub le cuenta a los atacantes",
     photo: { src: "/speakers/helen-rodriguez.webp", width: 287, height: 287 },
   },
   {
