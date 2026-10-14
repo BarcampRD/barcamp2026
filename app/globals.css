@@ -804,13 +804,41 @@
 .speaker-card {
   container-type: inline-size;
   aspect-ratio: 4 / 5;
-  border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid var(--color-glass-border);
-  background: var(--speaker-card-bg) center / cover no-repeat, var(--speaker-card-fill);
+  /* El vidrio de .glass con un brillo rojo detrás de la foto que se apaga del
+     todo antes del borde: la tarjeta toma el tono de la página. */
+  background:
+    radial-gradient(ellipse 62% 44% at 50% 30%, var(--speaker-glow), transparent 72%),
+    var(--glass-bg);
+  transition: transform 300ms ease-out;
+}
+
+/* La trama de monumentos es una capa de color recortada por la máscara del
+   mosaico (240x168, dos monumentos, sin costura). La segunda máscara la apaga
+   hacia el centro para que enmarque el retrato en vez de cruzarlo. */
+.speaker-pattern {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: var(--speaker-pattern);
+  -webkit-mask-image:
+    url("/speakers/monumento-trama.svg"),
+    radial-gradient(ellipse 58% 42% at 50% 31%, transparent 35%, #000 85%);
+  -webkit-mask-repeat: repeat, no-repeat;
+  -webkit-mask-size: 120px 84px, 100% 100%;
+  -webkit-mask-position: center top, center;
+  -webkit-mask-composite: source-in;
+  mask-image:
+    url("/speakers/monumento-trama.svg"),
+    radial-gradient(ellipse 58% 42% at 50% 31%, transparent 35%, #000 85%);
+  mask-repeat: repeat, no-repeat;
+  mask-size: 120px 84px, 100% 100%;
+  mask-position: center top, center;
+  mask-composite: intersect;
 }
 
 .speaker-card-inner {
+  position: relative;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -819,25 +847,72 @@
   padding: 5cqw;
 }
 
-.speaker-photo {
+.speaker-photo-wrap {
+  position: relative;
   flex: 0 0 auto;
   width: 55cqw;
   aspect-ratio: 1;
+}
+
+.speaker-photo {
+  position: relative;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   overflow: hidden;
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, var(--avatar-card-from), var(--avatar-card-to)), var(--speaker-card-fill);
   box-shadow:
     0 0 0 max(2px, 0.5cqw) var(--speaker-photo-ring),
     0 14px 36px -12px var(--speaker-glass-shadow);
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 22cqw;
-  line-height: 1;
-  color: var(--color-ink-1);
 
   & img { width: 100%; height: 100%; object-fit: cover; }
+}
+
+/* Sin foto: crema plano y las dos iniciales en tinta oscura. */
+.speaker-photo-fallback {
+  background: var(--speaker-fallback-bg);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 17cqw;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--speaker-fallback-ink);
+  /* Sobre papel el crema casi se funde: un filo de tinta marca el círculo. */
+  box-shadow:
+    0 0 0 max(2px, 0.5cqw) var(--speaker-photo-ring),
+    0 14px 36px -12px var(--speaker-glass-shadow),
+    inset 0 0 0 1px var(--speaker-fallback-edge);
+}
+
+/* Al pasar el cursor salen tres anillos rojos desde el borde de la foto, cada
+   uno más tenue. Una sola transición, sin bucle. */
+.speaker-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: max(2px, 0.5cqw) solid var(--color-red-0);
+  opacity: 0;
+  transform: scale(1);
+  transition:
+    transform 450ms cubic-bezier(0.22, 0.8, 0.3, 1),
+    opacity 450ms ease-out;
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .speaker-card:hover { transform: translateY(-4px); }
+  /* El último anillo llega a 1.15: más afuera lo cortaría el borde de la tarjeta. */
+  .speaker-card:hover .speaker-ring:nth-child(1) { opacity: 0.85; transform: scale(1.05); }
+  .speaker-card:hover .speaker-ring:nth-child(2) { opacity: 0.5;  transform: scale(1.1); }
+  .speaker-card:hover .speaker-ring:nth-child(3) { opacity: 0.25; transform: scale(1.15); }
+}
+
+/* Sin movimiento: los anillos aparecen ya en su sitio y la tarjeta no sube. */
+@media (prefers-reduced-motion: reduce) {
+  .speaker-card,
+  .speaker-ring { transition: none; }
+  .speaker-card:hover { transform: none; }
 }
 
 /* Vidrio líquido: tinte del tema detrás del texto para que el contraste no

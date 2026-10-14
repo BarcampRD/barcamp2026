@@ -18,6 +18,16 @@ const PAST_EDITIONS = [
 /** Todas las charlas son el día del evento; la ficha lo muestra como el post. */
 const TALK_DATE = "14/11";
 
+/** Las dos primeras palabras del nombre: "Juan Thomas Ángel Montilla" da "JT". */
+function initials(name: string) {
+  return name
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((word) => word.charAt(0))
+    .join("")
+    .toUpperCase();
+}
+
 /**
  * Tarjeta 4:5 con la anatomía del post de Instagram de cada charlista. El
  * estilo vive en `app/globals.css` (`.speaker-*`) porque mide todo en unidades
@@ -25,20 +35,28 @@ const TALK_DATE = "14/11";
  */
 function SpeakerCard({ speaker }: { speaker: Speaker }) {
   return (
-    <article className="speaker-card">
+    <article className="glass speaker-card">
+      <span className="speaker-pattern" aria-hidden="true" />
       <div className="speaker-card-inner">
-        <div className="speaker-photo">
+        <div className="speaker-photo-wrap">
+          <span className="speaker-ring" aria-hidden="true" />
+          <span className="speaker-ring" aria-hidden="true" />
+          <span className="speaker-ring" aria-hidden="true" />
           {speaker.photo ? (
-            // El nombre va justo debajo: la foto no lo repite para el lector de pantalla.
-            <Image
-              src={speaker.photo.src}
-              alt=""
-              width={speaker.photo.width}
-              height={speaker.photo.height}
-              sizes="(max-width: 700px) 220px, 240px"
-            />
+            <div className="speaker-photo">
+              {/* El nombre va justo debajo: la foto no lo repite para el lector de pantalla. */}
+              <Image
+                src={speaker.photo.src}
+                alt=""
+                width={speaker.photo.width}
+                height={speaker.photo.height}
+                sizes="(max-width: 700px) 220px, 240px"
+              />
+            </div>
           ) : (
-            <span aria-hidden="true">{speaker.name.charAt(0)}</span>
+            <div className="speaker-photo speaker-photo-fallback" aria-hidden="true">
+              {initials(speaker.name)}
+            </div>
           )}
         </div>
 

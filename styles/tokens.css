@@ -210,11 +210,15 @@
   --avatar-h:         25;
   --avatar-card-from: oklch(30% 0.15 25 / 0.4);
   --avatar-card-to:   oklch(20% 0.10 25 / 0.4);
-  /* Tarjeta 4:5 de charlista: el fondo de monumentos del post de Instagram y
-     el vidrio que se lee encima. Cada tema trae su fondo: una placa oscura
-     sobre papel rompería la regla de los dos temas. */
-  --speaker-card-bg:        url("/speakers/fondo-oscuro.webp");
-  --speaker-card-fill:      oklch(12% 0.03 25);
+  /* Tarjeta 4:5 de charlista: vidrio como el resto del sitio, con la trama de
+     monumentos del post de Instagram pintada encima por máscara y un brillo
+     rojo detrás de la foto. Nada opaco: el fondo de la página se ve a través. */
+  --speaker-pattern:        color-mix(in oklab, var(--color-red-0) 14%, transparent);
+  --speaker-glow:           color-mix(in oklab, var(--color-red-0) 30%, transparent);
+  /* Ficha sin foto: crema con tinta oscura, igual en los dos temas. */
+  --speaker-fallback-bg:    oklch(95% 0.018 70);
+  --speaker-fallback-ink:   oklch(24% 0.022 32);
+  --speaker-fallback-edge:  oklch(30% 0.03 32 / 0.12);
   --speaker-glass-tint:     oklch(13% 0.02 25 / 0.62);
   --speaker-glass-edge-hi:  oklch(100% 0 0 / 0.34);
   --speaker-glass-edge-lo:  oklch(100% 0 0 / 0.06);
@@ -392,9 +396,9 @@
   --avatar-h:         30;
   --avatar-card-from: oklch(88% 0.07 30 / 0.55);
   --avatar-card-to:   oklch(94% 0.03 36 / 0.55);
-  /* Papel con monumentos en tinta tenue, vidrio de papel encima. */
-  --speaker-card-bg:        url("/speakers/fondo-claro.webp");
-  --speaker-card-fill:      oklch(95% 0.008 40);
+  /* Sobre papel la trama es tinta café tenue y el brillo apenas un rubor. */
+  --speaker-pattern:        oklch(42% 0.05 45 / 0.09);
+  --speaker-glow:           color-mix(in oklab, var(--color-red-0) 12%, transparent);
   --speaker-glass-tint:     oklch(99% 0.006 40 / 0.72);
   --speaker-glass-edge-hi:  oklch(100% 0 0 / 0.95);
   --speaker-glass-edge-lo:  oklch(30% 0.03 32 / 0.08);
