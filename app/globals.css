@@ -773,3 +773,203 @@
   0%, 100% { transform: translateX(0); }
   50%      { transform: translateX(8px); }
 }
+
+/* ── Charlistas ──────────────────────────── */
+/* La tarjeta sigue la anatomía del post de Instagram de cada charlista: foto,
+   nombre, charla y fecha, centrados sobre el fondo de monumentos, en 4:5. Todo
+   lo de adentro se mide en unidades del contenedor (cqw), así el nombre y el
+   título más largos caben igual en la tarjeta de 300 px que en la de 430 px. */
+
+/* Flex y no grid: la última fila queda centrada con cualquier número de
+   charlistas, sin una tarjeta huérfana pegada a la izquierda. */
+.speaker-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.speaker-grid > * {
+  flex: 0 0 calc((100% - 40px) / 3);
+  min-width: 0;
+}
+@media (max-width: 900px) {
+  .speaker-grid > * { flex-basis: calc((100% - 20px) / 2); }
+}
+/* En teléfono una columna, con tope: una 4:5 a todo el ancho de una tableta
+   pequeña sería un afiche. */
+@media (max-width: 700px) {
+  .speaker-grid > * { flex-basis: 100%; max-width: 400px; }
+}
+
+.speaker-card {
+  container-type: inline-size;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-glass-border);
+  background: var(--speaker-card-bg) center / cover no-repeat, var(--speaker-card-fill);
+}
+
+.speaker-card-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.6cqw;
+  padding: 5cqw;
+}
+
+.speaker-photo {
+  flex: 0 0 auto;
+  width: 55cqw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--avatar-card-from), var(--avatar-card-to)), var(--speaker-card-fill);
+  box-shadow:
+    0 0 0 max(2px, 0.5cqw) var(--speaker-photo-ring),
+    0 14px 36px -12px var(--speaker-glass-shadow);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22cqw;
+  line-height: 1;
+  color: var(--color-ink-1);
+
+  & img { width: 100%; height: 100%; object-fit: cover; }
+}
+
+/* Vidrio líquido: tinte del tema detrás del texto para que el contraste no
+   dependa del patrón, desenfoque con saturación, borde de 1 px que brilla
+   arriba a la izquierda y una luz interior en el canto superior. */
+.speaker-glass {
+  position: relative;
+  width: 100%;
+  background: var(--speaker-glass-tint);
+  -webkit-backdrop-filter: blur(14px) saturate(1.7);
+  backdrop-filter: blur(14px) saturate(1.7);
+  box-shadow:
+    inset 0 1px 0 var(--speaker-glass-inset),
+    0 10px 28px -14px var(--speaker-glass-shadow);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(
+      135deg,
+      var(--speaker-glass-edge-hi),
+      var(--speaker-glass-edge-lo) 45%,
+      var(--speaker-glass-edge-lo) 70%,
+      var(--speaker-glass-edge-mid)
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+.speaker-name-pill {
+  border-radius: 9999px;
+  padding: 2.8cqw 6cqw 2.6cqw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5cqw;
+  text-align: center;
+}
+
+.speaker-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(13px, 5cqw, 22px);
+  font-variation-settings: "wdth" 80, "opsz" 24;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--color-ink-0);
+}
+
+.speaker-rule {
+  width: 9cqw;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-red-0);
+}
+
+.speaker-role {
+  font-family: var(--font-mono);
+  font-size: clamp(9px, 2.3cqw, 11px);
+  line-height: 1;
+  letter-spacing: 0.32em;
+  /* El tracking deja aire a la derecha de la última letra: lo compensa. */
+  padding-left: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-ink-2);
+}
+
+/* El bloque de la charla toma el alto que sobra, así la fecha queda al pie en
+   todas las tarjetas aunque el título tenga una línea o cuatro. */
+.speaker-talk {
+  flex: 1 1 auto;
+  min-height: 0;
+  border-radius: var(--radius-md);
+  padding: 3cqw 5cqw 3.6cqw;
+  display: flex;
+  flex-direction: column;
+  gap: 1cqw;
+  text-align: left;
+}
+
+.speaker-quote {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 8cqw;
+  line-height: 1;
+  height: 3.6cqw;
+  overflow: visible;
+  color: var(--color-red-0);
+}
+
+.speaker-talk-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(12.5px, 3.8cqw, 16.5px);
+  line-height: 1.22;
+  letter-spacing: -0.005em;
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+  color: var(--color-ink-0);
+}
+
+.speaker-date {
+  width: auto;
+  border-radius: 9999px;
+  padding: 1.2cqw 4cqw 1.2cqw 1.2cqw;
+  display: flex;
+  align-items: center;
+  gap: 2.4cqw;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(13px, 4.2cqw, 18px);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  color: var(--color-ink-0);
+}
+
+.speaker-date-icon {
+  width: 6.5cqw;
+  aspect-ratio: 1;
+  border-radius: 1.8cqw;
+  display: grid;
+  place-items: center;
+  background: var(--color-red-0);
+  color: var(--on-accent);
+
+  & svg { width: 58%; height: 58%; }
+}

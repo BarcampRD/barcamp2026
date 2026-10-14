@@ -3,6 +3,7 @@
 import { Reveal } from "@/components/ui/reveal";
 import Image from "next/image";
 import Link from "next/link";
+import { Icons } from "@/components/icons";
 import { currentFeatures } from "@/config/event-stages";
 import { SPEAKERS, type Speaker } from "@/config/speakers";
 
@@ -14,54 +15,52 @@ const PAST_EDITIONS = [
   { year: "2021", talks: 20, attendees: 180, url: "https://2021.barcamp.org.do" },
 ];
 
-/** Diámetro de la foto: es lo primero que se lee en la tarjeta. */
-const PHOTO_SIZE = 128;
+/** Todas las charlas son el día del evento; la ficha lo muestra como el post. */
+const TALK_DATE = "14/11";
 
+/**
+ * Tarjeta 4:5 con la anatomía del post de Instagram de cada charlista. El
+ * estilo vive en `app/globals.css` (`.speaker-*`) porque mide todo en unidades
+ * del contenedor, y los colores salen de los tokens `--speaker-*` de cada tema.
+ */
 function SpeakerCard({ speaker }: { speaker: Speaker }) {
   return (
-    <article className="glass h-full rounded-[var(--radius-lg)] p-7 flex flex-col gap-6 max-[640px]:p-6">
-      <div
-        className="shrink-0 rounded-full overflow-hidden flex items-center justify-center"
-        style={{
-          width: PHOTO_SIZE,
-          height: PHOTO_SIZE,
-          background: "linear-gradient(135deg, var(--avatar-card-from), var(--avatar-card-to))",
-          boxShadow: "0 0 0 1px var(--color-glass-border)",
-          fontFamily: "var(--font-display)",
-          fontSize: "3rem",
-          fontWeight: 700,
-          color: "var(--color-ink-1)",
-        }}
-      >
-        {speaker.photo ? (
-          // El nombre va justo debajo: la foto no lo repite para el lector de pantalla.
-          <Image
-            src={speaker.photo.src}
-            alt=""
-            width={speaker.photo.width}
-            height={speaker.photo.height}
-            sizes={`${PHOTO_SIZE}px`}
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <span aria-hidden="true">{speaker.name.charAt(0)}</span>
-        )}
-      </div>
+    <article className="speaker-card">
+      <div className="speaker-card-inner">
+        <div className="speaker-photo">
+          {speaker.photo ? (
+            // El nombre va justo debajo: la foto no lo repite para el lector de pantalla.
+            <Image
+              src={speaker.photo.src}
+              alt=""
+              width={speaker.photo.width}
+              height={speaker.photo.height}
+              sizes="(max-width: 700px) 220px, 240px"
+            />
+          ) : (
+            <span aria-hidden="true">{speaker.name.charAt(0)}</span>
+          )}
+        </div>
 
-      <div className="flex flex-col gap-2 min-w-0">
-        <h3
-          className="text-ink-0 font-semibold balance-title"
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "1.3rem",
-            letterSpacing: "-0.015em",
-            lineHeight: 1.15,
-          }}
-        >
-          {speaker.name}
-        </h3>
-        <p className="text-ink-2 text-[0.95rem] leading-[1.5] break-words [text-wrap:pretty]">
-          {speaker.talk}
+        <div className="speaker-glass speaker-name-pill">
+          <h3 className="speaker-name">{speaker.name}</h3>
+          <span className="speaker-rule" aria-hidden="true" />
+          <span className="speaker-role">Charlista</span>
+        </div>
+
+        <div className="speaker-glass speaker-talk">
+          <span className="speaker-quote" aria-hidden="true">&ldquo;</span>
+          <p className="speaker-talk-title">{speaker.talk}</p>
+        </div>
+
+        <p className="speaker-glass speaker-date">
+          <span className="speaker-date-icon" aria-hidden="true">
+            <Icons.Calendar />
+          </span>
+          <span>
+            <span className="sr-only">Día de la charla: </span>
+            {TALK_DATE}
+          </span>
         </p>
       </div>
     </article>
@@ -99,7 +98,7 @@ export function Speakers() {
         </Reveal>
 
         {hasConfirmed && (
-          <div className="grid grid-cols-3 max-[900px]:grid-cols-2 max-[500px]:grid-cols-1 gap-5 mb-12">
+          <div className="speaker-grid mb-12">
             {SPEAKERS.map((speaker, i) => (
               <Reveal key={speaker.name} delay={(i % 3) * 60}>
                 <SpeakerCard speaker={speaker} />

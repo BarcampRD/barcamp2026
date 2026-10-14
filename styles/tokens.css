@@ -210,6 +210,18 @@
   --avatar-h:         25;
   --avatar-card-from: oklch(30% 0.15 25 / 0.4);
   --avatar-card-to:   oklch(20% 0.10 25 / 0.4);
+  /* Tarjeta 4:5 de charlista: el fondo de monumentos del post de Instagram y
+     el vidrio que se lee encima. Cada tema trae su fondo: una placa oscura
+     sobre papel rompería la regla de los dos temas. */
+  --speaker-card-bg:        url("/speakers/fondo-oscuro.webp");
+  --speaker-card-fill:      oklch(12% 0.03 25);
+  --speaker-glass-tint:     oklch(13% 0.02 25 / 0.62);
+  --speaker-glass-edge-hi:  oklch(100% 0 0 / 0.34);
+  --speaker-glass-edge-lo:  oklch(100% 0 0 / 0.06);
+  --speaker-glass-edge-mid: oklch(100% 0 0 / 0.14);
+  --speaker-glass-inset:    oklch(100% 0 0 / 0.10);
+  --speaker-glass-shadow:   oklch(5% 0.02 25 / 0.55);
+  --speaker-photo-ring:     oklch(96% 0.01 40 / 0.85);
 
   /* ── Agenda / CFS ────────────────────────── */
   --cfs-stroke:       oklch(70% 0.18 25 / 0.18);
@@ -380,6 +392,16 @@
   --avatar-h:         30;
   --avatar-card-from: oklch(88% 0.07 30 / 0.55);
   --avatar-card-to:   oklch(94% 0.03 36 / 0.55);
+  /* Papel con monumentos en tinta tenue, vidrio de papel encima. */
+  --speaker-card-bg:        url("/speakers/fondo-claro.webp");
+  --speaker-card-fill:      oklch(95% 0.008 40);
+  --speaker-glass-tint:     oklch(99% 0.006 40 / 0.72);
+  --speaker-glass-edge-hi:  oklch(100% 0 0 / 0.95);
+  --speaker-glass-edge-lo:  oklch(30% 0.03 32 / 0.08);
+  --speaker-glass-edge-mid: oklch(30% 0.03 32 / 0.14);
+  --speaker-glass-inset:    oklch(100% 0 0 / 0.90);
+  --speaker-glass-shadow:   oklch(30% 0.05 30 / 0.16);
+  --speaker-photo-ring:     oklch(100% 0 0 / 0.95);
 
   /* ── Agenda / CFS ────────────────────────── */
   --cfs-stroke:       oklch(55% 0.20 28 / 0.16);
