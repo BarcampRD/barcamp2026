@@ -60,6 +60,10 @@ fotos del producto real, sustituyen a esos mockups.
 La otra excepción son los charlistas: la foto que entregó cada persona, con su
 fondo original, en círculo (`public/speakers/`, datos en `config/speakers.ts`).
 Quien no tiene foto lleva su inicial, nunca un retrato genérico.
+La tarjeta del charlista es el post de Instagram de la campaña en 4:5: el
+patrón de monumentos de fondo (`fondo-oscuro.webp` en oscuro, `fondo-claro.webp`
+en papel, por el token `--speaker-card-bg`) y vidrio con tinte del tema detrás
+de cada texto, para que el contraste no dependa del patrón.
 
 ## Reglas que este repo añade
 
