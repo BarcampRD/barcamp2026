@@ -791,6 +791,9 @@
 .speaker-grid > * {
   flex: 0 0 calc((100% - 40px) / 3);
   min-width: 0;
+  /* El envoltorio mide lo mismo que la tarjeta: así el radio de la tarjeta,
+     que no puede medirse contra sí misma, también escala en cqw. */
+  container-type: inline-size;
 }
 @media (max-width: 900px) {
   .speaker-grid > * { flex-basis: calc((100% - 20px) / 2); }
@@ -811,6 +814,12 @@
     radial-gradient(ellipse 62% 44% at 50% 30%, var(--speaker-glow), transparent 72%),
     var(--glass-bg);
   transition: transform 300ms ease-out;
+  /* Radios concéntricos: cada pieza de vidrio interior lleva el radio de la
+     tarjeta menos el margen que la separa del borde, así las curvas son
+     paralelas. Todo en cqw para que escale con la tarjeta. */
+  --speaker-r: 9cqw;
+  --speaker-r-inner: calc(var(--speaker-r) - 5cqw);
+  border-radius: var(--speaker-r);
 }
 
 /* La trama de monumentos es una capa de color recortada por la máscara del
@@ -949,7 +958,7 @@
 }
 
 .speaker-name-pill {
-  border-radius: 9999px;
+  border-radius: var(--speaker-r-inner);
   padding: 2.8cqw 6cqw 2.6cqw;
   display: flex;
   flex-direction: column;
@@ -993,7 +1002,7 @@
 .speaker-talk {
   flex: 1 1 auto;
   min-height: 0;
-  border-radius: var(--radius-md);
+  border-radius: var(--speaker-r-inner);
   padding: 3cqw 5cqw 3.6cqw;
   display: flex;
   flex-direction: column;
@@ -1024,7 +1033,7 @@
 
 .speaker-date {
   width: auto;
-  border-radius: 9999px;
+  border-radius: var(--speaker-r-inner);
   padding: 1.2cqw 4cqw 1.2cqw 1.2cqw;
   display: flex;
   align-items: center;
@@ -1040,7 +1049,8 @@
 .speaker-date-icon {
   width: 6.5cqw;
   aspect-ratio: 1;
-  border-radius: 1.8cqw;
+  /* Concéntrico con la fecha: su radio menos el margen de 1.2cqw. */
+  border-radius: calc(var(--speaker-r-inner) - 1.2cqw);
   display: grid;
   place-items: center;
   background: var(--color-red-0);
