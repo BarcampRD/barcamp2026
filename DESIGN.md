@@ -57,6 +57,18 @@ haya, sustituyen al emblema del hero antes que cualquier stock.
 La excepción es la mercancía: sus fotos son los mockups recortados del post
 `Mercancía` de Figma (`public/merch/`), los mismos de la campaña. Cuando haya
 fotos del producto real, sustituyen a esos mockups.
+La otra excepción son los charlistas: la foto que entregó cada persona, con su
+fondo original, en círculo (`public/speakers/`, datos en `config/speakers.ts`).
+Quien no tiene foto lleva sus dos iniciales sobre crema, nunca un retrato genérico.
+La tarjeta del charlista sigue el post de Instagram de la campaña en 4:5, pero
+es vidrio como el resto del sitio: la trama de monumentos se pinta por máscara
+(`monumento-trama.svg`, en tinta clara del token `--speaker-pattern`, no en
+rojo) y el brillo rojo
+detrás de la foto se apaga antes del borde, así la tarjeta toma el tono de la
+página en vez de ser una placa encima. Cada texto va sobre vidrio con tinte del
+tema, para que el contraste no dependa de la trama. La tarjeta y sus piezas
+de vidrio llevan radios concéntricos: cada pieza interior usa el radio de la
+tarjeta menos su margen.
 
 ## Reglas que este repo añade
 
