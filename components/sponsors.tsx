@@ -13,11 +13,15 @@ const COLLABORATORS = [
   { label: "Comité de Ingeniería en Ciencias de la Computación", src: "/cicc-logo.png" },
 ];
 
-/** Tamaño de tarjeta por paquete: el paquete mayor ocupa más muro. */
+/**
+ * Tamaño de tarjeta por paquete: el paquete mayor ocupa más muro. Desde `lg`
+ * Geek va a cuatro por fila (cuarto del ancho menos los tres huecos de 1rem),
+ * así sus marcas se reparten en dos filas en vez de una tira.
+ */
 const TIER_CARD: Record<SponsorTier, string> = {
   "geek-gold": "basis-[280px] max-w-[440px] min-h-[184px] max-[600px]:min-h-[150px]",
   "geek-silver": "basis-[220px] max-w-[340px] min-h-[152px] max-[600px]:min-h-[136px]",
-  geek: "basis-[148px] max-w-[260px] min-h-[124px]",
+  geek: "basis-[148px] max-w-[260px] min-h-[124px] lg:basis-[calc((100%_-_3rem)/4)] lg:max-w-[calc((100%_-_3rem)/4)]",
 };
 
 /** Los paquetes en su orden, cada uno con sus marcas; un paquete vacío no se pinta. */

@@ -13,7 +13,8 @@
  * (recortado el margen transparente, nada más); Banco Popular, del original del
  * que salió la variante oscura, que solo le cambió el logotipo de `#11316f` a
  * `#f5f1ec`; Avathar Tech, de su sitio, con el negro y el azul oscuro del
- * logotipo llevados a la misma tinta.
+ * logotipo llevados a la misma tinta; Progressa, de su sitio, con el gris del
+ * logotipo llevado a la misma tinta y el colibrí intacto.
  *
  * Una marca sin `logoOnLight` es una cuyo archivo oficial se lee en los dos
  * temas, y entonces el segundo archivo sobraría.
@@ -112,6 +113,21 @@ export const SPONSORS: Sponsor[] = [
     logo: { src: "/sponsors/alphnology.png", width: 1200, height: 242 },
     displayHeight: 34,
     href: "https://alphnology.com",
+    tier: "geek",
+  },
+  {
+    name: "Nadserv",
+    logo: { src: "/sponsors/nadserv.png", width: 189, height: 26 },
+    displayHeight: 24,
+    href: "https://www.nadserv.com",
+    tier: "geek",
+  },
+  {
+    name: "Progressa",
+    logo: { src: "/sponsors/progressa.png", width: 600, height: 284 },
+    logoOnLight: { src: "/sponsors/progressa-on-light.png", width: 600, height: 284 },
+    displayHeight: 60,
+    href: "https://www.progressa.group",
     tier: "geek",
   },
 ];
