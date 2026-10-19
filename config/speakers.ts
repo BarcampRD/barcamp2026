@@ -8,7 +8,8 @@
  * (sobre blanco, y la de Roselin con un aro azul), y su cuadrado se cerró un
  * poco hacia el centro para que el círculo de la tarjeta no muestre ese borde.
  * La de José Saint Hillaire llegó grande y apaisada: se recortó a cabeza y
- * hombros y se bajó a 600 px.
+ * hombros y se bajó a 600 px. La de Juan Thomas Ángel Montilla llegó por chat
+ * (1080 px, de pie frente a la ciudad) y se recortó a 600 px de cabeza y hombros.
  *
  * Quien todavía no tiene foto va sin `photo`, y la tarjeta muestra su inicial.
  *
@@ -65,6 +66,7 @@ export const SPEAKERS: Speaker[] = [
   {
     name: "Juan Thomas Ángel Montilla",
     talk: "Del espagueti de tubos al BIM: Creando un CAD espacial en el navegador con WebXR, Three.js y Quarkus",
+    photo: { src: "/speakers/juan-thomas-montilla.webp", width: 600, height: 600 },
   },
   {
     name: "Rafael Batista",
@@ -75,5 +77,15 @@ export const SPEAKERS: Speaker[] = [
     name: "Rafael Dorville",
     talk: "Microsoft Fabric en 45 minutos: de datos crudos a IA generativa",
     photo: { src: "/speakers/rafael-dorville.webp", width: 268, height: 268 },
+  },
+  {
+    name: "Inés Montero",
+    talk: "Secure by Design: Piensa como un Hacker, Programa como un Ingeniero",
+    photo: { src: "/speakers/ines-montero.webp", width: 300, height: 300 },
+  },
+  {
+    name: "Luis Sosa",
+    talk: "De la demo a producción: cómo construir IA que realmente funciona en turismo",
+    photo: { src: "/speakers/luis-sosa.webp", width: 268, height: 268 },
   },
 ];
