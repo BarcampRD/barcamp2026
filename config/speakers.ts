@@ -8,7 +8,11 @@
  * (sobre blanco, y la de Roselin con un aro azul), y su cuadrado se cerró un
  * poco hacia el centro para que el círculo de la tarjeta no muestre ese borde.
  * La de José Saint Hillaire llegó grande y apaisada: se recortó a cabeza y
- * hombros y se bajó a 600 px.
+ * hombros y se bajó a 600 px. La de Juan Thomas Ángel Montilla llegó por chat
+ * (1080 px, de pie frente a la ciudad) y se recortó a 600 px de cabeza y hombros.
+ * Emmanuel de la Rosa y Giancarlo Gerdo entregaron fotos de cuerpo entero: se
+ * recortaron a cabeza y hombros sin agrandar (230 y 440 px). Las de 800 px se
+ * bajaron a 600 px.
  *
  * Quien todavía no tiene foto va sin `photo`, y la tarjeta muestra su inicial.
  *
@@ -65,6 +69,7 @@ export const SPEAKERS: Speaker[] = [
   {
     name: "Juan Thomas Ángel Montilla",
     talk: "Del espagueti de tubos al BIM: Creando un CAD espacial en el navegador con WebXR, Three.js y Quarkus",
+    photo: { src: "/speakers/juan-thomas-montilla.webp", width: 600, height: 600 },
   },
   {
     name: "Rafael Batista",
@@ -75,5 +80,45 @@ export const SPEAKERS: Speaker[] = [
     name: "Rafael Dorville",
     talk: "Microsoft Fabric en 45 minutos: de datos crudos a IA generativa",
     photo: { src: "/speakers/rafael-dorville.webp", width: 268, height: 268 },
+  },
+  {
+    name: "Inés Montero",
+    talk: "Secure by Design: Piensa como un Hacker, Programa como un Ingeniero",
+    photo: { src: "/speakers/ines-montero.webp", width: 300, height: 300 },
+  },
+  {
+    name: "Luis Sosa",
+    talk: "De la demo a producción: cómo construir IA que realmente funciona en turismo",
+    photo: { src: "/speakers/luis-sosa.webp", width: 268, height: 268 },
+  },
+  {
+    name: "Emmanuel de la Rosa",
+    talk: "Principios del data storytelling: El siguiente paso al dashboard",
+    photo: { src: "/speakers/emmanuel-de-la-rosa.webp", width: 230, height: 230 },
+  },
+  {
+    name: "Giancarlo Gerdo",
+    talk: "Ciberinteligencia en el CI/CD: Detectando fugas y amenazas antes del deploy",
+    photo: { src: "/speakers/giancarlo-gerdo.webp", width: 440, height: 440 },
+  },
+  {
+    name: "Jean Carlos Taveras",
+    talk: "The Model Is Not the Agent: How LLMs, Agents, and Harnesses Turn Intelligence into Action",
+    photo: { src: "/speakers/jean-carlos-taveras.webp", width: 600, height: 600 },
+  },
+  {
+    name: "Wilson Toribio",
+    talk: "System Design en el mundo de la IA para productos efectivos",
+    photo: { src: "/speakers/wilson-toribio.webp", width: 600, height: 600 },
+  },
+  {
+    name: "Cristian de la Hoz",
+    talk: "La magia detrás de los agentes de IA: construye tu propio harness",
+    photo: { src: "/speakers/cristian-de-la-hoz.webp", width: 600, height: 600 },
+  },
+  {
+    name: "Freddy Peña",
+    talk: "Destilando el dominio: Cuando el código deja de ser el protagonista",
+    photo: { src: "/speakers/freddy-pena.webp", width: 600, height: 600 },
   },
 ];
