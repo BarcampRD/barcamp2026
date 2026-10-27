@@ -11,8 +11,10 @@
  * hombros y se bajó a 600 px. La de Juan Thomas Ángel Montilla llegó por chat
  * (1080 px, de pie frente a la ciudad) y se recortó a 600 px de cabeza y hombros.
  * Emmanuel de la Rosa y Giancarlo Gerdo entregaron fotos de cuerpo entero: se
- * recortaron a cabeza y hombros sin agrandar (230 y 440 px). Las de 800 px se
- * bajaron a 600 px.
+ * recortaron a cabeza y hombros sin agrandar (230 px la de Emmanuel). Las de
+ * 800 px se bajaron a 600 px. Las de Giancarlo Gerdo, Jean Carlos Taveras,
+ * Wilson Toribio, Cristian de la Hoz, Freddy Peña y Rafael Almonte se
+ * recentraron en la cara y se pasaron a 600 px.
  *
  * Quien todavía no tiene foto va sin `photo`, y la tarjeta muestra su inicial.
  *
@@ -99,7 +101,7 @@ export const SPEAKERS: Speaker[] = [
   {
     name: "Giancarlo Gerdo",
     talk: "Ciberinteligencia en el CI/CD: Detectando fugas y amenazas antes del deploy",
-    photo: { src: "/speakers/giancarlo-gerdo.webp", width: 440, height: 440 },
+    photo: { src: "/speakers/giancarlo-gerdo.webp", width: 600, height: 600 },
   },
   {
     name: "Jean Carlos Taveras",
@@ -120,5 +122,10 @@ export const SPEAKERS: Speaker[] = [
     name: "Freddy Peña",
     talk: "Destilando el dominio: Cuando el código deja de ser el protagonista",
     photo: { src: "/speakers/freddy-pena.webp", width: 600, height: 600 },
+  },
+  {
+    name: "Rafael Almonte",
+    talk: "Let AI Query Your Graph: Building Safe NLP-Driven Data Access with Java and Neo4j",
+    photo: { src: "/speakers/rafael-almonte.webp", width: 600, height: 600 },
   },
 ];
