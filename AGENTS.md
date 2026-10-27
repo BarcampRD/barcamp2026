@@ -11,3 +11,7 @@ from current `dev`; merge task PRs into `dev`; promote reviewed releases through
 a `dev` -> `main` PR. Production images continue to publish from `main`.
 The `branch-model` workflow checks pull request direction. Preserve existing
 branches and unique work.
+
+## Facts
+
+- figma: https://www.figma.com/design/oZiBakYBtZexw9QPRPwVM3 (exdj0002; CICC-Desing-Lab-2, page 2026-2027: Feed de Instagram 1027:4115, Cibao (paquete por definir) 1171:6496, Feed móvil 1173:7988, Archivo 1171:5848)
