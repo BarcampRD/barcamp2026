@@ -19,6 +19,7 @@ const COLLABORATORS = [
  * así sus marcas se reparten en dos filas en vez de una tira.
  */
 const TIER_CARD: Record<SponsorTier, string> = {
+  "geek-platinum": "basis-[340px] max-w-[520px] min-h-[208px] max-[600px]:min-h-[164px]",
   "geek-gold": "basis-[280px] max-w-[440px] min-h-[184px] max-[600px]:min-h-[150px]",
   "geek-silver": "basis-[220px] max-w-[340px] min-h-[152px] max-[600px]:min-h-[136px]",
   geek: "basis-[148px] max-w-[260px] min-h-[124px] lg:basis-[calc((100%_-_3rem)/4)] lg:max-w-[calc((100%_-_3rem)/4)]",

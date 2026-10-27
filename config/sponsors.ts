@@ -13,8 +13,8 @@
  * (recortado el margen transparente, nada más); Banco Popular, del original del
  * que salió la variante oscura, que solo le cambió el logotipo de `#11316f` a
  * `#f5f1ec`; Avathar Tech, de su sitio, con el negro y el azul oscuro del
- * logotipo llevados a la misma tinta; Progressa, de su sitio, con el gris del
- * logotipo llevado a la misma tinta y el colibrí intacto.
+ * logotipo llevados a la misma tinta; The Ksquare Group, de su par oficial,
+ * que solo cambia la K y "KSQUARE" de blanco a azul marino.
  *
  * Una marca sin `logoOnLight` es una cuyo archivo oficial se lee en los dos
  * temas, y entonces el segundo archivo sobraría.
@@ -33,6 +33,7 @@
  * tinta y `name` en el color del paquete, `--tier-<clave>` de tokens.css.
  */
 export const SPONSOR_TIERS = {
+  "geek-platinum": { prefix: "Geek", name: "Platinum", logoScale: 1.75 },
   "geek-gold": { prefix: "Geek", name: "Gold", logoScale: 1.5 },
   "geek-silver": { prefix: "Geek", name: "Silver", logoScale: 1.25 },
   geek: { name: "Geek", logoScale: 1 },
@@ -61,6 +62,14 @@ export interface Sponsor {
 }
 
 export const SPONSORS: Sponsor[] = [
+  {
+    name: "The Ksquare Group",
+    logo: { src: "/sponsors/ksquare.png", width: 786, height: 144 },
+    logoOnLight: { src: "/sponsors/ksquare-on-light.png", width: 786, height: 144 },
+    displayHeight: 32,
+    href: "https://www.theksquaregroup.com",
+    tier: "geek-platinum",
+  },
   {
     name: "Cecomsa",
     logo: { src: "/sponsors/cecomsa.svg", width: 378, height: 187 },
@@ -120,14 +129,6 @@ export const SPONSORS: Sponsor[] = [
     logo: { src: "/sponsors/nadserv.png", width: 189, height: 26 },
     displayHeight: 24,
     href: "https://www.nadserv.com",
-    tier: "geek",
-  },
-  {
-    name: "Progressa",
-    logo: { src: "/sponsors/progressa.png", width: 600, height: 284 },
-    logoOnLight: { src: "/sponsors/progressa-on-light.png", width: 600, height: 284 },
-    displayHeight: 60,
-    href: "https://www.progressa.group",
     tier: "geek",
   },
 ];
