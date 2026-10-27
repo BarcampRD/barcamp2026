@@ -14,4 +14,4 @@ branches and unique work.
 
 ## Facts
 
-- figma: https://www.figma.com/design/oZiBakYBtZexw9QPRPwVM3 (exdj0002; CICC-Desing-Lab-2, page 2026-2027: Feed de Instagram 1027:4115, Cibao (paquete por definir) 1171:6496, Feed móvil 1173:7988, Descuento grupal (D3 elegida) 1175:11332, Agenda (por elegir) 1181:15102, Archivo 1171:5848)
+- figma: https://www.figma.com/design/oZiBakYBtZexw9QPRPwVM3 (exdj0002; CICC-Desing-Lab-2, page 2026-2027: Feed de Instagram 1027:4115, Charlistas 01 a 17 1140:5304, Cibao (paquete por definir) 1171:6496, Feed móvil 1173:7988, Descuento grupal (D3 elegida) 1175:11332, Agenda (por elegir) 1181:15102, Archivo 1171:5848)
