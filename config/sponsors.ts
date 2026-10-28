@@ -68,7 +68,7 @@ export const SPONSORS: Sponsor[] = [
     logoOnLight: { src: "/sponsors/ksquare-on-light.png", width: 786, height: 144 },
     displayHeight: 32,
     href: "https://www.theksquaregroup.com",
-    tier: "geek-platinum",
+    tier: "geek-silver",
   },
   {
     name: "Cecomsa",
