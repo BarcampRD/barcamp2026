@@ -10,11 +10,10 @@
  * La de José Saint Hillaire llegó grande y apaisada: se recortó a cabeza y
  * hombros y se bajó a 600 px. La de Juan Thomas Ángel Montilla llegó por chat
  * (1080 px, de pie frente a la ciudad) y se recortó a 600 px de cabeza y hombros.
- * Emmanuel de la Rosa y Giancarlo Gerdo entregaron fotos de cuerpo entero: se
- * recortaron a cabeza y hombros sin agrandar (230 px la de Emmanuel). Las de
- * 800 px se bajaron a 600 px. Las de Giancarlo Gerdo, Jean Carlos Taveras,
- * Wilson Toribio, Cristian de la Hoz, Freddy Peña y Rafael Almonte se
- * recentraron en la cara y se pasaron a 600 px.
+ * Giancarlo Gerdo entregó una foto de cuerpo entero: se recortó a cabeza y
+ * hombros sin agrandar. Las de 800 px se bajaron a 600 px. Las de Giancarlo
+ * Gerdo, Jean Carlos Taveras, Wilson Toribio, Cristian de la Hoz, Freddy Peña
+ * y Rafael Almonte se recentraron en la cara y se pasaron a 600 px.
  *
  * Quien todavía no tiene foto va sin `photo`, y la tarjeta muestra su inicial.
  *
@@ -92,11 +91,6 @@ export const SPEAKERS: Speaker[] = [
     name: "Luis Sosa",
     talk: "De la demo a producción: cómo construir IA que realmente funciona en turismo",
     photo: { src: "/speakers/luis-sosa.webp", width: 268, height: 268 },
-  },
-  {
-    name: "Emmanuel de la Rosa",
-    talk: "Principios del data storytelling: El siguiente paso al dashboard",
-    photo: { src: "/speakers/emmanuel-de-la-rosa.webp", width: 230, height: 230 },
   },
   {
     name: "Giancarlo Gerdo",
