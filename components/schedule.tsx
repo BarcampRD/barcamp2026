@@ -1,35 +1,8 @@
+import { Agenda } from "@/components/agenda";
 import { Reveal } from "@/components/ui/reveal";
 import { Icons } from "@/components/icons";
 import { currentFeatures } from "@/config/event-stages";
 import { CFP_URL } from "@/config/links";
-
-const ROOMS = ["Sala A", "Sala B", "Sala C", "Sala D"];
-
-// "keynote" es exclusivo de la charla magistral: hay una sola en todo el evento.
-// Apertura y cierre son plenarias, no keynotes.
-interface SpanCell {
-  kind: "keynote" | "plenary" | "break";
-  tag?: string;
-  t: string;
-  who: string;
-  span: 4;
-}
-interface OpenCell { open: true }
-type Cell = SpanCell | OpenCell;
-
-const SLOTS: { time: string; cells: Cell[] }[] = [
-  { time: "08:00 AM", cells: [{ kind: "break", t: "Registro y bienvenida", who: "Lobby principal", span: 4 }] },
-  { time: "09:00 AM", cells: [{ kind: "plenary", tag: "Apertura", t: "Acto de apertura · Barcamp 2026", who: "Organización", span: 4 }] },
-  { time: "09:30 AM", cells: [{ kind: "keynote", tag: "Keynote", t: "Charla magistral inaugural", who: "Por anunciar", span: 4 }] },
-  { time: "10:30 AM", cells: [{ open: true }, { open: true }, { open: true }, { open: true }] },
-  { time: "11:30 AM", cells: [{ open: true }, { open: true }, { open: true }, { open: true }] },
-  { time: "12:30 PM", cells: [{ kind: "break", t: "Almuerzo · Networking", who: "Patio central", span: 4 }] },
-  { time: "2:00 PM", cells: [{ open: true }, { open: true }, { open: true }, { open: true }] },
-  { time: "3:00 PM", cells: [{ open: true }, { open: true }, { open: true }, { open: true }] },
-  { time: "4:00 PM", cells: [{ kind: "break", t: "Coffee break", who: "Lobby", span: 4 }] },
-  { time: "4:30 PM", cells: [{ kind: "plenary", tag: "Cierre", t: "Charla de cierre", who: "Equipo Barcamp", span: 4 }] },
-  { time: "5:30 PM", cells: [{ kind: "break", t: "After & networking", who: "Patio central", span: 4 }] },
-];
 
 const CFS_STATS = [
   { n: "25+", l: "slots disponibles" },
@@ -214,112 +187,7 @@ export function Schedule() {
               </Reveal>
             )}
 
-            <div>
-              <div className="flex justify-between items-end gap-6 mb-5 px-1 max-[700px]:flex-col max-[700px]:items-start">
-                <div>
-                  <p
-                    className="font-mono text-ink-2 uppercase mb-2"
-                    style={{ fontSize: "0.72rem", letterSpacing: "0.12em" }}
-                  >
-                    Estructura del día
-                  </p>
-                  <h4
-                    className="text-ink-0"
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      fontSize: "1.3rem",
-                      fontWeight: 600,
-                      letterSpacing: "-0.01em",
-                    }}
-                  >
-                    Así se ve un sábado de Barcamp
-                  </h4>
-                </div>
-
-                {/* En móvil la tabla se desplaza en horizontal: hay que decirlo */}
-                <p
-                  className="font-mono text-ink-3 uppercase min-[901px]:hidden"
-                  style={{ fontSize: "0.65rem", letterSpacing: "0.1em" }}
-                >
-                  Desliza para ver las salas →
-                </p>
-              </div>
-
-              <Reveal className="overflow-x-auto overscroll-x-contain -mx-8 px-8 max-[900px]:pb-2">
-                <div className="min-w-[760px]">
-                <div
-                  className="glass grid"
-                  style={{
-                    gridTemplateColumns: "100px 1fr",
-                    borderBottomLeftRadius: 0,
-                    borderBottomRightRadius: 0,
-                  }}
-                >
-                  <div className="border-r border-glass-border" />
-                  <div className="sch-cells" style={{ borderBottom: "none", gridTemplateColumns: "repeat(4, 1fr)" }}>
-                    {ROOMS.map((r) => (
-                      <div
-                        key={r}
-                        className="px-4 py-4 font-mono text-ink-2 uppercase"
-                        style={{ fontSize: "0.7rem", letterSpacing: "0.08em" }}
-                      >
-                        {r}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div
-                  className="glass overflow-hidden"
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "100px 1fr",
-                    borderTop: "none",
-                    borderTopLeftRadius: 0,
-                    borderTopRightRadius: 0,
-                  }}
-                >
-                  {SLOTS.map((slot) => {
-                    const first = slot.cells[0];
-                    const isSpan = "span" in first;
-                    return (
-                      <div key={slot.time} style={{ display: "contents" }}>
-                        <div className="sch-time">{slot.time}</div>
-                        {isSpan ? (
-                          <div className="sch-cells" style={{ gridTemplateColumns: "1fr" }}>
-                            <div className={`sch-cell sch-${(first as SpanCell).kind}`}>
-                              {(first as SpanCell).tag && (
-                                <span className="sch-tag">{(first as SpanCell).tag}</span>
-                              )}
-                              <span className="sch-title">{(first as SpanCell).t}</span>
-                              <span className="sch-who">{(first as SpanCell).who}</span>
-                            </div>
-                          </div>
-                        ) : (
-                          <div className="sch-cells" style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
-                            {slot.cells.map((_, j) => (
-                              <div key={j} className="sch-cell sch-open">
-                                <span className="sch-tag">Slot abierto</span>
-                                <span className="sch-title">Coming soon</span>
-                                <a
-                                  href={CFP_URL}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="sch-open-cta"
-                                >
-                                  Postúlate <Icons.Arrow />
-                                </a>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-                </div>
-              </Reveal>
-            </div>
+            <Agenda />
           </>
         )}
 

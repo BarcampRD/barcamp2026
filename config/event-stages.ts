@@ -41,9 +41,12 @@ export const STAGE_FEATURES: Record<EventStage, EventFeatures> = {
     showThanks: false,
     showRegister: true,
   },
+  // El CFP cerró y el horario ya está publicado. El keynote sigue sin nombre, y
+  // su sección sin charlista solo mostraría un marcador: la agenda ya lo
+  // lista como "Por anunciar". Cuando se confirme, se enciende aquí.
   TICKETS_SALE: {
     showTicketPurchase: true,
-    showKeynote: true,
+    showKeynote: false,
     showCallForSpeakers: false,
     showAgenda: true,
     showConfirmedSpeakers: true,
@@ -79,6 +82,8 @@ export const STAGE_FEATURES: Record<EventStage, EventFeatures> = {
   },
 };
 
-const CURRENT_STAGE = (process.env.NEXT_PUBLIC_EVENT_STAGE as EventStage) || 'CALL_FOR_SPEAKERS';
+// La etapa viaja dentro del build: `NEXT_PUBLIC_EVENT_STAGE` se lee al compilar
+// y la imagen de Docker no la define, así que en producción manda este valor.
+const CURRENT_STAGE = (process.env.NEXT_PUBLIC_EVENT_STAGE as EventStage) || 'TICKETS_SALE';
 
 export const currentFeatures = STAGE_FEATURES[CURRENT_STAGE];
