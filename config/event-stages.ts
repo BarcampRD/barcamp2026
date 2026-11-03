@@ -21,22 +21,21 @@ export const STAGE_FEATURES: Record<EventStage, EventFeatures> = {
     showConfirmedSpeakers: true,
     showAgenda: true,
     showTicketPurchase: true,
-    showSpeakersToAnounce: true,
+    showSpeakersToAnounce: false,
     showSponsors: true,
     showMerch: true,
     showThanks: true,
     showRegister: true,
   },
   // La inscripción abrió mientras el CFP sigue recibiendo propuestas: las dos
-  // llamadas conviven en esta etapa. Los charlistas ya confirmados se muestran,
-  // y debajo el aviso de que vienen más.
+  // llamadas conviven en esta etapa. Los charlistas confirmados se muestran.
   CALL_FOR_SPEAKERS: {
     showCallForSpeakers: true,
     showConfirmedSpeakers: true,
     showAgenda: false,
     showKeynote: false,
     showTicketPurchase: true,
-    showSpeakersToAnounce: true,
+    showSpeakersToAnounce: false,
     showSponsors: true,
     showMerch: true,
     showThanks: false,

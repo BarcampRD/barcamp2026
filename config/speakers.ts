@@ -1,5 +1,6 @@
 /**
- * Charlistas confirmados del Barcamp 2026, en el orden en que se muestran.
+ * Los 20 charlistas confirmados del Barcamp 2026, en el orden en que se
+ * muestran. La lista está cerrada: no se esperan más.
  *
  * Cada foto vive en `public/speakers/<slug>.webp`: es la foto original que
  * entregó la persona, con su fondo, recortada en cuadrado y sin agrandar. La
@@ -13,7 +14,10 @@
  * Giancarlo Gerdo entregó una foto de cuerpo entero: se recortó a cabeza y
  * hombros sin agrandar. Las de 800 px se bajaron a 600 px. Las de Giancarlo
  * Gerdo, Jean Carlos Taveras, Wilson Toribio, Cristian de la Hoz, Freddy Peña
- * y Rafael Almonte se recentraron en la cara y se pasaron a 600 px.
+ * y Rafael Almonte se recentraron en la cara y se pasaron a 600 px. Las de
+ * Fulvio Moya (una selfie de 337 px), Pedro de la Cruz (460 px) y Shailyn
+ * Ortiz (800 px) se recortaron a cabeza y hombros sin agrandar, así que miden
+ * 290, 360 y 500 px.
  *
  * Quien todavía no tiene foto va sin `photo`, y la tarjeta muestra su inicial.
  *
@@ -121,5 +125,20 @@ export const SPEAKERS: Speaker[] = [
     name: "Rafael Almonte",
     talk: "Let AI Query Your Graph: Building Safe NLP-Driven Data Access with Java and Neo4j",
     photo: { src: "/speakers/rafael-almonte.webp", width: 600, height: 600 },
+  },
+  {
+    name: "Fulvio Moya",
+    talk: "Pruebas de UI y accesibilidad en App Móviles",
+    photo: { src: "/speakers/fulvio-moya.webp", width: 290, height: 290 },
+  },
+  {
+    name: "Pedro de la Cruz",
+    talk: "Design Choices y el Nuevo Mindset con IA",
+    photo: { src: "/speakers/pedro-de-la-cruz.webp", width: 360, height: 360 },
+  },
+  {
+    name: "Shailyn Ortiz",
+    talk: "AI Platform Engineering: El blocker eres tú",
+    photo: { src: "/speakers/shailyn-ortiz.webp", width: 500, height: 500 },
   },
 ];
