@@ -50,7 +50,7 @@ export const STAGE_FEATURES: Record<EventStage, EventFeatures> = {
     showAgenda: false,
     showKeynote: false,
     showTicketPurchase: true,
-    showSpeakersToAnounce: true,
+    showSpeakersToAnounce: false,
     showSponsors: true,
     showMerch: true,
     showThanks: false,
