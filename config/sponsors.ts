@@ -133,24 +133,24 @@ export const SPONSORS: Sponsor[] = [
     href: "https://www.nadserv.com",
     tier: "geek",
   },
-  {
-    name: "JetBrains",
-    logo: { src: "/sponsors/jetbrains.svg", width: 298, height: 64 },
-    logoOnLight: { src: "/sponsors/jetbrains-on-light.svg", width: 298, height: 64 },
-    displayHeight: 34,
-    href: "https://www.jetbrains.com",
-    tier: "geek",
-  },
 ];
 
 /**
- * Comunidades aliadas: no compran paquete, así que van en su propio bloque
+ * Community partners: JetBrains y Java Dominicano (Elias, 4 Nov 2026). No
+ * compran paquete, así que van en su propio bloque
  * debajo de los patrocinadores, con el mismo formato de tarjeta y sin color de
  * paquete. Java Dominicano entregó un solo PNG; la variante oscura vacía el
  * cuerpo blanco de Duke y lleva su contorno y "Dominicano" a la tinta clara,
  * igual que las recoloraciones de arriba.
  */
 export const COMMUNITY_PARTNERS: Omit<Sponsor, "tier">[] = [
+  {
+    name: "JetBrains",
+    logo: { src: "/sponsors/jetbrains.svg", width: 298, height: 64 },
+    logoOnLight: { src: "/sponsors/jetbrains-on-light.svg", width: 298, height: 64 },
+    displayHeight: 40,
+    href: "https://www.jetbrains.com",
+  },
   {
     name: "Java Dominicano",
     logo: { src: "/sponsors/java-dominicano.png", width: 994, height: 759 },
