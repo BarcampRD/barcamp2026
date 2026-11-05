@@ -125,7 +125,7 @@ export function Speakers() {
           </div>
         )}
 
-        {/* Va debajo de los confirmados: la lista sigue creciendo. */}
+        {/* Aviso de que vienen más charlistas. La lista está cerrada en 20: ninguna etapa lo enciende. */}
         {showSpeakersToAnounce && (
           <Reveal className="mb-12">
             <div className="glass rounded-[var(--radius-xl)] p-16 flex flex-col items-center text-center gap-8 max-[700px]:p-10">
