@@ -83,8 +83,12 @@ tarjeta menos su margen.
   todo lo demás. Una marca cuyo archivo oficial no se lee sobre negro lleva dos
   archivos en `config/sponsors.ts`: `logo` es la recoloración a la tinta clara
   de Barcamp, y `logoOnLight` es el original. Cecomsa, Unión Médica, La Fabril,
-  Banco Popular y Avathar Tech tienen los dos; PUCMM, CICC, Net Tech y
-  Alphnology se leen en los dos temas con un solo archivo.
+  Banco Popular, Avathar Tech, The Ksquare Group, JetBrains y Java Dominicano
+  tienen los dos; PUCMM, CICC, Net Tech y Alphnology se leen en los dos temas
+  con un solo archivo.
+- Las comunidades aliadas (community partners) no son un paquete: van en su
+  propio bloque al final del muro, con el rótulo en mono de Colaboradores y la
+  tarjeta de Geek Silver, sin color de paquete.
 - Un `logoOnLight` sale de la marca, nunca de recolorear el blanco a ojo. Si una
   marca no publica su logo y el comité no lo tiene, se pide: un color inventado
   sobre un logo ajeno es peor que no tener modo claro.
