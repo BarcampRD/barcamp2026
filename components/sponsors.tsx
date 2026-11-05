@@ -2,8 +2,10 @@ import Image from "next/image";
 import { Reveal } from "@/components/ui/reveal";
 import { currentFeatures } from "@/config/event-stages";
 import {
+  COMMUNITY_PARTNERS,
   SPONSORS,
   SPONSOR_TIERS,
+  type Sponsor,
   type SponsorLogo,
   type SponsorTier,
 } from "@/config/sponsors";
@@ -99,6 +101,48 @@ function SponsorMark({
   );
 }
 
+/**
+ * Tarjeta enlazada de una marca, la misma para patrocinadores y comunidades:
+ * cambian solo el tamaño de la tarjeta y la escala del logo.
+ */
+function SponsorCard({
+  sponsor: s,
+  scale,
+  sizeClass,
+}: {
+  sponsor: Omit<Sponsor, "tier">;
+  scale: number;
+  sizeClass: string;
+}) {
+  return (
+    <a
+      href={s.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={s.name}
+      className={`glass rounded-[var(--radius-md)] flex items-center justify-center
+        grow px-6 py-6 ${sizeClass}
+        transition-[border-color,background] duration-200
+        hover:bg-[var(--glass-bg-strong)] hover:border-glass-border-strong`}
+    >
+      <SponsorMark
+        logo={s.logo}
+        alt={s.name}
+        displayHeight={s.displayHeight * scale}
+        className={s.logoOnLight ? "on-dark-only" : ""}
+      />
+      {s.logoOnLight && (
+        <SponsorMark
+          logo={s.logoOnLight}
+          alt={s.name}
+          displayHeight={s.displayHeight * scale}
+          className="on-light-only"
+        />
+      )}
+    </a>
+  );
+}
+
 export function Sponsors() {
   const { showSponsors } = currentFeatures;
   const hasSponsors = showSponsors && SPONSORS.length > 0;
@@ -172,37 +216,40 @@ export function Sponsors() {
                         centrada a cualquier ancho, sin celdas vacías. */}
                     <div className="flex flex-wrap gap-4 justify-center">
                       {sponsors.map((s) => (
-                        <a
+                        <SponsorCard
                           key={s.name}
-                          href={s.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={s.name}
-                          className={`glass rounded-[var(--radius-md)] flex items-center justify-center
-                            grow px-6 py-6 ${TIER_CARD[tier]}
-                            transition-[border-color,background] duration-200
-                            hover:bg-[var(--glass-bg-strong)] hover:border-glass-border-strong`}
-                        >
-                          <SponsorMark
-                            logo={s.logo}
-                            alt={s.name}
-                            displayHeight={s.displayHeight * logoScale}
-                            className={s.logoOnLight ? "on-dark-only" : ""}
-                          />
-                          {s.logoOnLight && (
-                            <SponsorMark
-                              logo={s.logoOnLight}
-                              alt={s.name}
-                              displayHeight={s.displayHeight * logoScale}
-                              className="on-light-only"
-                            />
-                          )}
-                        </a>
+                          sponsor={s}
+                          scale={logoScale}
+                          sizeClass={TIER_CARD[tier]}
+                        />
                       ))}
                     </div>
                   </div>
                 );
               })}
+            </div>
+          </Reveal>
+        )}
+
+        {/* Comunidades aliadas: cierran el muro con el rótulo de Colaboradores,
+            porque no compran paquete y no llevan color de paquete. */}
+        {hasSponsors && COMMUNITY_PARTNERS.length > 0 && (
+          <Reveal className="mt-12">
+            <p
+              className="font-mono text-ink-2 uppercase mb-5 text-center"
+              style={{ fontSize: "0.72rem", letterSpacing: "0.12em" }}
+            >
+              Community partners
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              {COMMUNITY_PARTNERS.map((p) => (
+                <SponsorCard
+                  key={p.name}
+                  sponsor={p}
+                  scale={1}
+                  sizeClass="basis-[220px] max-w-[340px] min-h-[152px] max-[600px]:min-h-[136px]"
+                />
+              ))}
             </div>
           </Reveal>
         )}

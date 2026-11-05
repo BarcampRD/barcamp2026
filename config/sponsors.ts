@@ -14,7 +14,9 @@
  * que salió la variante oscura, que solo le cambió el logotipo de `#11316f` a
  * `#f5f1ec`; Avathar Tech, de su sitio, con el negro y el azul oscuro del
  * logotipo llevados a la misma tinta; The Ksquare Group, de su par oficial,
- * que solo cambia la K y "KSQUARE" de blanco a azul marino.
+ * que solo cambia la K y "KSQUARE" de blanco a azul marino; JetBrains, de su
+ * kit de marca (jetbrains.com/company/brand), donde la variante oscura solo
+ * lleva el logotipo de negro a la tinta clara y deja el símbolo intacto.
  *
  * Una marca sin `logoOnLight` es una cuyo archivo oficial se lee en los dos
  * temas, y entonces el segundo archivo sobraría.
@@ -130,5 +132,30 @@ export const SPONSORS: Sponsor[] = [
     displayHeight: 24,
     href: "https://www.nadserv.com",
     tier: "geek",
+  },
+  {
+    name: "JetBrains",
+    logo: { src: "/sponsors/jetbrains.svg", width: 298, height: 64 },
+    logoOnLight: { src: "/sponsors/jetbrains-on-light.svg", width: 298, height: 64 },
+    displayHeight: 34,
+    href: "https://www.jetbrains.com",
+    tier: "geek",
+  },
+];
+
+/**
+ * Comunidades aliadas: no compran paquete, así que van en su propio bloque
+ * debajo de los patrocinadores, con el mismo formato de tarjeta y sin color de
+ * paquete. Java Dominicano entregó un solo PNG; la variante oscura vacía el
+ * cuerpo blanco de Duke y lleva su contorno y "Dominicano" a la tinta clara,
+ * igual que las recoloraciones de arriba.
+ */
+export const COMMUNITY_PARTNERS: Omit<Sponsor, "tier">[] = [
+  {
+    name: "Java Dominicano",
+    logo: { src: "/sponsors/java-dominicano.png", width: 994, height: 759 },
+    logoOnLight: { src: "/sponsors/java-dominicano-on-light.png", width: 994, height: 759 },
+    displayHeight: 100,
+    href: "https://site.javadominicano.org",
   },
 ];
