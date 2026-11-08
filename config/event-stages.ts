@@ -1,4 +1,4 @@
-export type EventStage = 'PLANNING' | 'CALL_FOR_SPEAKERS' | 'TICKETS_SALE' | 'LIVE' | 'POST_EVENT';
+export type EventStage = 'PLANNING' | 'CALL_FOR_SPEAKERS' | 'REGISTRATION' | 'TICKETS_SALE' | 'LIVE' | 'POST_EVENT';
 
 export interface EventFeatures {
   showCallForSpeakers: boolean;
@@ -31,6 +31,21 @@ export const STAGE_FEATURES: Record<EventStage, EventFeatures> = {
   // llamadas conviven en esta etapa. Los charlistas confirmados se muestran.
   CALL_FOR_SPEAKERS: {
     showCallForSpeakers: true,
+    showConfirmedSpeakers: true,
+    showAgenda: false,
+    showKeynote: false,
+    showTicketPurchase: true,
+    showSpeakersToAnounce: false,
+    showSponsors: true,
+    showMerch: true,
+    showThanks: false,
+    showRegister: true,
+  },
+  // El CFP cerró y la inscripción sigue abierta. La agenda todavía no está
+  // elegida, así que no se muestra: la sección de agenda desaparece entera
+  // hasta TICKETS_SALE, y con ella el enlace del menú.
+  REGISTRATION: {
+    showCallForSpeakers: false,
     showConfirmedSpeakers: true,
     showAgenda: false,
     showKeynote: false,
