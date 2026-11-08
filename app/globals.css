@@ -493,7 +493,7 @@
   background: linear-gradient(90deg, transparent, var(--color-glass-border-strong));
 }
 .ag-break::after { transform: scaleX(-1); }
-.ag-break .ag-time { padding: 0; font-size: 0.7rem; color: var(--color-ink-3); }
+.ag-break .ag-time { padding: 0; font-size: 0.7rem; color: var(--color-ink-2); }
 .ag-break .ag-single { padding: 0; border: none; }
 .ag-break .ag-title {
   font-family: var(--font-mono);
@@ -501,7 +501,7 @@
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-ink-3);
+  color: var(--color-ink-2);
 }
 .ag-break .ag-time,
 .ag-break .ag-single { flex: none; }
