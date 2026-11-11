@@ -56,12 +56,11 @@ export const STAGE_FEATURES: Record<EventStage, EventFeatures> = {
     showThanks: false,
     showRegister: true,
   },
-  // El CFP cerró y el horario ya está publicado. El keynote sigue sin nombre, y
-  // su sección sin charlista solo mostraría un marcador: la agenda ya lo
-  // lista como "Por anunciar". Cuando se confirme, se enciende aquí.
+  // El CFP cerró, el horario está publicado y el keynote ya tiene nombre
+  // (`config/keynote.ts`): su sección y su enlace del menú se muestran.
   TICKETS_SALE: {
     showTicketPurchase: true,
-    showKeynote: false,
+    showKeynote: true,
     showCallForSpeakers: false,
     showAgenda: true,
     showConfirmedSpeakers: true,

@@ -12,6 +12,7 @@
  * `components/agenda.tsx` las pinta en el formato del sitio.
  */
 
+import { KEYNOTE } from "@/config/keynote";
 import { SPEAKERS } from "@/config/speakers";
 
 export const AGENDA_ROOMS = ["PA-21", "PA-22", "PA-23", "PA-25"] as const;
@@ -61,8 +62,8 @@ export const AGENDA: readonly AgendaBlock[] = [
   {
     kind: "keynote",
     time: { start: "09:30", end: "10:30" },
-    title: "Charla magistral",
-    detail: "Por anunciar",
+    title: KEYNOTE.talk,
+    detail: KEYNOTE.name,
   },
   { kind: "break", time: { start: "10:30", end: "11:00" }, title: "Break" },
   talks("11:00", "11:40", {
