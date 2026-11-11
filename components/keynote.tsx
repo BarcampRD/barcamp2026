@@ -35,7 +35,7 @@ export function Keynote() {
               borderColor: "var(--keynote-border)",
             }}
           >
-            {/* La foto mide 300 px: en teléfono no pasa de 240 para no agrandarla. */}
+            {/* En teléfono la foto no pasa de 240 px para no ocupar la tarjeta entera. */}
             <div
               className="w-full overflow-hidden rounded-[var(--radius-lg)] max-[800px]:max-w-[240px]"
               style={{ aspectRatio: "1", border: "1px solid var(--portrait-border)" }}
