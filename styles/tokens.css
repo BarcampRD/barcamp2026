@@ -198,9 +198,6 @@
   --keynote-from:      oklch(47% 0.26 25 / 0.10);
   --keynote-to:        oklch(35% 0.24 24 / 0.05);
   --keynote-border:    var(--red-0-25);
-  --portrait-bg-from:  oklch(40% 0.2 25 / 0.18);
-  --portrait-bg-to:    oklch(25% 0.15 25 / 0.18);
-  --portrait-stripe:   oklch(50% 0.2 25 / 0.04);
   --portrait-border:   oklch(60% 0.22 25 / 0.15);
 
   /* ── Charlistas ──────────────────────────── */
@@ -383,9 +380,6 @@
   --keynote-from:      oklch(90% 0.06 32 / 0.55);
   --keynote-to:        oklch(96% 0.02 38 / 0.45);
   --keynote-border:    oklch(60% 0.22 28 / 0.22);
-  --portrait-bg-from:  oklch(88% 0.07 30 / 0.55);
-  --portrait-bg-to:    oklch(94% 0.03 36 / 0.55);
-  --portrait-stripe:   oklch(55% 0.20 28 / 0.06);
   --portrait-border:   oklch(60% 0.22 28 / 0.20);
 
   /* ── Charlistas ──────────────────────────── */
