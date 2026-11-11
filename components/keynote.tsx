@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { Reveal } from "@/components/ui/reveal";
+import { KEYNOTE } from "@/config/keynote";
 
 export function Keynote() {
   return (
@@ -33,56 +35,56 @@ export function Keynote() {
               borderColor: "var(--keynote-border)",
             }}
           >
-            {/* Portrait placeholder */}
+            {/* La foto mide 300 px: en teléfono no pasa de 240 para no agrandarla. */}
             <div
-              className="rounded-[var(--radius-lg)] flex items-center justify-center text-center font-mono text-ink-2 p-5"
-              style={{
-                aspectRatio: "1",
-                background:
-                  "linear-gradient(135deg, var(--portrait-bg-from), var(--portrait-bg-to)), repeating-linear-gradient(45deg, transparent 0 12px, var(--portrait-stripe) 12px 13px)",
-                border: "1px solid var(--portrait-border)",
-                fontSize: "0.7rem",
-                lineHeight: 1.6,
-              }}
+              className="w-full overflow-hidden rounded-[var(--radius-lg)] max-[800px]:max-w-[240px]"
+              style={{ aspectRatio: "1", border: "1px solid var(--portrait-border)" }}
             >
-              [PHOTO]<br />
+              <Image
+                src={KEYNOTE.photo.src}
+                alt={KEYNOTE.name}
+                width={KEYNOTE.photo.width}
+                height={KEYNOTE.photo.height}
+                sizes="(max-width: 800px) 240px, 280px"
+                className="h-full w-full object-cover"
+              />
             </div>
 
-            {/* Meta */}
             <div className="flex flex-col gap-4">
               <span className="eyebrow">
-                <span>Por confirmar</span>
+                <span>{KEYNOTE.name}</span>
               </span>
 
-              <div
-                className="text-ink-0"
+              <h3
+                className="text-ink-0 balance-title"
                 style={{
                   fontFamily: "var(--font-display)",
-                  fontSize: "clamp(2rem, 4vw, 3rem)",
+                  fontSize: "clamp(1.9rem, 3.6vw, 2.8rem)",
                   fontWeight: 700,
-                  lineHeight: 0.95,
+                  lineHeight: 1,
                   letterSpacing: "-0.03em",
                 }}
               >
-                Anunciamos pronto.
-              </div>
+                {KEYNOTE.talk}
+              </h3>
 
-              <div className="text-red-0 font-medium text-[1rem]">
-                El único keynote del evento · 60 min
-              </div>
+              <p className="text-red-0 font-medium text-[1rem]">{KEYNOTE.subtitle}</p>
 
               <p className="text-ink-2 text-[1rem] leading-[1.55] mt-2 max-w-[60ch]">
-                Estamos preparando una sesión magistral con una figura referente en tecnología y desarrollo de software. Pronto revelaremos todos los detalles de la charla y quién nos acompañará en el escenario principal.
+                {KEYNOTE.thesis}
               </p>
 
-              <div className="flex gap-3 mt-3">
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-3 mt-3">
                 <a
-                  href="https://barcamp.org.do/#keynote"
+                  href="#agenda"
                   className="btn btn-glass"
                   style={{ fontSize: "0.82rem", padding: "10px 18px" }}
                 >
-                  Ver edición pasada
+                  Ver la agenda
                 </a>
+                <span className="font-mono text-ink-2 text-[0.8rem]">
+                  El único keynote del evento, 60&nbsp;min
+                </span>
               </div>
             </div>
           </div>
