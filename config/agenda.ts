@@ -1,6 +1,6 @@
 /**
- * Agenda del sábado 14 de noviembre de 2026, tal como la envió el comité en
- * "Propuesta de horario" (hoja Horario). Es una propuesta: puede tener ajustes.
+ * Agenda del sábado 14 de noviembre de 2026, según la cuadrícula de salas que
+ * el comité circuló el 13 de noviembre (reemplaza la "Propuesta de horario").
  *
  * Cada charla se escribe con el nombre del charlista tal como está en
  * `config/speakers.ts`, y de ahí salen el nombre y el título que se muestran.
@@ -67,16 +67,16 @@ export const AGENDA: readonly AgendaBlock[] = [
   },
   { kind: "break", time: { start: "10:30", end: "11:00" }, title: "Break" },
   talks("11:00", "11:40", {
-    "PA-21": "Karla Yafraciel Aquino Meran",
+    "PA-21": "Rafael Batista",
     "PA-22": "Yaury Ortega",
     "PA-23": "Luis Sosa",
     "PA-25": "José Saint Hillaire",
   }),
   { kind: "break", time: { start: "11:40", end: "11:50" }, title: "Break" },
   talks("11:50", "12:30", {
-    "PA-21": "Rafael Batista",
+    "PA-21": "Karla Yafraciel Aquino Meran",
     "PA-22": "Rafael Dorville",
-    "PA-23": "Wilson Toribio",
+    "PA-23": "Helen Lisbeth Rodriguez Evans",
     "PA-25": "Cristian de la Hoz",
   }),
   { kind: "lunch", time: { start: "12:30", end: "14:00" }, title: "Almuerzo" },
@@ -95,7 +95,7 @@ export const AGENDA: readonly AgendaBlock[] = [
   }),
   { kind: "break", time: { start: "15:40", end: "16:00" }, title: "Break" },
   talks("16:00", "16:40", {
-    "PA-21": "Helen Lisbeth Rodriguez Evans",
+    "PA-21": "Wilson Toribio",
     "PA-22": "Juan Thomas Ángel Montilla",
     "PA-23": "Giancarlo Gerdo",
     "PA-25": "Shailyn Ortiz",
