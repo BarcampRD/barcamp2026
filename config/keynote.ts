@@ -4,9 +4,9 @@
  * en una sola línea con una raya entre título y subtítulo; aquí van separados
  * y la sección los pinta en dos líneas.
  *
- * La foto es la de su perfil de LinkedIn (500 px, cuadrada), que Elias eligió
- * el 11 de noviembre en lugar de la de JakartaOne. Si el comité entrega otra,
- * se reemplaza el archivo y sus dimensiones.
+ * La foto es la que el comité le tomó para el evento y mandó el 12 de
+ * noviembre (960 x 1280 px, de pie frente a una pared), recortada a cabeza y
+ * hombros en un cuadrado de 600 px. Reemplaza la de LinkedIn.
  *
  * Igual que en `config/speakers.ts`, no lleva cargo ni empresa.
  */
@@ -28,5 +28,5 @@ export const KEYNOTE: Keynote = {
   subtitle: "Código, Conexión y Criterio en la era de la IA",
   thesis:
     "La IA no elimina la ingeniería, elimina la transcripción. Lo que queda es exactamente lo que la carrera enseña y lo que casi nadie sabe hacer: entender el dominio, diseñar sistemas, juzgar si algo está bien, y responder cuando se cae.",
-  photo: { src: "/speakers/carlos-camacho-linkedin.webp", width: 500, height: 500 },
+  photo: { src: "/speakers/carlos-camacho.webp", width: 600, height: 600 },
 };

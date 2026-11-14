@@ -3,7 +3,6 @@
 import { Reveal } from "@/components/ui/reveal";
 import Image from "next/image";
 import Link from "next/link";
-import { Icons } from "@/components/icons";
 import { currentFeatures } from "@/config/event-stages";
 import { SPEAKERS, type Speaker } from "@/config/speakers";
 
@@ -14,9 +13,6 @@ const PAST_EDITIONS = [
   { year: "2022", talks: 24, attendees: 200, url: "https://2022.barcamp.org.do" },
   { year: "2021", talks: 20, attendees: 180, url: "https://2021.barcamp.org.do" },
 ];
-
-/** Todas las charlas son el día del evento; la ficha lo muestra como el post. */
-const TALK_DATE = "14/11";
 
 /** Las dos primeras palabras del nombre: "Juan Thomas Ángel Montilla" da "JT". */
 function initials(name: string) {
@@ -70,16 +66,6 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
           <span className="speaker-quote" aria-hidden="true">&ldquo;</span>
           <p className="speaker-talk-title">{speaker.talk}</p>
         </div>
-
-        <p className="speaker-glass speaker-date">
-          <span className="speaker-date-icon" aria-hidden="true">
-            <Icons.Calendar />
-          </span>
-          <span>
-            <span className="sr-only">Día de la charla: </span>
-            {TALK_DATE}
-          </span>
-        </p>
       </div>
     </article>
   );
