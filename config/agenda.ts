@@ -75,7 +75,7 @@ export const AGENDA: readonly AgendaBlock[] = [
   { kind: "break", time: { start: "11:40", end: "11:50" }, title: "Break" },
   talks("11:50", "12:30", {
     "PA-21": "Karla Yafraciel Aquino Meran",
-    "PA-22": "Rafael Dorville",
+    "PA-22": "Eudris Cabrera",
     "PA-23": "Helen Lisbeth Rodriguez Evans",
     "PA-25": "Cristian de la Hoz",
   }),

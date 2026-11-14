@@ -19,6 +19,9 @@
  * Ortiz (800 px) se recortaron a cabeza y hombros sin agrandar, así que miden
  * 290, 360 y 500 px.
  *
+ * Eudris Cabrera entró el 13 de noviembre en el lugar de Rafael Dorville (misma
+ * sala y bloque); su foto y su charla salen de su perfil de Sessionize, 400 px.
+ *
  * Quien todavía no tiene foto va sin `photo`, y la tarjeta muestra su inicial.
  *
  * No hay cargo ni empresa: el comité no los tiene, así que la tarjeta no los
@@ -82,9 +85,9 @@ export const SPEAKERS: Speaker[] = [
     photo: { src: "/speakers/rafael-batista.webp", width: 296, height: 296 },
   },
   {
-    name: "Rafael Dorville",
-    talk: "Microsoft Fabric en 45 minutos: de datos crudos a IA generativa",
-    photo: { src: "/speakers/rafael-dorville.webp", width: 268, height: 268 },
+    name: "Eudris Cabrera",
+    talk: "Descifrando los secretos de la JVM: Análisis y optimización de aplicaciones Java",
+    photo: { src: "/speakers/eudris-cabrera.webp", width: 400, height: 400 },
   },
   {
     name: "Inés Montero",
