@@ -1109,8 +1109,9 @@
   color: var(--color-ink-2);
 }
 
-/* El bloque de la charla toma el alto que sobra, así la fecha queda al pie en
-   todas las tarjetas aunque el título tenga una línea o cuatro. */
+/* El bloque de la charla toma el alto que sobra, así todas las tarjetas miden
+   lo mismo aunque el título tenga una línea o cuatro. La tarjeta no lleva fecha:
+   el comité la quitó el 11 de noviembre porque todas decían lo mismo. */
 .speaker-talk {
   flex: 1 1 auto;
   min-height: 0;
@@ -1143,30 +1144,3 @@
   color: var(--color-ink-0);
 }
 
-.speaker-date {
-  width: auto;
-  border-radius: var(--speaker-r-inner);
-  padding: 1.2cqw 4cqw 1.2cqw 1.2cqw;
-  display: flex;
-  align-items: center;
-  gap: 2.4cqw;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(13px, 4.2cqw, 18px);
-  font-variant-numeric: tabular-nums;
-  line-height: 1;
-  color: var(--color-ink-0);
-}
-
-.speaker-date-icon {
-  width: 6.5cqw;
-  aspect-ratio: 1;
-  /* Concéntrico con la fecha: su radio menos el margen de 1.2cqw. */
-  border-radius: calc(var(--speaker-r-inner) - 1.2cqw);
-  display: grid;
-  place-items: center;
-  background: var(--color-red-0);
-  color: var(--on-accent);
-
-  & svg { width: 58%; height: 58%; }
-}
